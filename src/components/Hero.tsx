@@ -12,22 +12,34 @@ const Hero = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{ 
-          backgroundImage: 'url("https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?q=80&w=1920&auto=format")',
+          backgroundImage: 'url("/lovable-uploads/704fe54f-500c-4e0d-8092-fbaf95de6743.png")',
         }}
       >
-        <div className="absolute inset-0 bg-deepblue bg-opacity-50"></div>
+        <div className="absolute inset-0 bg-deepblue/30 backdrop-blur-[2px]"></div>
       </div>
       
       {/* Content */}
       <div className="container-custom relative z-10 text-center">
         <div className="animate-fade-in max-w-4xl mx-auto">
-          <h5 className="text-gold text-lg md:text-xl font-medium uppercase tracking-widest mb-4">
+          {/* Logo */}
+          <div className="mb-8">
+            <img 
+              src="/lovable-uploads/f0aac734-d8e4-4e38-bb99-be6a38340274.png" 
+              alt="Sonai Realty & Clara Logo" 
+              className="h-20 mx-auto"
+            />
+          </div>
+          
+          <h5 className="text-gold text-lg md:text-xl font-medium uppercase tracking-[0.2em] mb-4">
             Premium Living Experience
           </h5>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
-            Sonai Clara <span className="block">Premium Residences</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-playfair">
+            Sonai Clara 
+            <span className="block mt-2 text-2xl md:text-4xl lg:text-5xl text-gold/90">
+              Premium Residences
+            </span>
           </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-10 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/90 mb-10 max-w-3xl mx-auto font-light">
             Luxurious 2 & 3 BHK homes in Ravet with 5-star amenities, panoramic views, and impeccable craftsmanship
           </p>
           
