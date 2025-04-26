@@ -1,6 +1,5 @@
-
 import React from "react";
-import { gem } from "lucide-react";
+import { Gem } from "lucide-react";
 
 const AmenityCard = ({ icon, title }) => (
   <div className="flex flex-col items-center text-center p-6 bg-white/80 backdrop-blur-sm rounded-sm hover:shadow-lg transition-shadow hover:bg-white">
@@ -73,8 +72,8 @@ const Amenities = () => {
           <circle cx="12" cy="12" r="4" />
           <path d="M4.93 4.93 9.17 9.17" />
           <path d="M14.83 14.83 19.07 19.07" />
-          <path d="M14.83 9.17 19.07 4.93" />
-          <path d="M14.83 9.17 18.36 5.64" />
+          <path d="M14.83 4.93 19.07 9.17" />
+          <path d="M14.83 4.93 18.36 5.64" />
           <path d="M4.93 19.07 9.17 14.83" />
         </svg>
       ),
@@ -148,7 +147,7 @@ const Amenities = () => {
       <div className="container-custom relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center justify-center space-x-2 text-gold">
-            {React.createElement(gem, { size: 24 })}
+            {React.createElement(Gem, { size: 24 })}
             <span className="text-sm uppercase tracking-wider text-gold">Premium Lifestyle</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4">

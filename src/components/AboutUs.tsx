@@ -1,6 +1,6 @@
 
 import React from "react";
-import { users } from "lucide-react";
+import { Users } from "lucide-react";
 
 const AboutUs = () => {
   return (
@@ -23,7 +23,7 @@ const AboutUs = () => {
           
           <div className="space-y-6">
             <div className="flex items-center space-x-2 text-gold">
-              {React.createElement(users, { size: 24 })}
+              {React.createElement(Users, { size: 24 })}
               <span className="text-sm uppercase tracking-wider">About Us</span>
             </div>
             

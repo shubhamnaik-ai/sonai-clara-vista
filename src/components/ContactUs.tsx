@@ -1,6 +1,5 @@
-
 import React from "react";
-import { mail, phone, mapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,7 +10,7 @@ const ContactUs = () => {
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center justify-center space-x-2 text-gold">
-            {React.createElement(mail, { size: 24 })}
+            {React.createElement(Mail, { size: 24 })}
             <span className="text-sm uppercase tracking-wider">Get In Touch</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-deepblue mt-4">
@@ -24,7 +23,6 @@ const ContactUs = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
           <div className="bg-white p-8 shadow-lg">
             <h3 className="text-2xl font-playfair font-bold text-deepblue mb-6">Send us a Message</h3>
             
@@ -103,7 +101,6 @@ const ContactUs = () => {
             </form>
           </div>
           
-          {/* Contact Information */}
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-playfair font-bold text-deepblue mb-6">Contact Information</h3>
@@ -111,7 +108,7 @@ const ContactUs = () => {
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                    {React.createElement(mapPin, { className: "text-gold" })}
+                    {React.createElement(MapPin, { className: "text-gold" })}
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-deepblue">Sales Office</h4>
@@ -124,7 +121,7 @@ const ContactUs = () => {
                 
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                    {React.createElement(phone, { className: "text-gold" })}
+                    {React.createElement(Phone, { className: "text-gold" })}
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-deepblue">Phone</h4>
@@ -137,7 +134,7 @@ const ContactUs = () => {
                 
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                    {React.createElement(mail, { className: "text-gold" })}
+                    {React.createElement(Mail, { className: "text-gold" })}
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-deepblue">Email</h4>

@@ -1,6 +1,5 @@
-
 import React, { useState } from "react";
-import { image } from "lucide-react";
+import { Image } from "lucide-react";
 
 const galleryImages = [
   {
@@ -47,7 +46,7 @@ const Gallery = () => {
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center justify-center space-x-2 text-gold">
-            {React.createElement(image, { size: 24 })}
+            {React.createElement(Image, { size: 24 })}
             <span className="text-sm uppercase tracking-wider">Visual Tour</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-deepblue mt-4">
@@ -79,7 +78,6 @@ const Gallery = () => {
           ))}
         </div>
 
-        {/* Image Modal */}
         {activeImage && (
           <div 
             className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"

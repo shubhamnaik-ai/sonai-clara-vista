@@ -1,6 +1,5 @@
-
 import React from "react";
-import { compass, map } from "lucide-react";
+import { Compass, Map } from "lucide-react";
 
 const LocationFeature = ({ title, description }) => (
   <div className="flex items-start space-x-4 px-6 py-4 bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow">
@@ -23,7 +22,7 @@ const Location = () => {
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center justify-center space-x-2 text-gold">
-            {React.createElement(compass, { size: 24 })}
+            {React.createElement(Compass, { size: 24 })}
             <span className="text-sm uppercase tracking-wider">Strategic Location</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-deepblue mt-4">
@@ -67,7 +66,7 @@ const Location = () => {
             <div className="p-6 bg-deepblue text-white">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-                  {React.createElement(map, { size: 24, className: "text-gold" })}
+                  {React.createElement(Map, { size: 24, className: "text-gold" })}
                 </div>
                 <h4 className="text-xl font-playfair font-bold">Key Distances</h4>
               </div>
@@ -101,7 +100,6 @@ const Location = () => {
             </div>
           </div>
           
-          {/* Map or Location Image */}
           <div className="h-full flex items-center justify-center">
             <div className="border-8 border-white shadow-lg w-full">
               <img 

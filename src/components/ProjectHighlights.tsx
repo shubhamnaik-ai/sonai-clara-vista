@@ -1,7 +1,6 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { star } from "lucide-react";
+import { Star } from "lucide-react";
 
 const ProjectHighlights = () => {
   return (
@@ -9,7 +8,7 @@ const ProjectHighlights = () => {
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center justify-center space-x-2 text-gold">
-            {React.createElement(star, { size: 24 })}
+            {React.createElement(Star, { size: 24 })}
             <span className="text-sm uppercase tracking-wider">Sonai Clara Highlights</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-deepblue mt-4">

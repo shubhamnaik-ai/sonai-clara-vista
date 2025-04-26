@@ -1,8 +1,7 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { layout } from "lucide-react";
+import { Layout } from "lucide-react";
 
 const FloorPlans = () => {
   const [activeTab, setActiveTab] = useState("2bhk");
@@ -12,7 +11,7 @@ const FloorPlans = () => {
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center justify-center space-x-2 text-gold">
-            {React.createElement(layout, { size: 24 })}
+            {React.createElement(Layout, { size: 24 })}
             <span className="text-sm uppercase tracking-wider">Floor Plans</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-deepblue mt-4">
