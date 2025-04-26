@@ -21,15 +21,6 @@ const Hero = () => {
       {/* Content */}
       <div className="container-custom relative z-10 text-center">
         <div className="animate-fade-in max-w-4xl mx-auto">
-          {/* Logo */}
-          <div className="mb-8">
-            <img 
-              src="/lovable-uploads/f0aac734-d8e4-4e38-bb99-be6a38340274.png" 
-              alt="Sonai Realty & Clara Logo" 
-              className="h-20 mx-auto"
-            />
-          </div>
-          
           <h5 className="text-gold text-lg md:text-xl font-medium uppercase tracking-[0.2em] mb-4">
             Premium Living Experience
           </h5>
