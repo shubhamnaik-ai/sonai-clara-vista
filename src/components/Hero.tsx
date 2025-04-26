@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 
@@ -20,15 +21,6 @@ const Hero = () => {
       {/* Content */}
       <div className="container-custom relative z-10 text-center">
         <div className="animate-fade-in max-w-4xl mx-auto">
-          {/* Logo */}
-          <div className="mb-8">
-            <img 
-              src="/lovable-uploads/7cdcc568-a688-4439-9c0e-809a33f0d43f.png" 
-              alt="Sonai Realty Logo" 
-              className="h-16 mx-auto"
-            />
-          </div>
-
           <h5 className="text-gold text-lg md:text-xl font-medium uppercase tracking-[0.2em] mb-4">
             Premium Living Experience
           </h5>
