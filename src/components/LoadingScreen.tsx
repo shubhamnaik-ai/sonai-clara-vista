@@ -54,7 +54,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
           <span className="text-sm text-white/80">Loading</span>
           <span className="text-sm text-gold">{progress}%</span>
         </div>
-        <Progress value={progress} className="h-1.5 bg-white/20" />
+        <Progress value={progress} className="h-1.5 bg-white/20" indicatorClassName="bg-gold" />
       </div>
     </div>
   );

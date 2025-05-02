@@ -1,5 +1,8 @@
+
 import React from "react";
-import { Compass, Map } from "lucide-react";
+import { Compass, Map, MapPin } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const LocationFeature = ({ title, description }) => (
   <div className="flex items-start space-x-4 px-6 py-4 bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow">
@@ -17,12 +20,43 @@ const LocationFeature = ({ title, description }) => (
 );
 
 const Location = () => {
+  // QR Code Dialog Component
+  const AddressQR = () => (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline" className="flex items-center gap-2 bg-gold hover:bg-gold-dark text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <rect x="7" y="7" width="3" height="3" />
+            <rect x="14" y="7" width="3" height="3" />
+            <rect x="7" y="14" width="3" height="3" />
+            <rect x="14" y="14" width="3" height="3" />
+          </svg>
+          <span>Scan QR Code</span>
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-md bg-white p-6">
+        <h3 className="text-xl font-semibold mb-4">Scan QR Code for Directions</h3>
+        <div className="flex flex-col items-center">
+          <img 
+            src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://maps.google.com/?q=18.650203,73.739368`} 
+            alt="Office Location QR Code" 
+            className="w-64 h-64 object-contain mb-4"
+          />
+          <p className="text-sm text-gray-500 text-center">
+            Scan this QR code to get directions to our office
+          </p>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+
   return (
     <section id="location" className="section-padding bg-ivory">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center justify-center space-x-2 text-gold">
-            {React.createElement(Compass, { size: 24 })}
+            <Compass size={24} />
             <span className="text-sm uppercase tracking-wider">Strategic Location</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-deepblue mt-4">
@@ -64,49 +98,89 @@ const Location = () => {
             </div>
             
             <div className="p-6 bg-deepblue text-white">
-              <div className="flex items-center space-x-4 mb-4">
+              <div className="flex items-start space-x-4 mb-6">
                 <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-                  {React.createElement(Map, { size: 24, className: "text-gold" })}
+                  <Map size={24} className="text-gold" />
                 </div>
-                <h4 className="text-xl font-playfair font-bold">Key Distances</h4>
+                <div className="flex-1">
+                  <h4 className="text-xl font-playfair font-bold">Address Information</h4>
+                  <div className="mt-4 space-y-4">
+                    <div>
+                      <span className="text-gold text-sm font-medium">SITE ADDRESS:</span>
+                      <p className="text-white/80 mt-1">
+                        Sr.No 76/1/1, 76/1/2, 76/1/3, 76/1/1/1/2/1/3<br />
+                        Chandrabhaga Corner, Ravet, 412101
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-gold text-sm font-medium">OFFICE ADDRESS:</span>
+                      <p className="text-white/80 mt-1">
+                        14, Brt Rd, Malakar Vasti, Ravet,<br />
+                        Pimpri-Chinchwad, Maharashtra 412101
+                      </p>
+                      <div className="mt-3">
+                        <AddressQR />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex justify-between border-b border-deepblue-light pb-2">
-                  <span>Highway</span>
-                  <span className="font-medium">0.5 km</span>
-                </div>
-                <div className="flex justify-between border-b border-deepblue-light pb-2">
-                  <span>Railway Station</span>
-                  <span className="font-medium">3 km</span>
-                </div>
-                <div className="flex justify-between border-b border-deepblue-light pb-2">
-                  <span>Airport</span>
-                  <span className="font-medium">25 km</span>
-                </div>
-                <div className="flex justify-between border-b border-deepblue-light pb-2">
-                  <span>IT Park</span>
-                  <span className="font-medium">10 km</span>
-                </div>
-                <div className="flex justify-between border-b border-deepblue-light pb-2">
-                  <span>Hospital</span>
-                  <span className="font-medium">1.5 km</span>
-                </div>
-                <div className="flex justify-between border-b border-deepblue-light pb-2">
-                  <span>Mall</span>
-                  <span className="font-medium">2 km</span>
+              <div>
+                <h5 className="text-lg font-semibold mb-3">Key Distances</h5>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex justify-between border-b border-deepblue-light pb-2">
+                    <span>Highway</span>
+                    <span className="font-medium">0.5 km</span>
+                  </div>
+                  <div className="flex justify-between border-b border-deepblue-light pb-2">
+                    <span>Railway Station</span>
+                    <span className="font-medium">3 km</span>
+                  </div>
+                  <div className="flex justify-between border-b border-deepblue-light pb-2">
+                    <span>Airport</span>
+                    <span className="font-medium">25 km</span>
+                  </div>
+                  <div className="flex justify-between border-b border-deepblue-light pb-2">
+                    <span>IT Park</span>
+                    <span className="font-medium">10 km</span>
+                  </div>
+                  <div className="flex justify-between border-b border-deepblue-light pb-2">
+                    <span>Hospital</span>
+                    <span className="font-medium">1.5 km</span>
+                  </div>
+                  <div className="flex justify-between border-b border-deepblue-light pb-2">
+                    <span>Mall</span>
+                    <span className="font-medium">2 km</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           
-          <div className="h-full flex items-center justify-center">
+          <div className="h-full flex flex-col justify-between">
             <div className="border-8 border-white shadow-lg w-full">
-              <img 
-                src="https://source.unsplash.com/random/800x600/?map" 
-                alt="Sonai Clara Location Map" 
-                className="w-full h-auto"
-              />
+              <iframe
+                title="Sonai Clara Location Map"
+                src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.673685916859!2d73.73937799999999!3d18.650202999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDM5JzAxLjkiTiA3M8KwNDQnMjEuOCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin`}
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full"
+              ></iframe>
+            </div>
+            
+            <div className="mt-6 bg-white p-4 shadow-md">
+              <div className="flex items-center gap-2">
+                <MapPin className="text-gold h-5 w-5" />
+                <span className="font-medium">Coordinates: 18.650203, 73.739368</span>
+              </div>
+              <p className="text-sm text-gray-500 mt-2">
+                Get directions using your preferred navigation app by clicking the QR code button above.
+              </p>
             </div>
           </div>
         </div>

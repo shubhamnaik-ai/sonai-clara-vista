@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -108,20 +109,45 @@ const ContactUs = () => {
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                    {React.createElement(MapPin, { className: "text-gold" })}
+                    <MapPin className="text-gold" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-medium text-deepblue">Sales Office</h4>
+                    <h4 className="text-lg font-medium text-deepblue">Site Address</h4>
                     <p className="text-charcoal-light mt-1">
-                      Sonai Clara, Ravet, Pune,<br />
-                      Maharashtra 412101, India
+                      Sr.No 76/1/1, 76/1/2, 76/1/3, 76/1/1/1/2/1/3<br />
+                      Chandrabhaga Corner, Ravet, 412101
                     </p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                    {React.createElement(Phone, { className: "text-gold" })}
+                    <MapPin className="text-gold" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-medium text-deepblue">Office Address</h4>
+                    <p className="text-charcoal-light mt-1">
+                      14, Brt Rd, Malakar Vasti, Ravet,<br />
+                      Pimpri-Chinchwad, Maharashtra 412101
+                    </p>
+                    <a 
+                      href="https://maps.google.com/?q=18.650203,73.739368" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-gold hover:underline mt-2"
+                    >
+                      <span>Get Directions</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
+                    <Phone className="text-gold" />
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-deepblue">Phone</h4>
@@ -134,7 +160,7 @@ const ContactUs = () => {
                 
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                    {React.createElement(Mail, { className: "text-gold" })}
+                    <Mail className="text-gold" />
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-deepblue">Email</h4>
