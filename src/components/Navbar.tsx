@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { Link } from "react-router-dom";
+import BookVisitForm from "@/components/BookVisitForm";
 
 type NavItem = {
   label: string;
@@ -16,6 +19,7 @@ const navItems: NavItem[] = [
   { label: "Floor Plans", href: "#floor-plans" },
   { label: "Location", href: "#location" },
   { label: "Gallery", href: "#gallery" },
+  { label: "Projects", href: "/projects" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -49,22 +53,41 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center space-x-8">
           {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "text-sm tracking-wide hover:text-gold transition-colors",
-                isScrolled ? "text-charcoal" : "text-white"
-              )}
-            >
-              {item.label}
-            </a>
+            item.href.startsWith("#") ? (
+              <a
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "text-sm tracking-wide hover:text-gold transition-colors",
+                  isScrolled ? "text-charcoal" : "text-white"
+                )}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.href}
+                to={item.href}
+                className={cn(
+                  "text-sm tracking-wide hover:text-gold transition-colors",
+                  isScrolled ? "text-charcoal" : "text-white"
+                )}
+              >
+                {item.label}
+              </Link>
+            )
           ))}
-          <Button 
-            className="bg-gold hover:bg-gold-dark text-white font-medium rounded-none px-6 py-2"
-          >
-            Book Now
-          </Button>
+          
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button 
+                className="bg-gold hover:bg-gold-dark text-white font-medium rounded-none px-6 py-2"
+              >
+                Book Now
+              </Button>
+            </DialogTrigger>
+            <BookVisitForm />
+          </Dialog>
         </div>
 
         {/* Mobile Menu Button */}
@@ -87,11 +110,16 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-md">
-          <div className="container mx-auto px-4 py-4">
-            {navItems.map((item) => (
+      {/* Mobile Menu with Animation */}
+      <div 
+        className={cn(
+          "lg:hidden fixed top-[61px] left-0 right-0 bg-white shadow-md transform transition-transform duration-300 ease-in-out",
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        )}
+      >
+        <div className="container mx-auto px-4 py-4">
+          {navItems.map((item) => (
+            item.href.startsWith("#") ? (
               <a
                 key={item.href}
                 href={item.href}
@@ -100,16 +128,31 @@ const Navbar = () => {
               >
                 {item.label}
               </a>
-            ))}
-            <Button 
-              className="bg-gold hover:bg-gold-dark text-white font-medium rounded-none px-6 py-2 mt-4 w-full"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Book Now
-            </Button>
-          </div>
+            ) : (
+              <Link
+                key={item.href}
+                to={item.href}
+                className="block py-3 text-charcoal hover:text-gold transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            )
+          ))}
+          
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button 
+                className="bg-gold hover:bg-gold-dark text-white font-medium rounded-none px-6 py-2 mt-4 w-full"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Book Now
+              </Button>
+            </DialogTrigger>
+            <BookVisitForm />
+          </Dialog>
         </div>
-      )}
+      </div>
     </nav>
   );
 };

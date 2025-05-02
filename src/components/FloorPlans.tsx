@@ -1,7 +1,10 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Layout } from "lucide-react";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import EnquiryForm from "@/components/EnquiryForm";
 
 const FloorPlans = () => {
   const [activeTab, setActiveTab] = useState("2bhk");
@@ -44,14 +47,24 @@ const FloorPlans = () => {
           <TabsContent value="2bhk" className="mt-0">
             <div className="bg-ivory p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                {/* Floor Plan Image */}
+                {/* Floor Plan Image - Blurred with View Image Button */}
                 <div className="flex items-center justify-center">
-                  <div className="border-8 border-white shadow-lg">
+                  <div className="border-8 border-white shadow-lg relative">
                     <img 
-                      src="https://source.unsplash.com/random/800x600/?floor-plan" 
+                      src="/public/lovable-uploads/d742cfde-c5d6-4275-b50b-4e848cef3033.png" 
                       alt="2 BHK Floor Plan" 
-                      className="w-full h-auto"
+                      className="w-full h-auto blur-[3px] transition-all"
                     />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button className="bg-gold hover:bg-gold-dark text-white rounded-none px-8 py-2 font-medium">
+                            View Image
+                          </Button>
+                        </DialogTrigger>
+                        <EnquiryForm planType="2 BHK" />
+                      </Dialog>
+                    </div>
                   </div>
                 </div>
                 
@@ -84,12 +97,22 @@ const FloorPlans = () => {
                   </div>
                   
                   <div className="flex space-x-4 pt-4">
-                    <Button className="bg-gold hover:bg-gold-dark text-white rounded-none px-6">
-                      Download Plan
-                    </Button>
-                    <Button variant="outline" className="border-gold text-gold hover:bg-gold/10 rounded-none px-6">
-                      Book Site Visit
-                    </Button>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button className="bg-gold hover:bg-gold-dark text-white rounded-none px-6">
+                          Download Plan
+                        </Button>
+                      </DialogTrigger>
+                      <EnquiryForm planType="2 BHK" downloadBrochure={true} />
+                    </Dialog>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button variant="outline" className="border-gold text-gold hover:bg-gold/10 rounded-none px-6">
+                          Book Site Visit
+                        </Button>
+                      </DialogTrigger>
+                      <EnquiryForm planType="2 BHK" bookSiteVisit={true} />
+                    </Dialog>
                   </div>
                 </div>
               </div>
@@ -99,14 +122,24 @@ const FloorPlans = () => {
           <TabsContent value="3bhk" className="mt-0">
             <div className="bg-ivory p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                {/* Floor Plan Image */}
+                {/* Floor Plan Image - Blurred with View Image Button */}
                 <div className="flex items-center justify-center">
-                  <div className="border-8 border-white shadow-lg">
+                  <div className="border-8 border-white shadow-lg relative">
                     <img 
-                      src="https://source.unsplash.com/random/800x600/?apartment-plan" 
+                      src="/public/lovable-uploads/d742cfde-c5d6-4275-b50b-4e848cef3033.png" 
                       alt="3 BHK Floor Plan" 
-                      className="w-full h-auto"
+                      className="w-full h-auto blur-[3px] transition-all"
                     />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button className="bg-gold hover:bg-gold-dark text-white rounded-none px-8 py-2 font-medium">
+                            View Image
+                          </Button>
+                        </DialogTrigger>
+                        <EnquiryForm planType="3 BHK" />
+                      </Dialog>
+                    </div>
                   </div>
                 </div>
                 
@@ -139,12 +172,22 @@ const FloorPlans = () => {
                   </div>
                   
                   <div className="flex space-x-4 pt-4">
-                    <Button className="bg-gold hover:bg-gold-dark text-white rounded-none px-6">
-                      Download Plan
-                    </Button>
-                    <Button variant="outline" className="border-gold text-gold hover:bg-gold/10 rounded-none px-6">
-                      Book Site Visit
-                    </Button>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button className="bg-gold hover:bg-gold-dark text-white rounded-none px-6">
+                          Download Plan
+                        </Button>
+                      </DialogTrigger>
+                      <EnquiryForm planType="3 BHK" downloadBrochure={true} />
+                    </Dialog>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button variant="outline" className="border-gold text-gold hover:bg-gold/10 rounded-none px-6">
+                          Book Site Visit
+                        </Button>
+                      </DialogTrigger>
+                      <EnquiryForm planType="3 BHK" bookSiteVisit={true} />
+                    </Dialog>
                   </div>
                 </div>
               </div>
