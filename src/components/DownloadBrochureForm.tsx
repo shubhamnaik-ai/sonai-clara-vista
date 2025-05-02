@@ -8,8 +8,6 @@ import { DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFoot
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter } from "@/components/ui/drawer";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: "First name must be at least 2 characters." }),
@@ -20,7 +18,6 @@ const formSchema = z.object({
 
 const DownloadBrochureForm = () => {
   const { toast } = useToast();
-  const isMobile = useIsMobile();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -32,117 +29,15 @@ const DownloadBrochureForm = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    try {
-      console.log("Downloading brochure for:", values);
-      
-      // Here you would integrate with your backend to send emails with brochure attached
-      // This is a simulated API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: "Brochure Sent!",
-        description: "Check your email for our detailed brochure.",
-      });
-      
-      // Reset form
-      form.reset();
-    } catch (error) {
-      console.error("Error sending brochure:", error);
-      toast({
-        title: "Download Failed",
-        description: "There was an error sending the brochure. Please try again.",
-        variant: "destructive",
-      });
-    }
+    console.log("Downloading brochure for:", values);
+    
+    // Here you would integrate with your backend to send emails with brochure attached
+    
+    toast({
+      title: "Brochure Sent!",
+      description: "Check your email for our detailed brochure.",
+    });
   };
-
-  const FormContent = (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 pt-4">
-        <div className="grid grid-cols-2 gap-4">
-          <FormField
-            control={form.control}
-            name="firstName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>First Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="John" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="lastName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Last Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Doe" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-        
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="john@example.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        
-        <FormField
-          control={form.control}
-          name="phone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Phone Number</FormLabel>
-              <FormControl>
-                <Input placeholder="+1 (555) 000-0000" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        
-        <div className="pt-4">
-          <Button 
-            type="submit" 
-            className="w-full bg-gold hover:bg-gold-dark text-white"
-            disabled={form.formState.isSubmitting}
-          >
-            {form.formState.isSubmitting ? "Sending..." : "Send Me the Brochure"}
-          </Button>
-        </div>
-      </form>
-    </Form>
-  );
-
-  if (isMobile) {
-    return (
-      <DrawerContent className="px-4">
-        <DrawerHeader className="text-center">
-          <DrawerTitle className="text-2xl text-deepblue">Download Brochure</DrawerTitle>
-          <DrawerDescription>
-            Enter your details to receive our detailed project brochure via email.
-          </DrawerDescription>
-        </DrawerHeader>
-        {FormContent}
-        <DrawerFooter className="pt-2 pb-8" />
-      </DrawerContent>
-    );
-  }
 
   return (
     <DialogContent className="sm:max-w-[425px]">
@@ -152,8 +47,73 @@ const DownloadBrochureForm = () => {
           Enter your details to receive our detailed project brochure via email.
         </DialogDescription>
       </DialogHeader>
-      {FormContent}
-      <DialogFooter className="pt-2" />
+      
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 pt-4">
+          <div className="grid grid-cols-2 gap-4">
+            <FormField
+              control={form.control}
+              name="firstName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>First Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="John" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="lastName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Last Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Doe" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="john@example.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Phone Number</FormLabel>
+                <FormControl>
+                  <Input placeholder="+1 (555) 000-0000" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <DialogFooter className="pt-4">
+            <Button type="submit" className="bg-gold hover:bg-gold-dark text-white">
+              Send Me the Brochure
+            </Button>
+          </DialogFooter>
+        </form>
+      </Form>
     </DialogContent>
   );
 };
