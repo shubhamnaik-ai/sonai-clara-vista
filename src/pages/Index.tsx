@@ -37,15 +37,22 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-ivory">
+    <div className="min-h-screen bg-dark-gradient">
+      <div className="subtle-pattern absolute inset-0 opacity-30 z-0"></div>
       <Navbar />
       <Hero />
       <AboutUs />
-      <ProjectHighlights />
+      <div className="geometric-pattern relative py-16">
+        <ProjectHighlights />
+      </div>
       <Amenities />
-      <FloorPlans />
+      <div className="bg-dark-pattern">
+        <FloorPlans />
+      </div>
       <Location />
-      <Gallery />
+      <div className="bg-dark-gradient">
+        <Gallery />
+      </div>
       <ContactUs />
       <Footer />
       
