@@ -49,12 +49,15 @@ const FloorPlans = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 {/* Floor Plan Image - Blurred with View Image Button */}
                 <div className="flex items-center justify-center">
-                  <div className="border-8 border-white shadow-lg relative">
-                    <img 
-                      src="/public/lovable-uploads/d742cfde-c5d6-4275-b50b-4e848cef3033.png" 
-                      alt="2 BHK Floor Plan" 
-                      className="w-full h-auto blur-[3px] transition-all"
-                    />
+                  <div className="border-8 border-white shadow-lg relative w-full max-w-md">
+                    <div className="aspect-w-4 aspect-h-3 w-full">
+                      <img 
+                        src="/lovable-uploads/d742cfde-c5d6-4275-b50b-4e848cef3033.png" 
+                        alt="2 BHK Floor Plan" 
+                        className="w-full h-full object-cover blur-[3px] transition-all"
+                        style={{ filter: 'blur(3px)' }}
+                      />
+                    </div>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Dialog>
                         <DialogTrigger asChild>
@@ -124,12 +127,15 @@ const FloorPlans = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 {/* Floor Plan Image - Blurred with View Image Button */}
                 <div className="flex items-center justify-center">
-                  <div className="border-8 border-white shadow-lg relative">
-                    <img 
-                      src="/public/lovable-uploads/d742cfde-c5d6-4275-b50b-4e848cef3033.png" 
-                      alt="3 BHK Floor Plan" 
-                      className="w-full h-auto blur-[3px] transition-all"
-                    />
+                  <div className="border-8 border-white shadow-lg relative w-full max-w-md">
+                    <div className="aspect-w-4 aspect-h-3 w-full">
+                      <img 
+                        src="/lovable-uploads/d742cfde-c5d6-4275-b50b-4e848cef3033.png" 
+                        alt="3 BHK Floor Plan" 
+                        className="w-full h-full object-cover blur-[3px] transition-all"
+                        style={{ filter: 'blur(3px)' }}
+                      />
+                    </div>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Dialog>
                         <DialogTrigger asChild>

@@ -96,6 +96,27 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Aspect Ratio Utilities */
+.aspect-w-4 {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  --tw-aspect-w: 4;
+}
+
+.aspect-h-3 {
+  --tw-aspect-h: 3;
+}
+
+.aspect-w-4 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 /* New dark background styles */
 .bg-dark-gradient {
   background: linear-gradient(135deg, #1A1F2C 0%, #221F26 100%);
@@ -122,4 +143,3 @@ html {
   background-color: #222222;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='72' viewBox='0 0 36 72'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23333333' fill-opacity='0.2'%3E%3Cpath d='M2 6h12L8 18 2 6zm18 36h12l-6 12-6-12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
-
