@@ -1,8 +1,6 @@
 
 import React from "react";
-import { Compass, Map, MapPin } from "lucide-react";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { Compass, Map } from "lucide-react";
 
 const LocationFeature = ({ title, description }) => (
   <div className="flex items-start space-x-4 px-6 py-4 bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow">
@@ -20,37 +18,6 @@ const LocationFeature = ({ title, description }) => (
 );
 
 const Location = () => {
-  // QR Code Dialog Component
-  const AddressQR = () => (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline" className="flex items-center gap-2 bg-gold hover:bg-gold-dark text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-            <rect x="7" y="7" width="3" height="3" />
-            <rect x="14" y="7" width="3" height="3" />
-            <rect x="7" y="14" width="3" height="3" />
-            <rect x="14" y="14" width="3" height="3" />
-          </svg>
-          <span>Scan QR Code</span>
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-md bg-white p-6">
-        <h3 className="text-xl font-semibold mb-4">Scan QR Code for Directions</h3>
-        <div className="flex flex-col items-center">
-          <img 
-            src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://maps.google.com/?q=18.650203,73.739368`} 
-            alt="Office Location QR Code" 
-            className="w-64 h-64 object-contain mb-4"
-          />
-          <p className="text-sm text-gray-500 text-center">
-            Scan this QR code to get directions to our office
-          </p>
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-
   return (
     <section id="location" className="section-padding bg-ivory">
       <div className="container-custom">
@@ -103,55 +70,32 @@ const Location = () => {
                   <Map size={24} className="text-gold" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-xl font-playfair font-bold">Address Information</h4>
-                  <div className="mt-4 space-y-4">
-                    <div>
-                      <span className="text-gold text-sm font-medium">SITE ADDRESS:</span>
-                      <p className="text-white/80 mt-1">
-                        Sr.No 76/1/1, 76/1/2, 76/1/3, 76/1/1/1/2/1/3<br />
-                        Chandrabhaga Corner, Ravet, 412101
-                      </p>
+                  <h4 className="text-xl font-playfair font-bold">Key Distances</h4>
+                  <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="flex justify-between border-b border-deepblue-light pb-2">
+                      <span>Highway</span>
+                      <span className="font-medium">0.5 km</span>
                     </div>
-                    <div>
-                      <span className="text-gold text-sm font-medium">OFFICE ADDRESS:</span>
-                      <p className="text-white/80 mt-1">
-                        14, Brt Rd, Malakar Vasti, Ravet,<br />
-                        Pimpri-Chinchwad, Maharashtra 412101
-                      </p>
-                      <div className="mt-3">
-                        <AddressQR />
-                      </div>
+                    <div className="flex justify-between border-b border-deepblue-light pb-2">
+                      <span>Railway Station</span>
+                      <span className="font-medium">3 km</span>
                     </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <h5 className="text-lg font-semibold mb-3">Key Distances</h5>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="flex justify-between border-b border-deepblue-light pb-2">
-                    <span>Highway</span>
-                    <span className="font-medium">0.5 km</span>
-                  </div>
-                  <div className="flex justify-between border-b border-deepblue-light pb-2">
-                    <span>Railway Station</span>
-                    <span className="font-medium">3 km</span>
-                  </div>
-                  <div className="flex justify-between border-b border-deepblue-light pb-2">
-                    <span>Airport</span>
-                    <span className="font-medium">25 km</span>
-                  </div>
-                  <div className="flex justify-between border-b border-deepblue-light pb-2">
-                    <span>IT Park</span>
-                    <span className="font-medium">10 km</span>
-                  </div>
-                  <div className="flex justify-between border-b border-deepblue-light pb-2">
-                    <span>Hospital</span>
-                    <span className="font-medium">1.5 km</span>
-                  </div>
-                  <div className="flex justify-between border-b border-deepblue-light pb-2">
-                    <span>Mall</span>
-                    <span className="font-medium">2 km</span>
+                    <div className="flex justify-between border-b border-deepblue-light pb-2">
+                      <span>Airport</span>
+                      <span className="font-medium">25 km</span>
+                    </div>
+                    <div className="flex justify-between border-b border-deepblue-light pb-2">
+                      <span>IT Park</span>
+                      <span className="font-medium">10 km</span>
+                    </div>
+                    <div className="flex justify-between border-b border-deepblue-light pb-2">
+                      <span>Hospital</span>
+                      <span className="font-medium">1.5 km</span>
+                    </div>
+                    <div className="flex justify-between border-b border-deepblue-light pb-2">
+                      <span>Mall</span>
+                      <span className="font-medium">2 km</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -171,16 +115,6 @@ const Location = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 className="w-full"
               ></iframe>
-            </div>
-            
-            <div className="mt-6 bg-white p-4 shadow-md">
-              <div className="flex items-center gap-2">
-                <MapPin className="text-gold h-5 w-5" />
-                <span className="font-medium">Coordinates: 18.650203, 73.739368</span>
-              </div>
-              <p className="text-sm text-gray-500 mt-2">
-                Get directions using your preferred navigation app by clicking the QR code button above.
-              </p>
             </div>
           </div>
         </div>

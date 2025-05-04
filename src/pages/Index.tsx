@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -10,7 +11,6 @@ import Gallery from "@/components/Gallery";
 import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
-import { QrCode, MapPin } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
@@ -67,31 +67,6 @@ const Index = () => {
     preloadImages();
   }, []);
 
-  // Address QR Code Dialog
-  const AddressQR = () => (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline" className="flex items-center gap-2">
-          <QrCode className="h-5 w-5" />
-          <span>Get Location</span>
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-md bg-white p-6">
-        <h3 className="text-xl font-semibold mb-4">Scan QR Code for Directions</h3>
-        <div className="flex flex-col items-center">
-          <img 
-            src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://maps.google.com/?q=18.650203,73.739368`} 
-            alt="Office Location QR Code" 
-            className="w-64 h-64 object-contain mb-4"
-          />
-          <p className="text-sm text-gray-500 text-center">
-            Scan this QR code to get directions to our office
-          </p>
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-
   return (
     <>
       {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
@@ -116,44 +91,6 @@ const Index = () => {
           contentVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
         }`}>
           <AboutUs />
-        </div>
-
-        {/* Site & Office Address Banner */}
-        <div className={`bg-deepblue py-6 transition-all duration-1000 delay-300 transform ${
-          contentVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-        }`}>
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="text-gold" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-white">Site Address</h4>
-                  <p className="text-white/80 mt-1">
-                    Sr.No 76/1/1, 76/1/2, 76/1/3, 76/1/1/1/2/1/3<br />
-                    Chandrabhaga Corner, Ravet, 412101
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="text-gold" />
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-lg font-semibold text-white">Office Address</h4>
-                  <div className="flex justify-between items-start">
-                    <p className="text-white/80 mt-1">
-                      14, Brt Rd, Malakar Vasti, Ravet,<br />
-                      Pimpri-Chinchwad, Maharashtra 412101
-                    </p>
-                    <AddressQR />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         
         <div className="geometric-pattern relative py-16">
