@@ -28,6 +28,7 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isProjectsPage = location.pathname === "/projects";
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +49,7 @@ const Navbar = () => {
   return (
     <nav 
       className={cn(
-        "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
+        "transition-all duration-300",
         isProjectsPage 
           ? "bg-deepblue py-3 shadow-md" 
           : isScrolled 

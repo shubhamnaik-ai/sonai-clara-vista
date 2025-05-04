@@ -25,7 +25,7 @@ const Hero = () => {
       </div>
       
       {/* Content */}
-      <div className="container-custom relative z-10 text-center">
+      <div className="container-custom relative z-10 text-center pt-20">
         <div className="animate-fade-in max-w-4xl mx-auto">
           <h5 className="text-gold text-lg md:text-xl font-medium uppercase tracking-[0.2em] mb-4 drop-shadow-lg">
             Premium Living Experience
@@ -57,7 +57,6 @@ const Hero = () => {
                 <Button 
                   variant="outline" 
                   className="bg-transparent border-white text-white hover:bg-white/10 text-base px-8 py-6 rounded-none"
-                  onClick={() => navigate("/projects")}
                 >
                   Explore Project
                 </Button>

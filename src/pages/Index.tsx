@@ -77,11 +77,14 @@ const Index = () => {
         }`}
       >
         <div className="subtle-pattern absolute inset-0 opacity-30 z-0"></div>
-        <div className={`transition-all duration-1000 delay-100 transform ${
-          contentVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+        
+        {/* Moved Navbar outside of transition container to make it appear on top of hero image */}
+        <div className={`fixed top-0 left-0 w-full z-40 transition-opacity duration-500 ${
+          contentVisible ? "opacity-100" : "opacity-0"
         }`}>
           <Navbar />
         </div>
+        
         <div className={`transition-all duration-1000 delay-200 transform ${
           contentVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
         }`}>
