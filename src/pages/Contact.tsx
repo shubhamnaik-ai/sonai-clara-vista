@@ -1,7 +1,6 @@
-
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, MotionButton } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Navbar from "@/components/Navbar";
@@ -165,14 +164,14 @@ const Contact = () => {
                       />
                     </div>
                     
-                    <Button 
+                    <MotionButton 
                       type="submit" 
                       className="w-full bg-gold hover:bg-gold-dark text-white py-6"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
                       Send Message
-                    </Button>
+                    </MotionButton>
                   </form>
                 </motion.div>
                 
@@ -269,9 +268,13 @@ const Contact = () => {
                       </div>
                     </div>
                     
-                    <Button className="w-full bg-gold hover:bg-gold-dark text-white">
+                    <MotionButton 
+                      className="w-full bg-gold hover:bg-gold-dark text-white"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
                       Schedule a Visit
-                    </Button>
+                    </MotionButton>
                   </div>
                 </motion.div>
               </div>
