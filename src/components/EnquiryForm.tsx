@@ -70,13 +70,6 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
       }
       
       // In a real-world scenario, you would implement the actual API call here
-      // For example:
-      // const response = await fetch('/api/enquiry', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ ...values, planType, downloadBrochure, bookSiteVisit }),
-      // });
-      // const data = await response.json();
       
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -119,7 +112,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 <FormItem>
                   <FormLabel>First Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="John" {...field} />
+                    <Input placeholder="First name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -132,7 +125,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 <FormItem>
                   <FormLabel>Last Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Doe" {...field} />
+                    <Input placeholder="Last name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -147,7 +140,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="john@example.com" type="email" {...field} />
+                  <Input placeholder="Email address" type="email" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -161,7 +154,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
               <FormItem>
                 <FormLabel>Phone Number</FormLabel>
                 <FormControl>
-                  <Input placeholder="+1 (555) 000-0000" {...field} />
+                  <Input placeholder="Phone number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

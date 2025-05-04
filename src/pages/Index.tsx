@@ -9,7 +9,6 @@ import FloorPlans from "@/components/FloorPlans";
 import Gallery from "@/components/Gallery";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
@@ -71,7 +70,7 @@ const Index = () => {
       {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
       
       <div 
-        className={`min-h-screen bg-dark-gradient transition-opacity duration-500 ${
+        className={`min-h-screen bg-dark-gradient overflow-x-hidden transition-opacity duration-500 ${
           contentVisible ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -114,7 +113,7 @@ const Index = () => {
         {/* Back to top button with animation */}
         <motion.a 
           href="#home" 
-          className="fixed right-6 bottom-6 w-12 h-12 rounded-full bg-gold hover:bg-gold-dark text-white flex items-center justify-center shadow-lg"
+          className="fixed right-6 bottom-6 w-12 h-12 rounded-full bg-gold hover:bg-gold-dark text-white flex items-center justify-center shadow-lg z-30"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           aria-label="Back to top"

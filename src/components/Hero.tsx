@@ -13,7 +13,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
     >
       {/* Background Image with Parallax effect */}
       <div 
@@ -22,19 +22,19 @@ const Hero = () => {
           backgroundImage: 'url("/lovable-uploads/704fe54f-500c-4e0d-8092-fbaf95de6743.png")',
         }}
       >
-        <div className="absolute inset-0 bg-deepblue/30 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 bg-deepblue/50 backdrop-blur-[2px]"></div>
       </div>
       
       {/* Content */}
-      <div className="container-custom relative z-10 text-center pt-20">
+      <div className="container-custom relative z-10 text-center pt-16 md:pt-20">
         <motion.div 
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto px-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           <motion.h5 
-            className="text-gold text-lg md:text-xl font-medium uppercase tracking-[0.2em] mb-4 drop-shadow-lg"
+            className="text-gold text-base md:text-xl font-medium uppercase tracking-wider md:tracking-[0.2em] mb-4 drop-shadow-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -42,14 +42,14 @@ const Hero = () => {
             Premium Living Experience
           </motion.h5>
           <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-playfair drop-shadow-lg"
+            className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6 font-playfair drop-shadow-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
             Sonai Clara 
             <motion.span 
-              className="block mt-2 text-2xl md:text-4xl lg:text-5xl text-gold/90 drop-shadow-lg"
+              className="block mt-1 md:mt-2 text-xl md:text-3xl lg:text-5xl text-gold/90 drop-shadow-lg"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.6 }}
@@ -58,7 +58,7 @@ const Hero = () => {
             </motion.span>
           </motion.h1>
           <motion.p 
-            className="text-lg md:text-xl text-white mb-10 max-w-3xl mx-auto font-medium drop-shadow-lg"
+            className="text-base md:text-xl text-white mb-6 md:mb-10 max-w-3xl mx-auto font-medium drop-shadow-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.6 }}
@@ -75,7 +75,7 @@ const Hero = () => {
             <Dialog>
               <DialogTrigger asChild>
                 <Button 
-                  className="bg-gold hover:bg-gold-dark text-white text-base px-8 py-6 rounded-none hover:scale-105 transition-transform"
+                  className="bg-gold hover:bg-gold-dark text-white text-base w-full sm:w-auto px-8 py-6 rounded-none hover:scale-105 transition-transform"
                 >
                   Book Your Visit
                 </Button>
@@ -85,7 +85,7 @@ const Hero = () => {
 
             <Button 
               variant="outline" 
-              className="bg-transparent border-white text-white hover:bg-white/10 text-base px-8 py-6 rounded-none hover:scale-105 transition-transform"
+              className="bg-transparent border-white text-white hover:bg-white/10 text-base w-full sm:w-auto px-8 py-6 rounded-none hover:scale-105 transition-transform"
               onClick={() => navigate('/projects')}
             >
               Explore Project
@@ -93,7 +93,7 @@ const Hero = () => {
           </motion.div>
           
           <motion.div 
-            className="mt-16 flex flex-wrap items-center justify-center gap-10 text-white"
+            className="mt-10 md:mt-16 flex flex-wrap items-center justify-center gap-6 md:gap-10 text-white"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.8 }}
@@ -102,24 +102,24 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <p className="text-3xl md:text-4xl font-playfair font-semibold drop-shadow-lg">22</p>
-              <p className="text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">Storeys High</p>
+              <p className="text-2xl md:text-3xl lg:text-4xl font-playfair font-semibold drop-shadow-lg">22</p>
+              <p className="text-xs md:text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">Storeys High</p>
             </motion.div>
-            <div className="w-px h-16 bg-white/30"></div>
+            <div className="hidden sm:block w-px h-12 md:h-16 bg-white/30"></div>
             <motion.div 
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <p className="text-3xl md:text-4xl font-playfair font-semibold drop-shadow-lg">2 & 3</p>
-              <p className="text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">BHK Options</p>
+              <p className="text-2xl md:text-3xl lg:text-4xl font-playfair font-semibold drop-shadow-lg">2 & 3</p>
+              <p className="text-xs md:text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">BHK Options</p>
             </motion.div>
-            <div className="w-px h-16 bg-white/30"></div>
+            <div className="hidden sm:block w-px h-12 md:h-16 bg-white/30"></div>
             <motion.div 
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <p className="text-3xl md:text-4xl font-playfair font-semibold drop-shadow-lg">15+</p>
-              <p className="text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">Premium Amenities</p>
+              <p className="text-2xl md:text-3xl lg:text-4xl font-playfair font-semibold drop-shadow-lg">15+</p>
+              <p className="text-xs md:text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">Premium Amenities</p>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -127,7 +127,7 @@ const Hero = () => {
       
       {/* Scroll indicator with animation */}
       <motion.div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2"
         animate={{ y: [0, 10, 0] }}
         transition={{ 
           repeat: Infinity, 
