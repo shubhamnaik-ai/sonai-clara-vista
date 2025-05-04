@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Gem } from "lucide-react";
 
@@ -38,7 +39,42 @@ const Amenities = () => {
           <path d="m14.5 8.5-5-5" />
         </svg>
       ),
-      title: "Designer Gardens",
+      title: "Designer Garden",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
+          <path d="M12 2v20" />
+          <path d="M2 5h20" />
+          <path d="M5 2v3" />
+          <path d="M19 2v3" />
+          <path d="M2 10h20" />
+          <path d="M2 14h20" />
+          <path d="M2 19h20" />
+        </svg>
+      ),
+      title: "Gazebo",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
+          <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0" />
+          <path d="M10 11V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v7" />
+          <rect width="16" height="10" x="4" y="11" rx="2" />
+          <path d="M12 11v8" />
+          <path d="M12 19h4" />
+        </svg>
+      ),
+      title: "Grand Entrance Gate",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
+          <path d="M12 5a8.5 8.5 0 1 0 8.5 8.5c0-5.5-8.5-12-8.5-8.5Z" />
+          <path d="M15 9.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 1 0 0-7Z" />
+        </svg>
+      ),
+      title: "Toddlers Area",
     },
     {
       icon: (
@@ -49,88 +85,39 @@ const Amenities = () => {
           <path d="M10 6h8v4h-8V6Z" />
         </svg>
       ),
-      title: "Amphitheater",
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-          <path d="M6 17h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2Z" />
-          <path d="M4 9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2" />
-          <path d="M8 17v4" />
-          <path d="M16 17v4" />
-          <path d="M12 17v1" />
-          <path d="M2 7v10" />
-          <path d="M22 7v10" />
-        </svg>
-      ),
-      title: "Swimming Pool",
+      title: "Amphitheatre with Stage & Stepped Seating",
     },
     {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
           <circle cx="12" cy="12" r="10" />
-          <circle cx="12" cy="12" r="4" />
-          <path d="M4.93 4.93 9.17 9.17" />
-          <path d="M14.83 14.83 19.07 19.07" />
-          <path d="M14.83 4.93 19.07 9.17" />
-          <path d="M14.83 4.93 18.36 5.64" />
-          <path d="M4.93 19.07 9.17 14.83" />
+          <path d="M15.2 10.712a1 1 0 0 0-1.4-1.425" />
+          <path d="M8.797 13.303a1 1 0 0 0 1.414 0" />
+          <path d="M13.803 14.713a1 1 0 0 0-1.414-1.414" />
+          <path d="M10.199 17.01a1 1 0 0 0 1.414 0" />
+          <path d="M7.394 8.793a1 1 0 0 0 1.414 0" />
         </svg>
       ),
-      title: "Fitness Center",
+      title: "Play Area",
     },
     {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-          <path d="m7 11 4.08 10.35a1 1 0 0 0 1.84 0L17 11" />
-          <path d="M17 7A5 5 0 0 0 7 7" />
-          <path d="M17 7a2 2 0 0 1 0 4H7a2 2 0 0 1 0-4" />
+          <path d="M8 2c6 0 10 4 10 10v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V12C4 6 8 2 14 2Z" />
+          <path d="M6 12c0-6 4-10 10-10" />
         </svg>
       ),
-      title: "Spa & Sauna",
+      title: "Party Lawn",
     },
     {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-          <path d="M12 2v3" />
-          <path d="M19.07 5.93 17 8" />
-          <path d="M22 12h-3" />
-          <path d="M19.07 18.07 17 16" />
-          <path d="M12 22v-3" />
-          <path d="M7 16 4.93 18.07" />
-          <path d="M2 12h3" />
-          <path d="M7 8 4.93 5.93" />
-          <path d="M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
+          <path d="M21 5c0 9-9 9-9 9s-9 0-9-9a9 9 0 0 1 9-9 9 9 0 0 1 9 9Z" />
+          <path d="M3 17a5 5 0 0 0 10 0" />
+          <path d="M21 17a5 5 0 0 0-10 0" />
         </svg>
       ),
-      title: "Lounge",
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-          <path d="M12 5a8.5 8.5 0 1 0 8.5 8.5c0-5.5-8.5-12-8.5-8.5Z" />
-          <path d="M15 9.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 1 0 0-7Z" />
-        </svg>
-      ),
-      title: "Kids Play Area",
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-          <path d="M12 22v-1" />
-          <path d="M9 21v-1" />
-          <path d="M15 21v-1" />
-          <path d="m8.5 14.5-1 1" />
-          <path d="M7 17h1" />
-          <path d="M16 17h1" />
-          <path d="m15.5 14.5 1 1" />
-          <path d="M9 2v2" />
-          <path d="M15 2v2" />
-          <path d="M8 10h8" />
-          <path d="M7 7h10a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Z" />
-        </svg>
-      ),
-      title: "Home Automation",
+      title: "Oxygen Park",
     }
   ];
 
@@ -159,7 +146,7 @@ const Amenities = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
           {amenities.map((amenity, index) => (
             <AmenityCard key={index} icon={amenity.icon} title={amenity.title} />
           ))}
