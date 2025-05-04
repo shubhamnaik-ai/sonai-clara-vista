@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import BookVisitForm from "@/components/BookVisitForm";
 import DownloadBrochureForm from "@/components/DownloadBrochureForm";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Hero = () => {
       id="home" 
       className="relative h-screen w-full flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background Image with Parallax effect */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{ 
@@ -26,25 +27,55 @@ const Hero = () => {
       
       {/* Content */}
       <div className="container-custom relative z-10 text-center pt-20">
-        <div className="animate-fade-in max-w-4xl mx-auto">
-          <h5 className="text-gold text-lg md:text-xl font-medium uppercase tracking-[0.2em] mb-4 drop-shadow-lg">
+        <motion.div 
+          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h5 
+            className="text-gold text-lg md:text-xl font-medium uppercase tracking-[0.2em] mb-4 drop-shadow-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
             Premium Living Experience
-          </h5>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-playfair drop-shadow-lg">
+          </motion.h5>
+          <motion.h1 
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-playfair drop-shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
             Sonai Clara 
-            <span className="block mt-2 text-2xl md:text-4xl lg:text-5xl text-gold/90 drop-shadow-lg">
+            <motion.span 
+              className="block mt-2 text-2xl md:text-4xl lg:text-5xl text-gold/90 drop-shadow-lg"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+            >
               Premium Residences
-            </span>
-          </h1>
-          <p className="text-lg md:text-xl text-white mb-10 max-w-3xl mx-auto font-medium drop-shadow-lg">
+            </motion.span>
+          </motion.h1>
+          <motion.p 
+            className="text-lg md:text-xl text-white mb-10 max-w-3xl mx-auto font-medium drop-shadow-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+          >
             Luxurious 2 & 3 BHK homes in Ravet with 5-star amenities, panoramic views, and impeccable craftsmanship
-          </p>
+          </motion.p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <motion.div 
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
+          >
             <Dialog>
               <DialogTrigger asChild>
                 <Button 
-                  className="bg-gold hover:bg-gold-dark text-white text-base px-8 py-6 rounded-none"
+                  className="bg-gold hover:bg-gold-dark text-white text-base px-8 py-6 rounded-none hover:scale-105 transition-transform"
                 >
                   Book Your Visit
                 </Button>
@@ -52,40 +83,58 @@ const Hero = () => {
               <BookVisitForm />
             </Dialog>
 
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button 
-                  variant="outline" 
-                  className="bg-transparent border-white text-white hover:bg-white/10 text-base px-8 py-6 rounded-none"
-                >
-                  Explore Project
-                </Button>
-              </DialogTrigger>
-              <BookVisitForm />
-            </Dialog>
-          </div>
+            <Button 
+              variant="outline" 
+              className="bg-transparent border-white text-white hover:bg-white/10 text-base px-8 py-6 rounded-none hover:scale-105 transition-transform"
+              onClick={() => navigate('/projects')}
+            >
+              Explore Project
+            </Button>
+          </motion.div>
           
-          <div className="mt-16 flex flex-wrap items-center justify-center gap-10 text-white">
-            <div>
+          <motion.div 
+            className="mt-16 flex flex-wrap items-center justify-center gap-10 text-white"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+          >
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
               <p className="text-3xl md:text-4xl font-playfair font-semibold drop-shadow-lg">22</p>
               <p className="text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">Storeys High</p>
-            </div>
+            </motion.div>
             <div className="w-px h-16 bg-white/30"></div>
-            <div>
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
               <p className="text-3xl md:text-4xl font-playfair font-semibold drop-shadow-lg">2 & 3</p>
               <p className="text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">BHK Options</p>
-            </div>
+            </motion.div>
             <div className="w-px h-16 bg-white/30"></div>
-            <div>
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
               <p className="text-3xl md:text-4xl font-playfair font-semibold drop-shadow-lg">15+</p>
               <p className="text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">Premium Amenities</p>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
       
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      {/* Scroll indicator with animation */}
+      <motion.div 
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ 
+          repeat: Infinity, 
+          duration: 1.5,
+          ease: "easeInOut"
+        }}
+      >
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
           width="24" 
@@ -100,7 +149,7 @@ const Hero = () => {
           <line x1="12" y1="5" x2="12" y2="19"></line>
           <polyline points="19 12 12 19 5 12"></polyline>
         </svg>
-      </div>
+      </motion.div>
     </section>
   );
 };

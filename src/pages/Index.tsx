@@ -6,13 +6,13 @@ import AboutUs from "@/components/AboutUs";
 import ProjectHighlights from "@/components/ProjectHighlights";
 import Amenities from "@/components/Amenities";
 import FloorPlans from "@/components/FloorPlans";
-import Location from "@/components/Location";
 import Gallery from "@/components/Gallery";
 import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -105,9 +105,6 @@ const Index = () => {
         <div className="bg-dark-pattern">
           <FloorPlans />
         </div>
-        <div>
-          <Location />
-        </div>
         <div className="bg-dark-gradient">
           <Gallery />
         </div>
@@ -118,17 +115,19 @@ const Index = () => {
           <Footer />
         </div>
         
-        {/* Back to top button */}
-        <a 
+        {/* Back to top button with animation */}
+        <motion.a 
           href="#home" 
-          className="fixed right-6 bottom-6 w-12 h-12 rounded-full bg-gold hover:bg-gold-dark text-white flex items-center justify-center shadow-lg transition-all"
+          className="fixed right-6 bottom-6 w-12 h-12 rounded-full bg-gold hover:bg-gold-dark text-white flex items-center justify-center shadow-lg"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           aria-label="Back to top"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="17 11 12 6 7 11" />
             <polyline points="17 18 12 13 7 18" />
           </svg>
-        </a>
+        </motion.a>
       </div>
     </>
   );
