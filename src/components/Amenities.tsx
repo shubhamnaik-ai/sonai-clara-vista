@@ -118,6 +118,46 @@ const Amenities = () => {
         </svg>
       ),
       title: "Oxygen Park",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
+          <path d="M20 21v-8a2 2 0 0 0-2-2h-6" />
+          <path d="M14 19v-2a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v2" />
+          <circle cx="12" cy="5" r="3" />
+          <path d="M9 11h4" />
+          <path d="M5 9v1" />
+          <path d="M19 9v1" />
+        </svg>
+      ),
+      title: "Senior Citizens Area",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
+          <path d="M4 20V10c0-4.4 3.6-8 8-8s8 3.6 8 8v10" />
+          <polyline points="16 18 16 20 8 20 8 18" />
+          <polyline points="12 18 12 12" />
+          <rect x="8" y="12" width="8" height="2" />
+        </svg>
+      ),
+      title: "Gym",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
+          <rect width="18" height="12" x="3" y="8" rx="1" />
+          <path d="M3 8v8a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8" />
+          <path d="M7 8v7" />
+          <path d="M17 8v7" />
+          <path d="M17 12h-2" />
+          <path d="M9 12h2" />
+          <path d="M7 12h0" />
+          <path d="m6 4 1 4" />
+          <path d="m18 4-1 4" />
+        </svg>
+      ),
+      title: "Buffet Counter",
     }
   ];
 
@@ -126,7 +166,7 @@ const Amenities = () => {
       {/* Background Image */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?q=80&w=1920&auto=format")',
+          backgroundImage: 'url("/lovable-uploads/0ec6ae24-70d9-4b4b-bf94-8d90832ebafb.png")',
         }}>
         <div className="absolute inset-0 bg-deepblue bg-opacity-80"></div>
       </div>
@@ -146,7 +186,7 @@ const Amenities = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {amenities.map((amenity, index) => (
             <AmenityCard key={index} icon={amenity.icon} title={amenity.title} />
           ))}
