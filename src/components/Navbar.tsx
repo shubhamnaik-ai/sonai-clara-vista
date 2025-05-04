@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -17,10 +16,9 @@ const navItems: NavItem[] = [
   { label: "Sonai Clara", href: "#sonai-clara" },
   { label: "Amenities", href: "#amenities" },
   { label: "Floor Plans", href: "#floor-plans" },
-  { label: "Location", href: "#location" },
   { label: "Gallery", href: "#gallery" },
   { label: "Projects", href: "/projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
@@ -29,6 +27,7 @@ const Navbar = () => {
   const location = useLocation();
   const isProjectsPage = location.pathname === "/projects";
   const isHomePage = location.pathname === "/";
+  const isContactPage = location.pathname === "/contact";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,8 +40,8 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Filter nav items for home page vs projects page
-  const currentNavItems = isProjectsPage 
+  // Filter nav items for different pages
+  const currentNavItems = isProjectsPage || isContactPage
     ? navItems.filter(item => !item.href.startsWith("#") || item.href === "#home")
     : navItems;
 
@@ -50,7 +49,7 @@ const Navbar = () => {
     <nav 
       className={cn(
         "transition-all duration-300",
-        isProjectsPage 
+        isProjectsPage || isContactPage
           ? "bg-deepblue py-3 shadow-md" 
           : isScrolled 
             ? "bg-white shadow-md py-3" 
@@ -72,10 +71,10 @@ const Navbar = () => {
             item.href.startsWith("#") ? (
               <a
                 key={item.href}
-                href={isProjectsPage ? "/" + item.href : item.href}
+                href={(isProjectsPage || isContactPage) ? "/" + item.href : item.href}
                 className={cn(
                   "text-sm tracking-wide hover:text-gold transition-colors",
-                  isProjectsPage 
+                  isProjectsPage || isContactPage
                     ? "text-white" 
                     : isScrolled 
                       ? "text-charcoal" 
@@ -90,7 +89,7 @@ const Navbar = () => {
                 to={item.href}
                 className={cn(
                   "text-sm tracking-wide hover:text-gold transition-colors",
-                  isProjectsPage 
+                  isProjectsPage || isContactPage
                     ? "text-white" 
                     : isScrolled 
                       ? "text-charcoal" 
@@ -118,7 +117,7 @@ const Navbar = () => {
         <button
           className={cn(
             "lg:hidden hover:text-gold", 
-            isProjectsPage 
+            isProjectsPage || isContactPage
               ? "text-white" 
               : isScrolled 
                 ? "text-charcoal" 
@@ -153,7 +152,7 @@ const Navbar = () => {
             item.href.startsWith("#") ? (
               <a
                 key={item.href}
-                href={isProjectsPage ? "/" + item.href : item.href}
+                href={(isProjectsPage || isContactPage) ? "/" + item.href : item.href}
                 className="block py-3 text-charcoal hover:text-gold transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >

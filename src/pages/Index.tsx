@@ -7,7 +7,6 @@ import ProjectHighlights from "@/components/ProjectHighlights";
 import Amenities from "@/components/Amenities";
 import FloorPlans from "@/components/FloorPlans";
 import Gallery from "@/components/Gallery";
-import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
@@ -107,9 +106,6 @@ const Index = () => {
         </div>
         <div className="bg-dark-gradient">
           <Gallery />
-        </div>
-        <div>
-          <ContactUs />
         </div>
         <div>
           <Footer />
