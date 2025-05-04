@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -22,7 +21,8 @@ const Index = () => {
   // Handle loading completion
   const handleLoadingComplete = () => {
     setIsLoading(false);
-    setTimeout(() => setContentVisible(true), 100); // Small delay before showing content
+    // Show content immediately after loading is complete
+    setContentVisible(true);
   };
   
   // Animation on scroll functionality
@@ -47,14 +47,15 @@ const Index = () => {
     return () => {
       window.removeEventListener("scroll", animateOnScroll);
     };
-  }, [contentVisible]); // Added contentVisible dependency to ensure animations work after loading
+  }, [contentVisible]);
 
   // Preload critical images
   useEffect(() => {
     const preloadImages = () => {
       const imagesToPreload = [
         "/lovable-uploads/704fe54f-500c-4e0d-8092-fbaf95de6743.png",  // Hero bg
-        "/lovable-uploads/d742cfde-c5d6-4275-b50b-4e848cef3033.png"   // Floor plan
+        "/lovable-uploads/d742cfde-c5d6-4275-b50b-4e848cef3033.png",   // Floor plan
+        "/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png"    // Logo
       ];
       
       imagesToPreload.forEach(src => {
@@ -96,7 +97,7 @@ const Index = () => {
       {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
       
       <div 
-        className={`min-h-screen bg-dark-gradient transition-opacity duration-1000 ${
+        className={`min-h-screen bg-dark-gradient transition-opacity duration-500 ${
           contentVisible ? "opacity-100" : "opacity-0"
         }`}
       >

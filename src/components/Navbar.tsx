@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import BookVisitForm from "@/components/BookVisitForm";
 
 type NavItem = {
@@ -26,6 +26,8 @@ const navItems: NavItem[] = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isProjectsPage = location.pathname === "/projects";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,33 +35,50 @@ const Navbar = () => {
     };
     
     window.addEventListener("scroll", handleScroll);
+    // Check scroll position immediately on mount
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Filter nav items for home page vs projects page
+  const currentNavItems = isProjectsPage 
+    ? navItems.filter(item => !item.href.startsWith("#") || item.href === "#home")
+    : navItems;
 
   return (
     <nav 
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-white shadow-md py-3" : "bg-transparent py-5"
+        "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
+        isProjectsPage 
+          ? "bg-deepblue py-3 shadow-md" 
+          : isScrolled 
+            ? "bg-white shadow-md py-3" 
+            : "bg-transparent py-5"
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#home" className="flex items-center">
-          <span className="text-2xl font-playfair font-bold text-deepblue">
-            Sonai <span className="text-gold">Realty</span>
-          </span>
-        </a>
+        <Link to="/" className="flex items-center">
+          <img 
+            src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png" 
+            alt="Sonai Realty Logo"
+            className="h-10" 
+          />
+        </Link>
         
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center space-x-8">
-          {navItems.map((item) => (
+          {currentNavItems.map((item) => (
             item.href.startsWith("#") ? (
               <a
                 key={item.href}
-                href={item.href}
+                href={isProjectsPage ? "/" + item.href : item.href}
                 className={cn(
                   "text-sm tracking-wide hover:text-gold transition-colors",
-                  isScrolled ? "text-charcoal" : "text-white"
+                  isProjectsPage 
+                    ? "text-white" 
+                    : isScrolled 
+                      ? "text-charcoal" 
+                      : "text-white"
                 )}
               >
                 {item.label}
@@ -70,7 +89,11 @@ const Navbar = () => {
                 to={item.href}
                 className={cn(
                   "text-sm tracking-wide hover:text-gold transition-colors",
-                  isScrolled ? "text-charcoal" : "text-white"
+                  isProjectsPage 
+                    ? "text-white" 
+                    : isScrolled 
+                      ? "text-charcoal" 
+                      : "text-white"
                 )}
               >
                 {item.label}
@@ -92,7 +115,14 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="lg:hidden text-charcoal hover:text-gold"
+          className={cn(
+            "lg:hidden hover:text-gold", 
+            isProjectsPage 
+              ? "text-white" 
+              : isScrolled 
+                ? "text-charcoal" 
+                : "text-white"
+          )}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
@@ -113,16 +143,16 @@ const Navbar = () => {
       {/* Mobile Menu with Animation */}
       <div 
         className={cn(
-          "lg:hidden fixed top-[61px] left-0 right-0 bg-white shadow-md transform transition-transform duration-300 ease-in-out",
+          "lg:hidden fixed top-[61px] left-0 right-0 bg-white shadow-md transform transition-transform duration-300 ease-in-out z-40",
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
         <div className="container mx-auto px-4 py-4">
-          {navItems.map((item) => (
+          {currentNavItems.map((item) => (
             item.href.startsWith("#") ? (
               <a
                 key={item.href}
-                href={item.href}
+                href={isProjectsPage ? "/" + item.href : item.href}
                 className="block py-3 text-charcoal hover:text-gold transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >

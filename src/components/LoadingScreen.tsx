@@ -38,23 +38,42 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   }, [onLoadingComplete]);
   
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-deepblue transition-opacity duration-500">
-      <div className="relative w-40 h-40 mb-8">
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white transition-opacity duration-500">
+      <div className="relative w-48 h-48 mb-8">
         <img 
-          src="/lovable-uploads/f0aac734-d8e4-4e38-bb99-be6a38340274.png" 
-          alt="Building" 
-          className="w-full h-full object-contain animate-pulse"
+          src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png" 
+          alt="Sonai Realty Logo" 
+          className="w-full h-full object-contain"
         />
       </div>
       
-      <h2 className="text-3xl font-playfair text-gold mb-8">Sonai Clara</h2>
-      
-      <div className="absolute bottom-8 right-8 w-48">
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-sm text-white/80">Loading</span>
-          <span className="text-sm text-gold">{progress}%</span>
+      <div className="absolute bottom-8 right-8">
+        <div className="w-16 h-16 relative">
+          <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+            <circle 
+              cx="50" 
+              cy="50" 
+              r="45" 
+              fill="transparent"
+              stroke="#e6e6e6"
+              strokeWidth="8"
+            />
+            <circle 
+              cx="50" 
+              cy="50" 
+              r="45" 
+              fill="transparent"
+              stroke="#1A9E96"
+              strokeWidth="8"
+              strokeDasharray="282.7"
+              strokeDashoffset={282.7 - (282.7 * progress) / 100}
+              strokeLinecap="round"
+            />
+          </svg>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-charcoal font-medium text-lg">{progress}%</span>
+          </div>
         </div>
-        <Progress value={progress} className="h-1.5 bg-white/20" indicatorClassName="bg-gold" />
       </div>
     </div>
   );

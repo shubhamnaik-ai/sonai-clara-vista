@@ -2,6 +2,9 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const projectsData = {
   current: [
@@ -40,10 +43,64 @@ const projectsData = {
   ]
 };
 
+const ProjectDetailsDialog = ({ project }) => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button className="bg-gold hover:bg-gold-dark text-white px-6 py-2">
+          View Details
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-3xl bg-white p-6">
+        <DialogTitle className="text-2xl font-playfair text-deepblue mb-4">{project.name}</DialogTitle>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <img 
+              src={project.image} 
+              alt={project.name} 
+              className="w-full h-auto rounded-md"
+            />
+          </div>
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <p className="text-charcoal font-medium">{project.location}</p>
+              <span className={`inline-block px-3 py-1 text-sm font-medium rounded-full ${
+                project.status === "Completed" ? "bg-green-100 text-green-800" : "bg-gold/20 text-gold"
+              }`}>
+                {project.status}
+              </span>
+            </div>
+            <p className="text-lg mb-4">{project.description}</p>
+            <p className="font-medium mb-3">Estimated Completion: {project.completion}</p>
+            <div className="mb-4">
+              <h4 className="font-semibold mb-2">Key Features:</h4>
+              <ul className="list-disc pl-5 space-y-1">
+                {project.features.map((feature, idx) => (
+                  <li key={idx}>{feature}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-6 flex space-x-4">
+              <Button className="bg-deepblue hover:bg-deepblue/90 text-white">
+                Request Brochure
+              </Button>
+              <Link to="/">
+                <Button variant="outline">Back to Home</Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
 const Projects = () => {
   return (
     <div className="min-h-screen bg-ivory">
-      <Navbar />
+      <div className="bg-deepblue">
+        <Navbar />
+      </div>
       
       <div className="pt-24 pb-16">
         {/* Hero Section */}
@@ -78,7 +135,7 @@ const Projects = () => {
                     <div className="p-8">
                       <div className="flex justify-between items-start">
                         <h3 className="text-2xl font-playfair font-bold text-deepblue">{project.name}</h3>
-                        <span className="inline-block bg-gold/20 text-gold px-3 py-1 text-sm font-medium">
+                        <span className="inline-block bg-gold/20 text-gold px-3 py-1 text-sm font-medium rounded-full">
                           {project.status}
                         </span>
                       </div>
@@ -91,16 +148,17 @@ const Projects = () => {
                       
                       <div className="flex flex-wrap gap-2 mb-6">
                         {project.features.map((feature, idx) => (
-                          <span key={idx} className="bg-ivory px-3 py-1 text-sm">
+                          <span key={idx} className="bg-ivory px-3 py-1 text-sm rounded-full">
                             {feature}
                           </span>
                         ))}
                       </div>
                       
                       <div className="flex space-x-4">
-                        <button className="bg-gold hover:bg-gold-dark text-white px-6 py-2">
-                          View Details
-                        </button>
+                        <ProjectDetailsDialog project={project} />
+                        <Link to="/">
+                          <Button variant="outline">Back to Home</Button>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -120,7 +178,7 @@ const Projects = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {projectsData.past.map(project => (
-                <div key={project.id} className="bg-white shadow hover:shadow-lg transition-shadow">
+                <div key={project.id} className="bg-white shadow hover:shadow-lg transition-shadow rounded-md overflow-hidden">
                   <div>
                     <img 
                       src={project.image} 
@@ -130,7 +188,7 @@ const Projects = () => {
                     <div className="p-6">
                       <div className="flex justify-between items-start">
                         <h3 className="text-xl font-playfair font-bold text-deepblue">{project.name}</h3>
-                        <span className="inline-block bg-green-100 text-green-800 px-2 py-0.5 text-xs font-medium">
+                        <span className="inline-block bg-green-100 text-green-800 px-2 py-0.5 text-xs font-medium rounded-full">
                           {project.status}
                         </span>
                       </div>
@@ -139,20 +197,18 @@ const Projects = () => {
                       
                       <div className="flex flex-wrap gap-2 mb-4">
                         {project.features.slice(0, 3).map((feature, idx) => (
-                          <span key={idx} className="bg-ivory px-2 py-0.5 text-xs">
+                          <span key={idx} className="bg-ivory px-2 py-0.5 text-xs rounded-full">
                             {feature}
                           </span>
                         ))}
                         {project.features.length > 3 && (
-                          <span className="bg-ivory px-2 py-0.5 text-xs">
+                          <span className="bg-ivory px-2 py-0.5 text-xs rounded-full">
                             +{project.features.length - 3} more
                           </span>
                         )}
                       </div>
                       
-                      <button className="text-gold hover:underline font-medium">
-                        View Details
-                      </button>
+                      <ProjectDetailsDialog project={project} />
                     </div>
                   </div>
                 </div>
