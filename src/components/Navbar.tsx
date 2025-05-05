@@ -33,20 +33,20 @@ const Navbar = () => {
   
   return (
     <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
-      scrolled ? "py-2 shadow-md" : "py-4"
+      scrolled ? "py-1 shadow-md" : "py-2"
     } ${isHomePage ? "bg-white" : "bg-white"}`}>
       <div className="container-custom mx-auto flex items-center justify-between px-4">
-        {/* Logo */}
+        {/* Logo - Smaller size */}
         <Link to="/" className="relative z-10">
           <img
             src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png"
             alt="Sonai Realty"
-            className="h-14 w-auto"
+            className="h-10 w-auto" // Reduced from h-14 to h-10
           />
         </Link>
         
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-8">
+        {/* Desktop Navigation - Smaller text and spacing */}
+        <nav className="hidden lg:flex items-center space-x-6"> {/* Reduced from space-x-8 */}
           <NavLink to="/" isActive={location.pathname === "/"}>
             Home
           </NavLink>
@@ -56,7 +56,7 @@ const Navbar = () => {
           <NavLink to="/contact" isActive={location.pathname === "/contact"}>
             Contact
           </NavLink>
-          <Button className="bg-gold hover:bg-gold-dark text-white ml-4 px-6">
+          <Button className="bg-gold hover:bg-gold-dark text-white ml-2 px-4 py-1 text-sm"> {/* Smaller button */}
             <a href="tel:+1234567890">Call Us</a>
           </Button>
         </nav>
@@ -67,7 +67,7 @@ const Navbar = () => {
           onClick={toggleMenu}
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
-          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />} {/* Smaller icons */}
         </button>
         
         {/* Mobile Navigation */}
@@ -78,9 +78,9 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-white pt-24 z-0 lg:hidden overflow-auto"
+              className="fixed inset-0 bg-white pt-20 z-0 lg:hidden overflow-auto" /* Reduced from pt-24 */
             >
-              <div className="container-custom mx-auto px-4 flex flex-col space-y-6 pb-8">
+              <div className="container-custom mx-auto px-4 flex flex-col space-y-4 pb-8"> {/* Reduced space-y-6 */}
                 <MobileNavLink to="/" isActive={location.pathname === "/"}>
                   Home
                 </MobileNavLink>
@@ -90,7 +90,7 @@ const Navbar = () => {
                 <MobileNavLink to="/contact" isActive={location.pathname === "/contact"}>
                   Contact
                 </MobileNavLink>
-                <Button className="bg-gold hover:bg-gold-dark text-white w-full py-6 mt-4">
+                <Button className="bg-gold hover:bg-gold-dark text-white w-full py-4 mt-4">
                   <a href="tel:+1234567890">Call Us</a>
                 </Button>
               </div>

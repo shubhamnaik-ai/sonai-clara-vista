@@ -1,5 +1,4 @@
-
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import AboutUs from "@/components/AboutUs";
@@ -10,14 +9,21 @@ import Gallery from "@/components/Gallery";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Dialog } from "@/components/ui/dialog";
 import EnquiryForm from "@/components/EnquiryForm";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [contentVisible, setContentVisible] = useState(false);
   const [showEnquiry, setShowEnquiry] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [startCounters, setStartCounters] = useState(false);
+  
+  // References for counter section
+  const countersRef = useRef(null);
+  const isCountersInView = useInView(countersRef, { once: true, margin: "-100px" });
 
   // Handle loading completion
   const handleLoadingComplete = () => {
@@ -44,6 +50,13 @@ const Index = () => {
           element.classList.add("visible");
         }
       });
+      
+      // Show back to top button only when scrolled down
+      if (window.scrollY > 300) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
     };
     
     window.addEventListener("scroll", animateOnScroll);
@@ -54,6 +67,13 @@ const Index = () => {
       window.removeEventListener("scroll", animateOnScroll);
     };
   }, [contentVisible]);
+
+  // Start counters when enquiry form is closed
+  useEffect(() => {
+    if (!showEnquiry && contentVisible) {
+      setStartCounters(true);
+    }
+  }, [showEnquiry, contentVisible]);
 
   // Preload critical images
   useEffect(() => {
@@ -100,6 +120,36 @@ const Index = () => {
           contentVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
         }`}>
           <Hero />
+        </div>
+        
+        {/* Counter section with storeys and amenities */}
+        <div 
+          ref={countersRef}
+          className={`py-16 bg-white text-center ${
+            startCounters && isCountersInView ? "opacity-100" : "opacity-0"
+          } transition-opacity duration-500`}
+        >
+          <div className="container-custom">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="p-8 shadow-lg rounded-lg">
+                <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gold flex items-center justify-center">
+                  {startCounters && isCountersInView && (
+                    <AnimatedCounter start={1} end={22} duration={3} suffix=" " />
+                  )}
+                </div>
+                <p className="text-deepblue mt-4 font-medium text-xl">Storeys High</p>
+              </div>
+              
+              <div className="p-8 shadow-lg rounded-lg">
+                <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gold flex items-center justify-center">
+                  {startCounters && isCountersInView && (
+                    <AnimatedCounter start={1} end={15} duration={2.5} suffix="+" />
+                  )}
+                </div>
+                <p className="text-deepblue mt-4 font-medium text-xl">Premium Amenities</p>
+              </div>
+            </div>
+          </div>
         </div>
         
         <motion.div
@@ -154,19 +204,24 @@ const Index = () => {
           <Footer />
         </div>
         
-        {/* Back to top button with animation */}
-        <motion.a 
-          href="#home" 
-          className="fixed right-6 bottom-6 w-12 h-12 rounded-full bg-gold hover:bg-gold-dark text-white flex items-center justify-center shadow-lg z-30"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          aria-label="Back to top"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="17 11 12 6 7 11" />
-            <polyline points="17 18 12 13 7 18" />
-          </svg>
-        </motion.a>
+        {/* Back to top button with animation and conditional display */}
+        {showBackToTop && (
+          <motion.a 
+            href="#home" 
+            className="fixed right-6 bottom-6 w-12 h-12 rounded-full bg-gold hover:bg-gold-dark text-white flex items-center justify-center shadow-lg z-30"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            aria-label="Back to top"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="17 11 12 6 7 11" />
+              <polyline points="17 18 12 13 7 18" />
+            </svg>
+          </motion.a>
+        )}
       </div>
     </>
   );

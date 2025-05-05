@@ -39,41 +39,27 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white transition-opacity duration-500">
-      <div className="relative w-48 h-48 mb-8">
+      <div className="relative w-48 h-48 mb-4">
+        {/* Logo with transparent overlay */}
         <img 
           src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png" 
           alt="Sonai Realty Logo" 
           className="w-full h-full object-contain"
         />
+        
+        {/* Transparent overlay that disappears from bottom to top */}
+        <div 
+          className="absolute inset-0 bg-white/50" 
+          style={{ 
+            clipPath: `inset(0 0 ${progress}% 0)`,
+            transition: 'clip-path 0.5s ease-out'
+          }}
+        ></div>
       </div>
       
-      <div className="absolute bottom-8 right-8">
-        <div className="w-16 h-16 relative">
-          <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-            <circle 
-              cx="50" 
-              cy="50" 
-              r="45" 
-              fill="transparent"
-              stroke="#e6e6e6"
-              strokeWidth="8"
-            />
-            <circle 
-              cx="50" 
-              cy="50" 
-              r="45" 
-              fill="transparent"
-              stroke="#1A9E96"
-              strokeWidth="8"
-              strokeDasharray="282.7"
-              strokeDashoffset={282.7 - (282.7 * progress) / 100}
-              strokeLinecap="round"
-            />
-          </svg>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-charcoal font-medium text-lg">{progress}%</span>
-          </div>
-        </div>
+      {/* Percentage below the logo */}
+      <div className="text-charcoal font-medium text-2xl mt-4">
+        {progress}%
       </div>
     </div>
   );

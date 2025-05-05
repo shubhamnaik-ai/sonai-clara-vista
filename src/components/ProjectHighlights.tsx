@@ -1,7 +1,5 @@
-
 import React from "react";
 import { Star } from "lucide-react";
-import AnimatedCounter from "./AnimatedCounter";
 
 const ProjectHighlights = () => {
   return (
@@ -19,22 +17,6 @@ const ProjectHighlights = () => {
           <p className="text-charcoal-light text-lg">
             Sonai Clara is more than just a residential tower; it's a masterpiece of architectural excellence and thoughtful design, offering a lifestyle of unprecedented luxury.
           </p>
-        </div>
-
-        <div className="flex justify-center items-center mb-12 space-x-16">
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gold flex items-center justify-center">
-              <AnimatedCounter start={1} end={22} duration={3} suffix=" " />
-            </div>
-            <p className="text-deepblue mt-2 font-medium">Storeys High</p>
-          </div>
-          
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gold flex items-center justify-center">
-              <AnimatedCounter start={1} end={15} duration={2.5} suffix="+" />
-            </div>
-            <p className="text-deepblue mt-2 font-medium">Premium Amenities</p>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
