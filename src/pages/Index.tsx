@@ -79,7 +79,7 @@ const Index = () => {
       
       {/* Enquiry Form Dialog that appears after loading */}
       <Dialog open={showEnquiry} onOpenChange={setShowEnquiry}>
-        <EnquiryForm />
+        <EnquiryForm planType="Premium" />
       </Dialog>
       
       <div 
