@@ -40,7 +40,7 @@ const Contact = () => {
   useEffect(() => {
     if (!mapRef.current) return;
 
-    // Simple iframe implementation for map with updated coordinates
+    // Updated iframe implementation for map with updated coordinates
     const iframe = document.createElement('iframe');
     iframe.style.width = '100%';
     iframe.style.height = '100%';
@@ -186,8 +186,7 @@ const Contact = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg font-medium text-deepblue">Phone</h4>
-                    <p className="text-charcoal-light mt-1">+91 123 456 7890</p>
-                    <p className="text-charcoal-light">+91 987 654 3210</p>
+                    <p className="text-charcoal-light mt-1">+91 9730057272</p>
                   </div>
                 </div>
                 
