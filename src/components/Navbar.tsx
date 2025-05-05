@@ -1,190 +1,127 @@
+
 import React, { useState, useEffect } from "react";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { Link, useLocation } from "react-router-dom";
-import BookVisitForm from "@/components/BookVisitForm";
-
-type NavItem = {
-  label: string;
-  href: string;
-};
-
-const navItems: NavItem[] = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
-  { label: "Sonai Clara", href: "#sonai-clara" },
-  { label: "Amenities", href: "#amenities" },
-  { label: "Floor Plans", href: "#floor-plans" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Projects", href: "/projects" },
-  { label: "Contact", href: "/contact" },
-];
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const isProjectsPage = location.pathname === "/projects";
-  const isHomePage = location.pathname === "/";
-  const isContactPage = location.pathname === "/contact";
+  const isHomePage = location.pathname === "/" || location.pathname === "/home";
 
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
     };
     
     window.addEventListener("scroll", handleScroll);
-    // Check scroll position immediately on mount
-    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Filter nav items for different pages
-  const currentNavItems = isProjectsPage || isContactPage
-    ? navItems.filter(item => !item.href.startsWith("#") || item.href === "#home")
-    : navItems;
-
+  
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
+  
   return (
-    <nav 
-      className={cn(
-        "transition-all duration-300",
-        isProjectsPage || isContactPage
-          ? "bg-deepblue py-3 shadow-md" 
-          : isScrolled 
-            ? "bg-white shadow-md py-3" 
-            : "bg-transparent py-5"
-      )}
-    >
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center">
-          <img 
-            src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png" 
-            alt="Sonai Realty Logo"
-            className="h-10" 
+    <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
+      scrolled ? "py-2 shadow-md" : "py-4"
+    } ${isHomePage ? "bg-white" : "bg-white"}`}>
+      <div className="container-custom mx-auto flex items-center justify-between px-4">
+        {/* Logo */}
+        <Link to="/" className="relative z-10">
+          <img
+            src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png"
+            alt="Sonai Realty"
+            className="h-14 w-auto"
           />
         </Link>
         
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center space-x-8">
-          {currentNavItems.map((item) => (
-            item.href.startsWith("#") ? (
-              <a
-                key={item.href}
-                href={(isProjectsPage || isContactPage) ? "/" + item.href : item.href}
-                className={cn(
-                  "text-sm tracking-wide hover:text-gold transition-colors",
-                  isProjectsPage || isContactPage
-                    ? "text-white" 
-                    : isScrolled 
-                      ? "text-charcoal" 
-                      : "text-white"
-                )}
-              >
-                {item.label}
-              </a>
-            ) : (
-              <Link
-                key={item.href}
-                to={item.href}
-                className={cn(
-                  "text-sm tracking-wide hover:text-gold transition-colors",
-                  isProjectsPage || isContactPage
-                    ? "text-white" 
-                    : isScrolled 
-                      ? "text-charcoal" 
-                      : "text-white"
-                )}
-              >
-                {item.label}
-              </Link>
-            )
-          ))}
-          
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button 
-                className="bg-gold hover:bg-gold-dark text-white font-medium rounded-none px-6 py-2"
-              >
-                Book Now
-              </Button>
-            </DialogTrigger>
-            <BookVisitForm />
-          </Dialog>
-        </div>
-
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center space-x-8">
+          <NavLink to="/" isActive={location.pathname === "/"}>
+            Home
+          </NavLink>
+          <NavLink to="/projects" isActive={location.pathname === "/projects"}>
+            Projects
+          </NavLink>
+          <NavLink to="/contact" isActive={location.pathname === "/contact"}>
+            Contact
+          </NavLink>
+          <Button className="bg-gold hover:bg-gold-dark text-white ml-4 px-6">
+            <a href="tel:+1234567890">Call Us</a>
+          </Button>
+        </nav>
+        
         {/* Mobile Menu Button */}
-        <button
-          className={cn(
-            "lg:hidden hover:text-gold", 
-            isProjectsPage || isContactPage
-              ? "text-white" 
-              : isScrolled 
-                ? "text-charcoal" 
-                : "text-white"
-          )}
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        <button 
+          className="lg:hidden relative z-10 focus:outline-none"
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
-          {mobileMenuOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          )}
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
+        
+        {/* Mobile Navigation */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-white pt-24 z-0 lg:hidden overflow-auto"
+            >
+              <div className="container-custom mx-auto px-4 flex flex-col space-y-6 pb-8">
+                <MobileNavLink to="/" isActive={location.pathname === "/"}>
+                  Home
+                </MobileNavLink>
+                <MobileNavLink to="/projects" isActive={location.pathname === "/projects"}>
+                  Projects
+                </MobileNavLink>
+                <MobileNavLink to="/contact" isActive={location.pathname === "/contact"}>
+                  Contact
+                </MobileNavLink>
+                <Button className="bg-gold hover:bg-gold-dark text-white w-full py-6 mt-4">
+                  <a href="tel:+1234567890">Call Us</a>
+                </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-
-      {/* Mobile Menu with Animation */}
-      <div 
-        className={cn(
-          "lg:hidden fixed top-[61px] left-0 right-0 bg-white shadow-md transform transition-transform duration-300 ease-in-out z-40",
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        )}
-      >
-        <div className="container mx-auto px-4 py-4">
-          {currentNavItems.map((item) => (
-            item.href.startsWith("#") ? (
-              <a
-                key={item.href}
-                href={(isProjectsPage || isContactPage) ? "/" + item.href : item.href}
-                className="block py-3 text-charcoal hover:text-gold transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            ) : (
-              <Link
-                key={item.href}
-                to={item.href}
-                className="block py-3 text-charcoal hover:text-gold transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            )
-          ))}
-          
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button 
-                className="bg-gold hover:bg-gold-dark text-white font-medium rounded-none px-6 py-2 mt-4 w-full"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Book Now
-              </Button>
-            </DialogTrigger>
-            <BookVisitForm />
-          </Dialog>
-        </div>
-      </div>
-    </nav>
+    </header>
   );
 };
+
+const NavLink = ({ children, to, isActive }) => (
+  <Link 
+    to={to} 
+    className={`font-medium transition-colors hover:text-gold ${
+      isActive ? "text-gold" : "text-charcoal"
+    }`}
+  >
+    {children}
+  </Link>
+);
+
+const MobileNavLink = ({ children, to, isActive }) => (
+  <Link 
+    to={to} 
+    className={`text-xl font-medium py-4 border-b border-gray-100 transition-colors ${
+      isActive ? "text-gold" : "text-charcoal"
+    }`}
+  >
+    {children}
+  </Link>
+);
 
 export default Navbar;

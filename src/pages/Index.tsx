@@ -11,16 +11,24 @@ import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Dialog } from "@/components/ui/dialog";
+import EnquiryForm from "@/components/EnquiryForm";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [contentVisible, setContentVisible] = useState(false);
+  const [showEnquiry, setShowEnquiry] = useState(false);
 
   // Handle loading completion
   const handleLoadingComplete = () => {
     setIsLoading(false);
     // Show content immediately after loading is complete
     setContentVisible(true);
+    
+    // Show enquiry form after a short delay
+    setTimeout(() => {
+      setShowEnquiry(true);
+    }, 1000);
   };
   
   // Animation on scroll functionality
@@ -69,6 +77,11 @@ const Index = () => {
     <>
       {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
       
+      {/* Enquiry Form Dialog that appears after loading */}
+      <Dialog open={showEnquiry} onOpenChange={setShowEnquiry}>
+        <EnquiryForm />
+      </Dialog>
+      
       <div 
         className={`min-h-screen bg-dark-gradient overflow-x-hidden transition-opacity duration-500 ${
           contentVisible ? "opacity-100" : "opacity-0"
@@ -88,24 +101,55 @@ const Index = () => {
         }`}>
           <Hero />
         </div>
-        <div className={`transition-all duration-1000 delay-300 transform ${
-          contentVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-        }`}>
-          <AboutUs />
-        </div>
         
-        <div className="geometric-pattern relative py-16">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <AboutUs />
+        </motion.div>
+        
+        <motion.div 
+          className="geometric-pattern relative py-16"
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
           <ProjectHighlights />
-        </div>
-        <div>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
           <Amenities />
-        </div>
-        <div className="bg-dark-pattern">
+        </motion.div>
+        
+        <motion.div 
+          className="bg-dark-pattern"
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
           <FloorPlans />
-        </div>
-        <div className="bg-dark-gradient">
+        </motion.div>
+        
+        <motion.div 
+          className="bg-dark-gradient"
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
           <Gallery />
-        </div>
+        </motion.div>
+        
         <div>
           <Footer />
         </div>

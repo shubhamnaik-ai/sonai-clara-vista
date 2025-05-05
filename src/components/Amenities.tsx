@@ -1,21 +1,28 @@
 
 import React from "react";
 import { Gem } from "lucide-react";
+import { motion } from "framer-motion";
 
 const AmenityCard = ({ icon, title }) => (
-  <div className="flex flex-col items-center text-center p-6 bg-white/80 backdrop-blur-sm rounded-sm hover:shadow-lg transition-shadow hover:bg-white">
-    <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center mb-5">
+  <motion.div 
+    className="flex flex-col items-center text-center p-4 bg-white/80 backdrop-blur-sm rounded-sm hover:shadow-lg transition-shadow hover:bg-white"
+    whileHover={{ 
+      y: -5,
+      transition: { duration: 0.2 }
+    }}
+  >
+    <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-3">
       {icon}
     </div>
-    <h4 className="text-xl font-playfair font-semibold text-deepblue">{title}</h4>
-  </div>
+    <h4 className="text-base font-playfair font-semibold text-deepblue">{title}</h4>
+  </motion.div>
 );
 
 const Amenities = () => {
   const amenities = [
     {
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
           <path d="M17 12a5 5 0 0 0-5-5c-2.76 0-5 2.24-5 5a5 5 0 0 0 5 5c2.76 0 5-2.24 5-5Z" />
           <path d="M12 2v2" />
           <path d="M12 20v2" />
@@ -161,35 +168,96 @@ const Amenities = () => {
     }
   ];
 
-  return (
-    <section id="amenities" className="section-padding relative">
-      {/* Background Image */}
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-        style={{
-          backgroundImage: 'url("/lovable-uploads/0ec6ae24-70d9-4b4b-bf94-8d90832ebafb.png")',
-        }}>
-        <div className="absolute inset-0 bg-deepblue bg-opacity-80"></div>
-      </div>
+  // Animation variants for elements
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      }
+    }
+  };
 
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
+  return (
+    <section id="amenities" className="section-padding relative bg-white">
       <div className="container-custom relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="flex items-center justify-center space-x-2 text-gold">
+          <motion.div 
+            className="flex items-center justify-center space-x-2 text-gold"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             {React.createElement(Gem, { size: 24 })}
             <span className="text-sm uppercase tracking-wider text-gold">Premium Lifestyle</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4">
+          </motion.div>
+          <motion.h2 
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-deepblue mt-4"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             Exclusive Amenities
-          </h2>
-          <div className="divider mx-auto bg-gold"></div>
-          <p className="text-white/80 text-lg">
+          </motion.h2>
+          <motion.div 
+            className="divider mx-auto bg-gold"
+            initial={{ width: 0 }}
+            whileInView={{ width: "5rem" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          ></motion.div>
+          <motion.p 
+            className="text-charcoal-light text-lg"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
             Sonai Clara is designed to provide you with a 5-star lifestyle experience through our carefully curated amenities.
-          </p>
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {amenities.map((amenity, index) => (
-            <AmenityCard key={index} icon={amenity.icon} title={amenity.title} />
-          ))}
+        <div className="flex flex-col lg:flex-row gap-10">
+          {/* Image on the left */}
+          <motion.div 
+            className="lg:w-1/2 overflow-hidden rounded-lg shadow-xl"
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <img 
+              src="/lovable-uploads/0ec6ae24-70d9-4b4b-bf94-8d90832ebafb.png" 
+              alt="Luxury Amenities" 
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+          
+          {/* Amenities grid on the right */}
+          <motion.div 
+            className="lg:w-1/2"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {amenities.map((amenity, index) => (
+                <motion.div key={index} variants={itemVariants}>
+                  <AmenityCard icon={amenity.icon} title={amenity.title} />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

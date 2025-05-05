@@ -1,11 +1,12 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import BookVisitForm from "@/components/BookVisitForm";
 import DownloadBrochureForm from "@/components/DownloadBrochureForm";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
+import AnimatedCounter from "./AnimatedCounter";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -101,14 +102,18 @@ const Hero = () => {
             <motion.div 
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              className="text-center"
             >
-              <p className="text-2xl md:text-3xl lg:text-4xl font-playfair font-semibold drop-shadow-lg">22</p>
+              <div className="text-2xl md:text-3xl lg:text-4xl font-playfair font-semibold drop-shadow-lg">
+                <AnimatedCounter start={1} end={22} duration={2} className="inline-block" />
+              </div>
               <p className="text-xs md:text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">Storeys High</p>
             </motion.div>
             <div className="hidden sm:block w-px h-12 md:h-16 bg-white/30"></div>
             <motion.div 
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              className="text-center"
             >
               <p className="text-2xl md:text-3xl lg:text-4xl font-playfair font-semibold drop-shadow-lg">2 & 3</p>
               <p className="text-xs md:text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">BHK Options</p>
@@ -117,8 +122,11 @@ const Hero = () => {
             <motion.div 
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              className="text-center"
             >
-              <p className="text-2xl md:text-3xl lg:text-4xl font-playfair font-semibold drop-shadow-lg">15+</p>
+              <div className="text-2xl md:text-3xl lg:text-4xl font-playfair font-semibold drop-shadow-lg">
+                <AnimatedCounter start={1} end={15} duration={2} suffix="+" className="inline-block" />
+              </div>
               <p className="text-xs md:text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">Premium Amenities</p>
             </motion.div>
           </motion.div>

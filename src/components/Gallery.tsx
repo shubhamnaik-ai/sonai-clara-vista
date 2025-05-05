@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Image, Download } from "lucide-react";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import DownloadBrochureForm from "./DownloadBrochureForm";
+import { motion } from "framer-motion";
 import {
   Carousel,
   CarouselContent,
@@ -90,9 +91,22 @@ const Gallery = () => {
   };
 
   return (
-    <section id="gallery" className="section-padding bg-white">
+    <motion.section 
+      id="gallery" 
+      className="section-padding bg-white"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="container-custom">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div 
+          className="text-center max-w-3xl mx-auto mb-16"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="flex items-center justify-center space-x-2 text-gold">
             <Image size={24} />
             <span className="text-sm uppercase tracking-wider">Visual Tour</span>
@@ -104,17 +118,19 @@ const Gallery = () => {
           <p className="text-charcoal-light text-lg">
             Explore Sonai Clara through our curated gallery showcasing the elegance and luxury of our premium residences.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Auto-scrolling Carousel */}
+        {/* Single Line Gallery Carousel */}
         <div className="mb-12" onMouseEnter={handleInteraction} onTouchStart={handleInteraction}>
-          <Carousel ref={carouselRef} className="w-full max-w-5xl mx-auto">
+          <Carousel ref={carouselRef} className="w-full max-w-full mx-auto">
             <CarouselContent>
               {galleryImages.map((image, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div 
-                    className="group relative overflow-hidden cursor-pointer h-[300px]"
+                <CarouselItem key={index} className="basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/6">
+                  <motion.div 
+                    className="group relative overflow-hidden cursor-pointer h-[250px]"
                     onClick={() => openModal(image.url)}
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.3 }}
                   >
                     <div className="absolute inset-0 bg-deepblue opacity-0 group-hover:opacity-50 transition-opacity z-10"></div>
                     <img 
@@ -122,10 +138,10 @@ const Gallery = () => {
                       alt={image.title} 
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-deepblue to-transparent z-20">
-                      <h4 className="text-xl font-playfair font-semibold text-white">{image.title}</h4>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-deepblue to-transparent z-20">
+                      <h4 className="text-lg font-playfair font-semibold text-white">{image.title}</h4>
                     </div>
-                  </div>
+                  </motion.div>
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -134,27 +150,7 @@ const Gallery = () => {
           </Carousel>
         </div>
 
-        {/* Grid Gallery */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleryImages.map((image, index) => (
-            <div 
-              key={index} 
-              className="group relative overflow-hidden cursor-pointer h-[300px]"
-              onClick={() => openModal(image.url)}
-            >
-              <div className="absolute inset-0 bg-deepblue opacity-0 group-hover:opacity-50 transition-opacity z-10"></div>
-              <img 
-                src={image.url} 
-                alt={image.title} 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-deepblue to-transparent z-20">
-                <h4 className="text-xl font-playfair font-semibold text-white">{image.title}</h4>
-              </div>
-            </div>
-          ))}
-        </div>
-
+        {/* Image Lightbox */}
         {activeImage && (
           <div 
             className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
@@ -179,7 +175,13 @@ const Gallery = () => {
           </div>
         )}
 
-        <div className="mt-12 text-center">
+        <motion.div 
+          className="mt-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           <p className="text-xl font-playfair text-deepblue">Experience the Sonai Clara lifestyle in person</p>
           <p className="text-charcoal-light mt-2 mb-6">Schedule a visit to our model apartment today or download our brochure</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -193,9 +195,9 @@ const Gallery = () => {
               <DownloadBrochureForm />
             </Dialog>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
