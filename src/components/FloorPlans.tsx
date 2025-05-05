@@ -12,30 +12,30 @@ const FloorPlans = () => {
   const [currentLayout2BHK, setCurrentLayout2BHK] = useState(0);
   const [currentLayout3BHK, setCurrentLayout3BHK] = useState(0);
   
-  // Sample floor layouts
+  // Updated floor layouts with correct areas and new images
   const layouts2BHK = [
     {
-      url: "/lovable-uploads/d742cfde-c5d6-4275-b50b-4e848cef3033.png",
+      url: "/lovable-uploads/ede45a26-8fe4-4bad-be36-794da04365c3.png",
       title: "2 BHK Layout Type A",
-      area: "1250 sq.ft."
+      area: "790 sq.ft."
     },
     {
-      url: "/lovable-uploads/d742cfde-c5d6-4275-b50b-4e848cef3033.png",
+      url: "/lovable-uploads/f8f43373-089a-4bba-ada5-e31fd2a08bdf.png",
       title: "2 BHK Layout Type B",
-      area: "1300 sq.ft."
+      area: "810 sq.ft."
     }
   ];
   
   const layouts3BHK = [
     {
-      url: "/lovable-uploads/d742cfde-c5d6-4275-b50b-4e848cef3033.png",
+      url: "/lovable-uploads/2bed3469-7662-4636-9572-75d90004fc9e.png",
       title: "3 BHK Layout Type A",
-      area: "1750 sq.ft."
+      area: "1046 sq.ft."
     },
     {
-      url: "/lovable-uploads/d742cfde-c5d6-4275-b50b-4e848cef3033.png",
+      url: "/lovable-uploads/326c64b4-ace0-4ba2-bec0-9e6ab6073305.png",
       title: "3 BHK Layout Type B",
-      area: "1850 sq.ft."
+      area: "1064 sq.ft."
     }
   ];
   
