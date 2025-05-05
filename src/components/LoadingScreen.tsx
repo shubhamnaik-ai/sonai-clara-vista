@@ -13,18 +13,19 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
     // Start with initial progress
     setProgress(10);
     
-    // Simulate resource loading
+    // Simulate resource loading with more gradual progression
     const timer1 = setTimeout(() => setProgress(25), 500);
     const timer2 = setTimeout(() => setProgress(40), 1000);
-    const timer3 = setTimeout(() => setProgress(60), 1500);
-    const timer4 = setTimeout(() => setProgress(75), 2000);
-    const timer5 = setTimeout(() => setProgress(90), 2500);
+    const timer3 = setTimeout(() => setProgress(55), 1500);
+    const timer4 = setTimeout(() => setProgress(70), 2000);
+    const timer5 = setTimeout(() => setProgress(85), 2500);
+    const timer6 = setTimeout(() => setProgress(95), 3000);
     
     // Final loading complete
-    const timer6 = setTimeout(() => {
+    const timer7 = setTimeout(() => {
       setProgress(100);
       setTimeout(onLoadingComplete, 500); // Small delay before transition
-    }, 3000);
+    }, 3500);
     
     return () => {
       // Clear all timers on unmount
@@ -34,6 +35,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
       clearTimeout(timer4);
       clearTimeout(timer5);
       clearTimeout(timer6);
+      clearTimeout(timer7);
     };
   }, [onLoadingComplete]);
   
@@ -51,7 +53,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
         <div 
           className="absolute inset-0 bg-white/50" 
           style={{ 
-            clipPath: `inset(0 0 ${progress}% 0)`,
+            clipPath: `inset(0 0 ${Math.min(progress, 99)}% 0)`,
             transition: 'clip-path 0.5s ease-out'
           }}
         ></div>

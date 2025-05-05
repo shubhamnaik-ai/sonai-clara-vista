@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -12,19 +13,13 @@ import { Button } from "@/components/ui/button";
 import { motion, useInView } from "framer-motion";
 import { Dialog } from "@/components/ui/dialog";
 import EnquiryForm from "@/components/EnquiryForm";
-import AnimatedCounter from "@/components/AnimatedCounter";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [contentVisible, setContentVisible] = useState(false);
   const [showEnquiry, setShowEnquiry] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const [startCounters, setStartCounters] = useState(false);
   
-  // References for counter section
-  const countersRef = useRef(null);
-  const isCountersInView = useInView(countersRef, { once: true, margin: "-100px" });
-
   // Handle loading completion
   const handleLoadingComplete = () => {
     setIsLoading(false);
@@ -67,13 +62,6 @@ const Index = () => {
       window.removeEventListener("scroll", animateOnScroll);
     };
   }, [contentVisible]);
-
-  // Start counters when enquiry form is closed
-  useEffect(() => {
-    if (!showEnquiry && contentVisible) {
-      setStartCounters(true);
-    }
-  }, [showEnquiry, contentVisible]);
 
   // Preload critical images
   useEffect(() => {
@@ -120,36 +108,6 @@ const Index = () => {
           contentVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
         }`}>
           <Hero />
-        </div>
-        
-        {/* Counter section with storeys and amenities */}
-        <div 
-          ref={countersRef}
-          className={`py-16 bg-white text-center ${
-            startCounters && isCountersInView ? "opacity-100" : "opacity-0"
-          } transition-opacity duration-500`}
-        >
-          <div className="container-custom">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="p-8 shadow-lg rounded-lg">
-                <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gold flex items-center justify-center">
-                  {startCounters && isCountersInView && (
-                    <AnimatedCounter start={1} end={22} duration={3} suffix=" " />
-                  )}
-                </div>
-                <p className="text-deepblue mt-4 font-medium text-xl">Storeys High</p>
-              </div>
-              
-              <div className="p-8 shadow-lg rounded-lg">
-                <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gold flex items-center justify-center">
-                  {startCounters && isCountersInView && (
-                    <AnimatedCounter start={1} end={15} duration={2.5} suffix="+" />
-                  )}
-                </div>
-                <p className="text-deepblue mt-4 font-medium text-xl">Premium Amenities</p>
-              </div>
-            </div>
-          </div>
         </div>
         
         <motion.div

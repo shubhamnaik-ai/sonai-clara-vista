@@ -40,12 +40,12 @@ const Contact = () => {
   useEffect(() => {
     if (!mapRef.current) return;
 
-    // Simple iframe implementation for map
+    // Simple iframe implementation for map with updated coordinates
     const iframe = document.createElement('iframe');
     iframe.style.width = '100%';
     iframe.style.height = '100%';
     iframe.style.border = 'none';
-    iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15127.204728763636!2d73.75862138232424!3d18.643402499133883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9ef088581fb%3A0x3b753defd3fac51!2sRavet%2C%20Pimpri-Chinchwad%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sus!4v1715067134562!5m2!1sen!2sus";
+    iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.681175640716!2d73.73941123493767!3d18.650473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDM5JzAxLjciTiA3M8KwNDQnMjEuOSJF!5e0!3m2!1sen!2sus!4v1715067134562!5m2!1sen!2sus";
     iframe.setAttribute('allowFullScreen', '');
     iframe.setAttribute('loading', 'lazy');
     iframe.setAttribute('referrerPolicy', 'no-referrer-when-downgrade');
@@ -222,7 +222,7 @@ const Contact = () => {
                 </div>
                 <div className="mt-2">
                   <a 
-                    href="https://maps.google.com/?q=18.643402,73.758621" 
+                    href="https://maps.google.com/?q=18.650473,73.739411" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center bg-ivory hover:bg-gold transition-colors p-2 rounded text-charcoal hover:text-white"
