@@ -28,7 +28,7 @@ const Index = () => {
     // Show enquiry form after a short delay
     setTimeout(() => {
       setShowEnquiry(true);
-    }, 1000);
+    }, 500);
   };
   
   // Animation on scroll functionality
@@ -90,7 +90,7 @@ const Index = () => {
         <div className="subtle-pattern absolute inset-0 opacity-30 z-0"></div>
         
         {/* Moved Navbar outside of transition container to make it appear on top of hero image */}
-        <div className={`fixed top-0 left-0 w-full z-40 transition-opacity duration-500 ${
+        <div className={`fixed top-0 left-0 w-full z-40 transition-opacity duration-500 bg-white shadow-md ${
           contentVisible ? "opacity-100" : "opacity-0"
         }`}>
           <Navbar />

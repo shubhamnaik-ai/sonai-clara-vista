@@ -81,24 +81,19 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
     }
   };
 
-  const getFormTitle = () => {
-    if (downloadBrochure) return "Download Brochure";
-    if (bookSiteVisit) return "Book Your Site Visit";
-    return `View ${planType} Floor Plan`;
-  };
-
-  const getFormDescription = () => {
-    if (downloadBrochure) return "Enter your details to receive our detailed brochure via email.";
-    if (bookSiteVisit) return "Schedule a visit to experience our premium residences firsthand.";
-    return "Enter your details to gain exclusive access to our detailed floor plans.";
-  };
-
   return (
     <DialogContent className="sm:max-w-[425px]">
-      <DialogHeader>
-        <DialogTitle className="text-2xl text-deepblue">{getFormTitle()}</DialogTitle>
+      <DialogHeader className="text-center">
+        <div className="flex justify-center mb-2">
+          <img 
+            src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png" 
+            alt="Sonai Clara Logo" 
+            className="h-12"
+          />
+        </div>
+        <DialogTitle className="text-2xl text-deepblue">Contact Us</DialogTitle>
         <DialogDescription>
-          {getFormDescription()}
+          Enter your details below and we'll get back to you shortly.
         </DialogDescription>
       </DialogHeader>
       
@@ -219,12 +214,8 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
                   </svg>
                   Submitting...
                 </div>
-              ) : downloadBrochure ? (
-                "Download Brochure"
-              ) : bookSiteVisit ? (
-                "Book Visit"
               ) : (
-                "View Floor Plan"
+                "Submit"
               )}
             </Button>
           </DialogFooter>
