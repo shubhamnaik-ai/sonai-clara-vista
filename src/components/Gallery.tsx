@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { cn } from "@/lib/utils";
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 
 // Animation variants
 const containerVariants = {
@@ -76,7 +74,6 @@ const galleryImages = [
 
 const Gallery = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const goToPrevious = () => {
     setCurrentImageIndex((prevIndex) => 
@@ -114,8 +111,8 @@ const Gallery = () => {
           </motion.div>
         </div>
 
-        {/* Gallery display with navigation controls */}
-        <div className="relative max-w-4xl mx-auto">
+        {/* Featured image with dialog/modal */}
+        <div className="relative max-w-4xl mx-auto mb-8">
           <Dialog>
             <DialogTrigger asChild>
               <motion.div
@@ -168,35 +165,31 @@ const Gallery = () => {
           </button>
         </div>
 
-        {/* Pagination indicators */}
-        <div className="mt-6">
-          <Pagination>
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious onClick={goToPrevious} className="cursor-pointer" />
-              </PaginationItem>
-              
-              {galleryImages.map((_, index) => (
-                <PaginationItem key={index} className={cn(
-                  "hidden md:inline-block",
-                  index >= currentImageIndex - 2 && index <= currentImageIndex + 2 ? "block" : "hidden"
-                )}>
-                  <PaginationLink
-                    isActive={currentImageIndex === index}
-                    onClick={() => setCurrentImageIndex(index)}
-                    className="cursor-pointer"
-                  >
-                    {index + 1}
-                  </PaginationLink>
-                </PaginationItem>
-              ))}
-              
-              <PaginationItem>
-                <PaginationNext onClick={goToNext} className="cursor-pointer" />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
+        {/* Thumbnail gallery - single row with smaller images */}
+        <div className="overflow-x-auto pb-4">
+          <div className="flex gap-2 min-w-max">
+            {galleryImages.map((image, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className={`cursor-pointer transition-all duration-300 ${
+                  currentImageIndex === index ? 'ring-2 ring-offset-2 ring-logo' : ''
+                }`}
+                onClick={() => setCurrentImageIndex(index)}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="h-16 w-24 object-cover rounded-md"
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
+
       </div>
     </section>
   );
