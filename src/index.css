@@ -166,6 +166,6 @@ html {
 
 /* Fix for mobile overflow issues */
 #root {
-  overflow-x-hidden;
+  overflow-x: hidden;
   width: 100%;
 }
