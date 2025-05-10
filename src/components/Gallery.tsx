@@ -1,8 +1,7 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, ImageIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 
@@ -58,22 +57,9 @@ const galleryImages = [
 
 const Gallery = () => {
   const [expandedImage, setExpandedImage] = useState<number | null>(null);
-  const handleExpandImage = (index: number) => setExpandedImage(index);
-  const handleCloseExpanded = () => setExpandedImage(null);
-  
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const maxSlides = Math.ceil(galleryImages.length / 3);
-  
-  const goToNextSlide = () => {
-    setCurrentSlide((prev) => (prev === maxSlides - 1 ? 0 : prev + 1));
-  };
-  
-  const goToPrevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? maxSlides - 1 : prev - 1));
-  };
 
   return (
-    <section id="gallery" className="section-padding bg-dark-gradient">
+    <section id="gallery" className="section-padding bg-white">
       <div className="container-custom">
         <div className="text-center mb-12">
           <motion.div
@@ -83,26 +69,26 @@ const Gallery = () => {
             variants={containerVariants}
             className="space-y-3"
           >
-            <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+            <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal">
               Visual Tour
             </motion.h2>
-            <motion.p variants={itemVariants} className="text-xl text-white/80 font-light italic">
+            <motion.p variants={itemVariants} className="text-xl text-charcoal/80 font-light italic">
               Glimpses of Exceptional Living
             </motion.p>
             <div className="divider mx-auto bg-logo"></div>
-            <motion.p variants={itemVariants} className="text-white/90 max-w-3xl mx-auto">
+            <motion.p variants={itemVariants} className="text-charcoal/90 max-w-3xl mx-auto">
               Explore the stunning spaces and premium features that await you at Sonai Clara.
             </motion.p>
           </motion.div>
         </div>
 
-        {/* Desktop Gallery with Grid Layout */}
-        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        {/* Single row of images */}
+        <div className="flex overflow-x-auto pb-6 space-x-4 scrollbar-hide">
           {galleryImages.map((image, index) => (
             <Dialog key={index}>
               <DialogTrigger asChild>
                 <motion.div
-                  className="relative overflow-hidden group cursor-pointer rounded-md"
+                  className="relative flex-none w-64 md:w-80 overflow-hidden group cursor-pointer rounded-md"
                   variants={itemVariants}
                   initial="hidden"
                   whileInView="show"
@@ -137,47 +123,6 @@ const Gallery = () => {
               </DialogContent>
             </Dialog>
           ))}
-        </div>
-
-        {/* Mobile Gallery Carousel */}
-        <div className="md:hidden relative">
-          <Carousel 
-            ref={useRef(null)}
-            className="w-full"
-          >
-            <CarouselContent>
-              {galleryImages.map((image, index) => (
-                <CarouselItem key={index} className="md:basis-1/2">
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <motion.div
-                        className="relative overflow-hidden rounded-md"
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <div className="aspect-w-4 aspect-h-3">
-                          <img
-                            src={image.src}
-                            alt={image.alt}
-                            className="object-cover w-full"
-                          />
-                        </div>
-                      </motion.div>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-5xl bg-black bg-opacity-90 border-none">
-                      <img
-                        src={image.src}
-                        alt={image.alt}
-                        className="w-full max-h-[80vh] object-contain"
-                      />
-                      <p className="text-white text-center mt-3 font-light">{image.caption}</p>
-                    </DialogContent>
-                  </Dialog>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white" />
-            <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white" />
-          </Carousel>
         </div>
       </div>
     </section>

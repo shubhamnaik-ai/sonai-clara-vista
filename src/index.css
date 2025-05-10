@@ -60,7 +60,7 @@
   }
 
   body {
-    @apply bg-ivory text-charcoal font-raleway overflow-x-hidden;
+    @apply bg-white text-charcoal font-raleway overflow-x-hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -118,7 +118,7 @@ html {
   left: 0;
 }
 
-/* New dark background styles */
+/* New dark background styles - keeping these for the footer */
 .bg-dark-gradient {
   background: linear-gradient(135deg, #1A1F2C 0%, #221F26 100%);
 }

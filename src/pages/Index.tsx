@@ -92,12 +92,10 @@ const Index = () => {
       </Dialog>
       
       <div 
-        className={`min-h-screen bg-dark-gradient overflow-x-hidden transition-opacity duration-500 ${
+        className={`min-h-screen bg-white overflow-x-hidden transition-opacity duration-500 ${
           contentVisible ? "opacity-100" : "opacity-0"
         }`}
       >
-        <div className="subtle-pattern absolute inset-0 opacity-30 z-0"></div>
-        
         {/* Moved Navbar outside of transition container to make it appear on top of hero image */}
         <div className={`fixed top-0 left-0 w-full z-40 transition-opacity duration-500 bg-white shadow-md ${
           contentVisible ? "opacity-100" : "opacity-0"
@@ -119,12 +117,13 @@ const Index = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
+          className="bg-white"
         >
           <AboutUs />
         </motion.div>
         
         <motion.div 
-          className="geometric-pattern relative py-16"
+          className="bg-white relative py-16"
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -138,12 +137,13 @@ const Index = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
+          className="bg-white"
         >
           <Amenities />
         </motion.div>
         
         <motion.div 
-          className="bg-dark-pattern"
+          className="bg-white"
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -153,7 +153,7 @@ const Index = () => {
         </motion.div>
         
         <motion.div 
-          className="bg-dark-gradient"
+          className="bg-white"
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}

@@ -42,8 +42,7 @@ const textVariants = {
 
 const ProjectHighlights = () => {
   return (
-    <section id="highlights" className="section-padding bg-dark-gradient">
-      <div className="geometric-pattern absolute inset-0 opacity-30 z-0"></div>
+    <section id="highlights" className="section-padding bg-white">
       <div className="container-custom relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center justify-center space-x-2 text-logo">
@@ -60,14 +59,14 @@ const ProjectHighlights = () => {
           >
             <motion.h2 
               variants={itemVariants}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal"
             >
               Sonai Clara Highlights
             </motion.h2>
             
             <motion.p 
               variants={itemVariants}
-              className="text-xl text-white/80 font-light italic"
+              className="text-xl text-charcoal/80 font-light italic"
             >
               A Symphony of Luxury and Comfort
             </motion.p>
@@ -75,7 +74,7 @@ const ProjectHighlights = () => {
           
           <div className="divider mx-auto bg-logo"></div>
           
-          <p className="text-white/90 text-lg">
+          <p className="text-charcoal/90 text-lg">
             We've crafted an exceptional living experience that combines modern design with timeless elegance.
           </p>
         </div>
@@ -126,18 +125,18 @@ const ProjectHighlights = () => {
 const HighlightCard = ({ icon, title, description }) => {
   return (
     <motion.div 
-      className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-lg hover:shadow-xl transition-all hover:bg-white/10"
+      className="bg-ivory border border-gray-200 p-6 rounded-lg hover:shadow-xl transition-all"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
     >
-      <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-4">
+      <div className="w-12 h-12 rounded-full bg-logo/10 flex items-center justify-center mb-4">
         {icon}
       </div>
-      <h3 className="text-xl font-playfair font-semibold text-white mb-2">{title}</h3>
-      <p className="text-white/70">{description}</p>
+      <h3 className="text-xl font-playfair font-semibold text-charcoal mb-2">{title}</h3>
+      <p className="text-charcoal/70">{description}</p>
     </motion.div>
   );
 };
