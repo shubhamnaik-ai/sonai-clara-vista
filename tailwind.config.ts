@@ -30,10 +30,10 @@ export default {
 					light: '#FAFAF5',
 					dark: '#E5E5E0',
 				},
-				logo: { // Already defined correctly
-					DEFAULT: '#91583C', // Dark brown color from the logo
-					light: '#B37D62',   // Lighter version
-					dark: '#6E3F27',    // Darker version
+				logo: { // Updated to teal color
+					DEFAULT: '#1b727b', // Changed from brown to teal
+					light: '#2b94a0',   // Lighter version of teal
+					dark: '#155a61',    // Darker version of teal
 				},
 				deepblue: {
 					DEFAULT: '#0C2340',

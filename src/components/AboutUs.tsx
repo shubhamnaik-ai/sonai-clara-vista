@@ -10,11 +10,11 @@ const AboutUs = () => {
           <div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?q=80&w=800&auto=format" 
-                alt="Sonai Realty Office" 
+                src="https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?q=80&w=800&auto=format" 
+                alt="Sonai Realty Construction" 
                 className="w-full h-auto object-cover shadow-xl"
               />
-              {/* Removed the "15+ Years of Excellence" box */}
+              {/* No box overlay as per previous changes */}
             </div>
           </div>
           

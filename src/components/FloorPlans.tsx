@@ -72,7 +72,7 @@ const FloorPlans = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center justify-center space-x-2 text-gold">
+          <div className="flex items-center justify-center space-x-2 text-logo">
             {React.createElement(Layout, { size: 24 })}
             <span className="text-sm uppercase tracking-wider">Floor Plans</span>
           </div>
@@ -90,13 +90,13 @@ const FloorPlans = () => {
             <TabsList className="bg-ivory">
               <TabsTrigger 
                 value="2bhk" 
-                className="text-lg px-8 py-3 data-[state=active]:bg-gold data-[state=active]:text-white"
+                className="text-lg px-8 py-3 data-[state=active]:bg-logo data-[state=active]:text-white"
               >
                 2 BHK
               </TabsTrigger>
               <TabsTrigger 
                 value="3bhk" 
-                className="text-lg px-8 py-3 data-[state=active]:bg-gold data-[state=active]:text-white"
+                className="text-lg px-8 py-3 data-[state=active]:bg-logo data-[state=active]:text-white"
               >
                 3 BHK
               </TabsTrigger>
@@ -127,7 +127,7 @@ const FloorPlans = () => {
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Dialog>
                         <DialogTrigger asChild>
-                          <Button className="bg-gold hover:bg-gold-dark text-white rounded-none px-8 py-2 font-medium">
+                          <Button className="bg-logo hover:bg-logo-dark text-white rounded-none px-8 py-2 font-medium">
                             View Image
                           </Button>
                         </DialogTrigger>
@@ -140,7 +140,7 @@ const FloorPlans = () => {
                   <div className="flex items-center justify-between w-full max-w-md">
                     <Button 
                       variant="outline"
-                      className="border-gold text-gold hover:bg-gold/10 rounded-full p-2 h-auto w-auto"
+                      className="border-logo text-logo hover:bg-logo/10 rounded-full p-2 h-auto w-auto"
                       onClick={() => prevLayout('2bhk')}
                     >
                       <ChevronLeft size={24} />
@@ -153,7 +153,7 @@ const FloorPlans = () => {
                     
                     <Button 
                       variant="outline"
-                      className="border-gold text-gold hover:bg-gold/10 rounded-full p-2 h-auto w-auto"
+                      className="border-logo text-logo hover:bg-logo/10 rounded-full p-2 h-auto w-auto"
                       onClick={() => nextLayout('2bhk')}
                     >
                       <ChevronRight size={24} />
@@ -194,10 +194,6 @@ const FloorPlans = () => {
                           <span className="text-charcoal font-medium">Balconies</span>
                           <span className="text-deepblue font-semibold">2</span>
                         </div>
-                        <div className="flex justify-between pb-2">
-                          <span className="text-charcoal font-medium">Starting Price</span>
-                          <span className="text-gold font-semibold">₹ 85 Lakhs*</span>
-                        </div>
                       </div>
                     </motion.div>
                   </AnimatePresence>
@@ -205,7 +201,7 @@ const FloorPlans = () => {
                   <div className="flex space-x-4 pt-4">
                     <Dialog>
                       <DialogTrigger asChild>
-                        <Button className="bg-gold hover:bg-gold-dark text-white rounded-none px-6">
+                        <Button className="bg-logo hover:bg-logo-dark text-white rounded-none px-6">
                           Download Plan
                         </Button>
                       </DialogTrigger>
@@ -213,7 +209,7 @@ const FloorPlans = () => {
                     </Dialog>
                     <Dialog>
                       <DialogTrigger asChild>
-                        <Button variant="outline" className="border-gold text-gold hover:bg-gold/10 rounded-none px-6">
+                        <Button variant="outline" className="border-logo text-logo hover:bg-logo/10 rounded-none px-6">
                           Book Site Visit
                         </Button>
                       </DialogTrigger>
@@ -249,7 +245,7 @@ const FloorPlans = () => {
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Dialog>
                         <DialogTrigger asChild>
-                          <Button className="bg-gold hover:bg-gold-dark text-white rounded-none px-8 py-2 font-medium">
+                          <Button className="bg-logo hover:bg-logo-dark text-white rounded-none px-8 py-2 font-medium">
                             View Image
                           </Button>
                         </DialogTrigger>
@@ -262,7 +258,7 @@ const FloorPlans = () => {
                   <div className="flex items-center justify-between w-full max-w-md">
                     <Button 
                       variant="outline"
-                      className="border-gold text-gold hover:bg-gold/10 rounded-full p-2 h-auto w-auto"
+                      className="border-logo text-logo hover:bg-logo/10 rounded-full p-2 h-auto w-auto"
                       onClick={() => prevLayout('3bhk')}
                     >
                       <ChevronLeft size={24} />
@@ -275,7 +271,7 @@ const FloorPlans = () => {
                     
                     <Button 
                       variant="outline"
-                      className="border-gold text-gold hover:bg-gold/10 rounded-full p-2 h-auto w-auto"
+                      className="border-logo text-logo hover:bg-logo/10 rounded-full p-2 h-auto w-auto"
                       onClick={() => nextLayout('3bhk')}
                     >
                       <ChevronRight size={24} />
@@ -314,11 +310,7 @@ const FloorPlans = () => {
                         </div>
                         <div className="flex justify-between border-b border-gray-200 pb-2">
                           <span className="text-charcoal font-medium">Balconies</span>
-                          <span className="text-deepblue font-semibold">3</span>
-                        </div>
-                        <div className="flex justify-between pb-2">
-                          <span className="text-charcoal font-medium">Starting Price</span>
-                          <span className="text-gold font-semibold">₹ 1.25 Cr*</span>
+                          <span className="text-deepblue font-semibold">2</span>
                         </div>
                       </div>
                     </motion.div>
@@ -327,7 +319,7 @@ const FloorPlans = () => {
                   <div className="flex space-x-4 pt-4">
                     <Dialog>
                       <DialogTrigger asChild>
-                        <Button className="bg-gold hover:bg-gold-dark text-white rounded-none px-6">
+                        <Button className="bg-logo hover:bg-logo-dark text-white rounded-none px-6">
                           Download Plan
                         </Button>
                       </DialogTrigger>
@@ -335,7 +327,7 @@ const FloorPlans = () => {
                     </Dialog>
                     <Dialog>
                       <DialogTrigger asChild>
-                        <Button variant="outline" className="border-gold text-gold hover:bg-gold/10 rounded-none px-6">
+                        <Button variant="outline" className="border-logo text-logo hover:bg-logo/10 rounded-none px-6">
                           Book Site Visit
                         </Button>
                       </DialogTrigger>

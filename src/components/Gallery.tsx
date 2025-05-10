@@ -125,7 +125,7 @@ const Gallery = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center justify-center space-x-2 text-gold">
+          <div className="flex items-center justify-center space-x-2 text-logo">
             <Image size={24} />
             <span className="text-sm uppercase tracking-wider">Visual Tour</span>
           </div>
@@ -138,9 +138,9 @@ const Gallery = () => {
           </p>
         </motion.div>
 
-        {/* Single Line Gallery Carousel */}
+        {/* Single Line Gallery Carousel - Adjusted to start from the first image */}
         <div className="mb-12" onMouseEnter={handleInteraction} onTouchStart={handleInteraction}>
-          <Carousel ref={carouselRef} className="w-full max-w-full mx-auto">
+          <Carousel ref={carouselRef} className="w-full max-w-full mx-auto" defaultIndex={0}>
             <CarouselContent>
               {galleryImages.map((image, index) => (
                 <CarouselItem key={index} className="basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
@@ -183,7 +183,7 @@ const Gallery = () => {
               
               {/* Previous Button */}
               <button 
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-gold text-white p-2 rounded-full"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-logo text-white p-2 rounded-full"
                 onClick={goToPrevImage}
                 aria-label="Previous image"
               >
@@ -192,7 +192,7 @@ const Gallery = () => {
               
               {/* Next Button */}
               <button 
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-gold text-white p-2 rounded-full"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-logo text-white p-2 rounded-full"
                 onClick={goToNextImage}
                 aria-label="Next image"
               >
@@ -201,7 +201,7 @@ const Gallery = () => {
               
               {/* Close Button */}
               <button 
-                className="absolute top-4 right-4 text-white hover:text-gold"
+                className="absolute top-4 right-4 text-white hover:text-logo"
                 onClick={closeModal}
                 aria-label="Close gallery"
               >
@@ -226,7 +226,7 @@ const Gallery = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Dialog>
               <DialogTrigger asChild>
-                <button className="flex items-center gap-2 bg-gold hover:bg-gold-dark text-white px-8 py-3 uppercase tracking-wider font-medium">
+                <button className="flex items-center gap-2 bg-logo hover:bg-logo-dark text-white px-8 py-3 uppercase tracking-wider font-medium">
                   <Download size={18} />
                   Download Brochure
                 </button>

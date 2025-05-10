@@ -22,23 +22,23 @@ const projectsData = {
   past: [
     {
       id: 2,
-      name: "Sonai Vista",
-      location: "Hinjewadi, Pune",
+      name: "Nilharsh Dwarka",
+      location: "Pune",
       status: "Completed",
       completion: "Jan 2023",
-      description: "Luxury 1 & 2 BHK apartments with garden views",
-      image: "/lovable-uploads/704fe54f-500c-4e0d-8092-fbaf95de6743.png",
-      features: ["Swimming Pool", "Gymnasium", "Kids Play Area", "Club House"]
+      description: "Eco-friendly residential apartments with vertical gardens",
+      image: "/lovable-uploads/4b8402de-76ee-45d4-b909-ba8ea2eaa17b.png",
+      features: ["Green Architecture", "Vertical Gardens", "Sustainable Design", "Energy Efficient"]
     },
     {
       id: 3,
-      name: "Sonai Heights",
-      location: "Wakad, Pune",
+      name: "Essentia",
+      location: "Pune",
       status: "Completed",
-      completion: "Jul 2021",
-      description: "Exclusive 3 & 4 BHK penthouses in prime location",
-      image: "/lovable-uploads/704fe54f-500c-4e0d-8092-fbaf95de6743.png",
-      features: ["Rooftop Infinity Pool", "Private Terraces", "Smart Home", "Tennis Court"]
+      completion: "Jul 2022",
+      description: "Modern high-rise apartments with contemporary design",
+      image: "/lovable-uploads/c77fc28f-decf-4b7d-bb86-a20f26c79cba.png",
+      features: ["Sky Lounge", "Modern Facade", "Smart Home Features", "Scenic Views"]
     }
   ]
 };
@@ -47,7 +47,7 @@ const ProjectDetailsDialog = ({ project }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-gold hover:bg-gold-dark text-white px-6 py-2">
+        <Button className="bg-logo hover:bg-logo-dark text-white px-6 py-2">
           View Details
         </Button>
       </DialogTrigger>
@@ -65,7 +65,7 @@ const ProjectDetailsDialog = ({ project }) => {
             <div className="flex items-center justify-between mb-3">
               <p className="text-charcoal font-medium">{project.location}</p>
               <span className={`inline-block px-3 py-1 text-sm font-medium rounded-full ${
-                project.status === "Completed" ? "bg-green-100 text-green-800" : "bg-gold/20 text-gold"
+                project.status === "Completed" ? "bg-green-100 text-green-800" : "bg-logo/20 text-logo"
               }`}>
                 {project.status}
               </span>
@@ -135,7 +135,7 @@ const Projects = () => {
                     <div className="p-8">
                       <div className="flex justify-between items-start">
                         <h3 className="text-2xl font-playfair font-bold text-deepblue">{project.name}</h3>
-                        <span className="inline-block bg-gold/20 text-gold px-3 py-1 text-sm font-medium rounded-full">
+                        <span className="inline-block bg-logo/20 text-logo px-3 py-1 text-sm font-medium rounded-full">
                           {project.status}
                         </span>
                       </div>
