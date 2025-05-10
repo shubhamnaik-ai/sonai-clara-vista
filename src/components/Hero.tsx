@@ -1,12 +1,8 @@
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import BookVisitForm from "@/components/BookVisitForm";
-import DownloadBrochureForm from "@/components/DownloadBrochureForm";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
-import AnimatedCounter from "./AnimatedCounter";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -60,49 +56,11 @@ const Hero = () => {
           >
             <Button 
               variant="outline" 
-              className="bg-transparent border-white text-white hover:bg-white/10 text-base w-auto px-8 py-6 rounded-none hover:scale-105 transition-transform"
+              className="bg-[#1b727b] border-white text-white hover:bg-[#155a61] text-base w-auto px-8 py-6 rounded-none hover:scale-105 transition-transform"
               onClick={() => navigate('/projects')}
             >
               Explore Project
             </Button>
-          </motion.div>
-          
-          <motion.div 
-            className="mt-10 md:mt-16 flex flex-wrap items-center justify-start gap-6 md:gap-10 text-white"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
-          >
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              className="text-center"
-            >
-              <div className="text-2xl md:text-3xl lg:text-4xl font-raleway font-semibold drop-shadow-lg">
-                <AnimatedCounter start={1} end={22} duration={2} className="inline-block" />
-              </div>
-              <p className="text-xs md:text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">Storeys High</p>
-            </motion.div>
-            <div className="hidden sm:block w-px h-12 md:h-16 bg-white/30"></div>
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              className="text-center"
-            >
-              <p className="text-2xl md:text-3xl lg:text-4xl font-raleway font-semibold drop-shadow-lg">2 & 3</p>
-              <p className="text-xs md:text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">BHK Options</p>
-            </motion.div>
-            <div className="hidden sm:block w-px h-12 md:h-16 bg-white/30"></div>
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              className="text-center"
-            >
-              <div className="text-2xl md:text-3xl lg:text-4xl font-raleway font-semibold drop-shadow-lg">
-                <AnimatedCounter start={1} end={15} duration={2} suffix="+" className="inline-block" />
-              </div>
-              <p className="text-xs md:text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">Premium Amenities</p>
-            </motion.div>
           </motion.div>
         </motion.div>
       </div>
