@@ -44,7 +44,7 @@ const Gallery = () => {
   }, [isInView]);
 
   return (
-    <section id="gallery" ref={ref} className="section-padding bg-neutral-900 py-16">
+    <section id="gallery" ref={ref} className="section-padding bg-white py-16">
       <div className="container-custom">
         <GalleryHeader />
         
@@ -81,16 +81,6 @@ const Gallery = () => {
             
             <div className="flex justify-center items-center mt-8">
               <CarouselPrevious className="relative inset-auto mx-2" />
-              <div className="flex space-x-2">
-                {galleryImages.map((_, index) => (
-                  <div 
-                    key={index}
-                    className={`h-2 w-2 rounded-full ${
-                      index === 0 ? 'bg-logo' : 'bg-gray-400'
-                    }`}
-                  />
-                ))}
-              </div>
               <CarouselNext className="relative inset-auto mx-2" />
             </div>
           </Carousel>

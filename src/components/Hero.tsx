@@ -27,22 +27,13 @@ const Hero = () => {
       </div>
       
       {/* Content */}
-      <div className="container-custom relative z-10 text-center pt-16 md:pt-20">
+      <div className="container-custom relative z-10 text-left pt-16 md:pt-20">
         <motion.div 
           className="max-w-4xl mx-auto px-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.h5 
-            className="text-ivory text-base md:text-xl font-medium uppercase tracking-wider md:tracking-[0.2em] mb-4 drop-shadow-lg"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            style={{ fontFamily: "'Raleway', sans-serif" }}
-          >
-            Premium Living Experience
-          </motion.h5>
           <motion.h1 
             className="text-3xl md:text-5xl lg:text-7xl font-bold text-ivory mb-4 md:mb-6 font-playfair drop-shadow-lg"
             initial={{ opacity: 0, y: 20 }}
@@ -50,45 +41,17 @@ const Hero = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
           >
             Sonai Clara 
-            <motion.span 
-              className="block mt-1 md:mt-2 text-xl md:text-3xl lg:text-5xl text-logo drop-shadow-lg"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              style={{ fontFamily: "'Raleway', sans-serif" }}
-            >
-              Premium Residences
-            </motion.span>
           </motion.h1>
-          <motion.p 
-            className="text-base md:text-xl text-ivory-light mb-6 md:mb-10 max-w-3xl mx-auto font-light drop-shadow-lg font-raleway"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-          >
-            Luxurious 2 & 3 BHK homes in Ravet with 5-star amenities, panoramic views, and impeccable craftsmanship
-          </motion.p>
           
           <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-start justify-start gap-4 mt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
           >
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button 
-                  className="bg-logo hover:bg-logo-dark text-white text-base w-full sm:w-auto px-8 py-6 rounded-none hover:scale-105 transition-transform"
-                >
-                  Book Your Visit
-                </Button>
-              </DialogTrigger>
-              <BookVisitForm />
-            </Dialog>
-
             <Button 
               variant="outline" 
-              className="bg-transparent border-white text-white hover:bg-white/10 text-base w-full sm:w-auto px-8 py-6 rounded-none hover:scale-105 transition-transform"
+              className="bg-transparent border-white text-white hover:bg-white/10 text-base w-auto px-8 py-6 rounded-none hover:scale-105 transition-transform"
               onClick={() => navigate('/projects')}
             >
               Explore Project
@@ -96,7 +59,7 @@ const Hero = () => {
           </motion.div>
           
           <motion.div 
-            className="mt-10 md:mt-16 flex flex-wrap items-center justify-center gap-6 md:gap-10 text-white"
+            className="mt-10 md:mt-16 flex flex-wrap items-center justify-start gap-6 md:gap-10 text-white"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.8 }}

@@ -61,7 +61,7 @@ const Contact = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-ivory">
+    <div className="min-h-screen bg-white">
       <Navbar />
       
       {/* Contact Content */}

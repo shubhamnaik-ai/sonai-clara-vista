@@ -97,7 +97,7 @@ const ProjectDetailsDialog = ({ project }) => {
 
 const Projects = () => {
   return (
-    <div className="min-h-screen bg-ivory">
+    <div className="min-h-screen bg-white">
       <div className="bg-deepblue">
         <Navbar />
       </div>
@@ -114,7 +114,7 @@ const Projects = () => {
         </div>
         
         {/* Current Projects */}
-        <section className="section-padding">
+        <section className="section-padding bg-white">
           <div className="container-custom">
             <div className="mb-12">
               <h2 className="text-3xl font-playfair font-bold text-deepblue mb-2">Current Projects</h2>
@@ -169,7 +169,7 @@ const Projects = () => {
         </section>
         
         {/* Past Projects */}
-        <section className="section-padding bg-ivory-light">
+        <section className="section-padding bg-white">
           <div className="container-custom">
             <div className="mb-12">
               <h2 className="text-3xl font-playfair font-bold text-deepblue mb-2">Past Projects</h2>
