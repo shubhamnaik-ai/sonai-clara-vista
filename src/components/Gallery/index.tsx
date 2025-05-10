@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import GalleryHeader from './GalleryHeader';
 import { galleryImages } from './galleryData';
 import {
@@ -12,12 +12,21 @@ import {
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const Gallery = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.5 });
   const autoplayIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const carouselRef = useRef<{ scrollNext: () => void } | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   // Initialize autoplay when in view
   useEffect(() => {
@@ -43,6 +52,38 @@ const Gallery = () => {
     };
   }, [isInView]);
 
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index);
+    setDialogOpen(true);
+  };
+
+  const handlePrevImage = () => {
+    if (selectedImageIndex === null) return;
+    
+    const newIndex = selectedImageIndex === 0 
+      ? galleryImages.length - 1 
+      : selectedImageIndex - 1;
+    
+    setSelectedImageIndex(newIndex);
+  };
+
+  const handleNextImage = () => {
+    if (selectedImageIndex === null) return;
+    
+    const newIndex = selectedImageIndex === galleryImages.length - 1 
+      ? 0 
+      : selectedImageIndex + 1;
+    
+    setSelectedImageIndex(newIndex);
+  };
+
+  const handleDialogOpenChange = (open: boolean) => {
+    setDialogOpen(open);
+    if (!open) {
+      setSelectedImageIndex(null);
+    }
+  };
+
   return (
     <section id="gallery" ref={ref} className="section-padding bg-white py-16">
       <div className="container-custom">
@@ -67,7 +108,8 @@ const Gallery = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="overflow-hidden rounded-md aspect-video"
+                    className="overflow-hidden rounded-md aspect-video cursor-pointer"
+                    onClick={() => handleImageClick(index)}
                   >
                     <img
                       src={image.src}
@@ -85,6 +127,41 @@ const Gallery = () => {
             </div>
           </Carousel>
         </div>
+
+        {/* Image Expanded Dialog */}
+        <Dialog open={dialogOpen} onOpenChange={handleDialogOpenChange}>
+          <DialogContent className="max-w-4xl p-0 bg-black border-none" onInteractOutside={(e) => e.preventDefault()}>
+            <div className="relative flex items-center justify-center w-full h-full">
+              {selectedImageIndex !== null && (
+                <img
+                  src={galleryImages[selectedImageIndex].src}
+                  alt={galleryImages[selectedImageIndex].alt}
+                  className="max-h-[80vh] w-auto object-contain"
+                />
+              )}
+              
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="absolute left-4 bg-black/50 border-none hover:bg-black/70 rounded-full"
+                onClick={handlePrevImage}
+              >
+                <ArrowLeft className="h-6 w-6" />
+                <span className="sr-only">Previous image</span>
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="absolute right-4 bg-black/50 border-none hover:bg-black/70 rounded-full"
+                onClick={handleNextImage}
+              >
+                <ArrowRight className="h-6 w-6" />
+                <span className="sr-only">Next image</span>
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
