@@ -1,9 +1,10 @@
 
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, ImageIcon } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 
 // Animation variants
 const containerVariants = {
@@ -21,42 +22,73 @@ const itemVariants = {
   show: { opacity: 1, y: 0 }
 };
 
-// Gallery images - update with actual project images
+// Updated gallery images with new uploads
 const galleryImages = [
   {
-    src: "/lovable-uploads/7989d9f1-5ee3-4246-b7c9-7e1418151f9d.png",
-    alt: "Building exterior",
-    caption: "Elegant exterior design with premium finishes"
+    src: "/lovable-uploads/8996af4a-d8ec-417f-b03c-c5eae0a5987c.png",
+    alt: "Building exterior"
   },
   {
-    src: "/lovable-uploads/8cfdc61d-ce9c-4d79-a035-9d830191d0eb.png",
-    alt: "Lobby",
-    caption: "Grand entrance lobby with luxury furnishings"
+    src: "/lovable-uploads/6fd6c37a-a476-462d-8ce3-f03832ac3c49.png",
+    alt: "Building facade"
   },
   {
-    src: "/lovable-uploads/3089f833-f203-4f0a-a2ad-ecef14d84975.png",
-    alt: "Living area",
-    caption: "Spacious living areas with premium finishes"
+    src: "/lovable-uploads/e181df11-4462-4456-b8a5-07892e105fe3.png",
+    alt: "Building view"
   },
   {
-    src: "/lovable-uploads/c77fc28f-decf-4b7d-bb86-a20f26c79cba.png",
-    alt: "Kitchen",
-    caption: "Modern kitchen with high-end appliances"
+    src: "/lovable-uploads/a2de3c79-c3ec-4255-a4de-1781654896a1.png",
+    alt: "Building night view"
   },
   {
-    src: "/lovable-uploads/ede45a26-8fe4-4bad-be36-794da04365c3.png",
-    alt: "Bathroom",
-    caption: "Elegant bathroom with premium fixtures"
+    src: "/lovable-uploads/e5b8ac9e-0bf6-4cf6-be66-1e4bb923b8e9.png",
+    alt: "Kitchen"
   },
   {
-    src: "/lovable-uploads/7b273eb8-c16d-4d81-a8d4-e5024793dd04.png",
-    alt: "Bedroom",
-    caption: "Comfortable bedroom with ample natural light"
+    src: "/lovable-uploads/c983a06d-b61b-483f-97ec-43f143d6168a.png",
+    alt: "Living room"
+  },
+  {
+    src: "/lovable-uploads/a5a29687-f79b-4f46-a6e3-395429ca4ded.png",
+    alt: "Living and dining area"
+  },
+  {
+    src: "/lovable-uploads/0d0aafd4-1e4f-49de-985d-0704baab439f.png",
+    alt: "Living room view"
+  },
+  {
+    src: "/lovable-uploads/30905d77-4f6a-44e5-bd95-221733d89056.png",
+    alt: "Interior view"
+  },
+  {
+    src: "/lovable-uploads/3d8cb99b-4c14-45d8-8281-add6691006ab.png",
+    alt: "Lobby"
+  },
+  {
+    src: "/lovable-uploads/d985c90e-14b6-4020-aaa5-d8b04ab64a44.png",
+    alt: "Lounge area"
+  },
+  {
+    src: "/lovable-uploads/d0eb65d3-4ad9-443b-a025-748104252de4.png",
+    alt: "Bedroom"
   }
 ];
 
 const Gallery = () => {
-  const [expandedImage, setExpandedImage] = useState<number | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+  const goToPrevious = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToNext = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === galleryImages.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
   return (
     <section id="gallery" className="section-padding bg-white">
@@ -82,47 +114,88 @@ const Gallery = () => {
           </motion.div>
         </div>
 
-        {/* Single row of images */}
-        <div className="flex overflow-x-auto pb-6 space-x-4 scrollbar-hide">
-          {galleryImages.map((image, index) => (
-            <Dialog key={index}>
-              <DialogTrigger asChild>
-                <motion.div
-                  className="relative flex-none w-64 md:w-80 overflow-hidden group cursor-pointer rounded-md"
-                  variants={itemVariants}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="aspect-w-4 aspect-h-3">
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
+        {/* Gallery display with navigation controls */}
+        <div className="relative max-w-4xl mx-auto">
+          <Dialog>
+            <DialogTrigger asChild>
+              <motion.div
+                className="relative aspect-w-16 aspect-h-9 overflow-hidden rounded-lg cursor-pointer"
+                variants={itemVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img 
+                  src={galleryImages[currentImageIndex].src}
+                  alt={galleryImages[currentImageIndex].alt}
+                  className="object-cover w-full h-full"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="text-white text-center">
+                    <p className="text-lg font-medium">Click to expand</p>
                   </div>
-                  <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="text-white">
-                      <ImageIcon size={36} />
-                      <p className="mt-2 text-sm font-medium tracking-wider uppercase">{image.alt}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              </DialogTrigger>
-              <DialogContent className="max-w-5xl bg-black bg-opacity-90 border-none">
-                <div className="relative">
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full max-h-[80vh] object-contain"
-                  />
-                  <p className="text-white text-center mt-3 font-light">{image.caption}</p>
                 </div>
-              </DialogContent>
-            </Dialog>
-          ))}
+              </motion.div>
+            </DialogTrigger>
+            <DialogContent className="max-w-5xl bg-black bg-opacity-90 border-none">
+              <div className="relative">
+                <img
+                  src={galleryImages[currentImageIndex].src}
+                  alt={galleryImages[currentImageIndex].alt}
+                  className="w-full max-h-[80vh] object-contain"
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
+
+          {/* Navigation buttons */}
+          <button 
+            onClick={goToPrevious}
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal rounded-full p-2 shadow-md z-10"
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          
+          <button 
+            onClick={goToNext}
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal rounded-full p-2 shadow-md z-10"
+            aria-label="Next image"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </div>
+
+        {/* Pagination indicators */}
+        <div className="mt-6">
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious onClick={goToPrevious} className="cursor-pointer" />
+              </PaginationItem>
+              
+              {galleryImages.map((_, index) => (
+                <PaginationItem key={index} className={cn(
+                  "hidden md:inline-block",
+                  index >= currentImageIndex - 2 && index <= currentImageIndex + 2 ? "block" : "hidden"
+                )}>
+                  <PaginationLink
+                    isActive={currentImageIndex === index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className="cursor-pointer"
+                  >
+                    {index + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+              
+              <PaginationItem>
+                <PaginationNext onClick={goToNext} className="cursor-pointer" />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
         </div>
       </div>
     </section>
