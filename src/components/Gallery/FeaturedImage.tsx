@@ -1,7 +1,9 @@
-
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+
+// This component is no longer being used as we've moved to a carousel-based layout
+// Keeping it here for reference, but you can safely delete it if you're sure the new implementation works
 
 interface FeaturedImageProps {
   currentImage: {
