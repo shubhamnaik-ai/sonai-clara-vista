@@ -42,8 +42,9 @@ const textVariants = {
 
 const ProjectHighlights = () => {
   return (
-    <section id="highlights" className="section-padding">
-      <div className="container-custom">
+    <section id="highlights" className="section-padding bg-dark-gradient">
+      <div className="geometric-pattern absolute inset-0 opacity-30 z-0"></div>
+      <div className="container-custom relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center justify-center space-x-2 text-logo">
             <CheckCircle2 size={24} />

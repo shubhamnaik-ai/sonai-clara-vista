@@ -35,34 +35,33 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h5 
-            className="text-logo text-base md:text-xl font-medium uppercase tracking-wider md:tracking-[0.2em] mb-4 drop-shadow-lg"
+            className="text-ivory text-base md:text-xl font-medium uppercase tracking-wider md:tracking-[0.2em] mb-4 drop-shadow-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "'Raleway', sans-serif" }}
           >
             Premium Living Experience
           </motion.h5>
           <motion.h1 
-            className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6 font-logo drop-shadow-lg"
+            className="text-3xl md:text-5xl lg:text-7xl font-bold text-ivory mb-4 md:mb-6 font-playfair drop-shadow-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            style={{ fontFamily: "Georgia, serif" }}
           >
             Sonai Clara 
             <motion.span 
-              className="block mt-1 md:mt-2 text-xl md:text-3xl lg:text-5xl text-logo/90 drop-shadow-lg"
+              className="block mt-1 md:mt-2 text-xl md:text-3xl lg:text-5xl text-logo drop-shadow-lg"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              style={{ fontFamily: "'Raleway', sans-serif" }}
             >
               Premium Residences
             </motion.span>
           </motion.h1>
           <motion.p 
-            className="text-base md:text-xl text-white mb-6 md:mb-10 max-w-3xl mx-auto font-medium drop-shadow-lg"
+            className="text-base md:text-xl text-ivory-light mb-6 md:mb-10 max-w-3xl mx-auto font-light drop-shadow-lg font-raleway"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.6 }}
@@ -107,7 +106,7 @@ const Hero = () => {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               className="text-center"
             >
-              <div className="text-2xl md:text-3xl lg:text-4xl font-playfair font-semibold drop-shadow-lg">
+              <div className="text-2xl md:text-3xl lg:text-4xl font-raleway font-semibold drop-shadow-lg">
                 <AnimatedCounter start={1} end={22} duration={2} className="inline-block" />
               </div>
               <p className="text-xs md:text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">Storeys High</p>
@@ -118,7 +117,7 @@ const Hero = () => {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               className="text-center"
             >
-              <p className="text-2xl md:text-3xl lg:text-4xl font-playfair font-semibold drop-shadow-lg">2 & 3</p>
+              <p className="text-2xl md:text-3xl lg:text-4xl font-raleway font-semibold drop-shadow-lg">2 & 3</p>
               <p className="text-xs md:text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">BHK Options</p>
             </motion.div>
             <div className="hidden sm:block w-px h-12 md:h-16 bg-white/30"></div>
@@ -127,7 +126,7 @@ const Hero = () => {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               className="text-center"
             >
-              <div className="text-2xl md:text-3xl lg:text-4xl font-playfair font-semibold drop-shadow-lg">
+              <div className="text-2xl md:text-3xl lg:text-4xl font-raleway font-semibold drop-shadow-lg">
                 <AnimatedCounter start={1} end={15} duration={2} suffix="+" className="inline-block" />
               </div>
               <p className="text-xs md:text-sm uppercase tracking-wider mt-1 font-medium drop-shadow-lg">Premium Amenities</p>
