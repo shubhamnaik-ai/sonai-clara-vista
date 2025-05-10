@@ -20,7 +20,7 @@ const Hero = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{ 
-          backgroundImage: 'url("/lovable-uploads/704fe54f-500c-4e0d-8092-fbaf95de6743.png")',
+          backgroundImage: 'url("/lovable-uploads/47a5c108-4ec6-4b54-97a7-615bfe0e3601.png")',
         }}
       >
         <div className="absolute inset-0 bg-deepblue/50 backdrop-blur-[2px]"></div>
@@ -29,7 +29,7 @@ const Hero = () => {
       {/* Content */}
       <div className="container-custom relative z-10 text-left pt-16 md:pt-20">
         <motion.div 
-          className="max-w-4xl mx-auto px-4"
+          className="max-w-4xl px-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -43,8 +43,17 @@ const Hero = () => {
             Sonai Clara 
           </motion.h1>
           
+          <motion.p
+            className="text-white text-lg md:text-xl max-w-2xl mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
+            Luxurious 2 & 3 BHK homes in Ravet with 5-star amenities, panoramic views, and impeccable craftsmanship
+          </motion.p>
+          
           <motion.div 
-            className="flex flex-col sm:flex-row items-start justify-start gap-4 mt-8"
+            className="flex flex-col sm:flex-row items-start justify-start gap-4 mt-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
