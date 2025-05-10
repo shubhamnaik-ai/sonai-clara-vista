@@ -9,6 +9,7 @@ import FloorPlans from "@/components/FloorPlans";
 import Gallery from "@/components/Gallery";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
 import { motion, useInView } from "framer-motion";
 import { Dialog } from "@/components/ui/dialog";
@@ -104,6 +105,9 @@ const Index = () => {
           <Navbar />
         </div>
         
+        {/* WhatsApp Button */}
+        {contentVisible && <WhatsAppButton />}
+        
         <div className={`transition-all duration-1000 delay-200 transform ${
           contentVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
         }`}>
@@ -166,7 +170,7 @@ const Index = () => {
         {showBackToTop && (
           <motion.a 
             href="#home" 
-            className="fixed right-6 bottom-6 w-12 h-12 rounded-full bg-gold hover:bg-gold-dark text-white flex items-center justify-center shadow-lg z-30"
+            className="fixed right-6 bottom-6 w-12 h-12 rounded-full bg-logo hover:bg-logo-dark text-white flex items-center justify-center shadow-lg z-30"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}

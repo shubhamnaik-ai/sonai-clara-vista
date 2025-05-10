@@ -22,6 +22,7 @@ export default {
 			fontFamily: {
 				'playfair': ['"Playfair Display"', 'serif'],
 				'raleway': ['Raleway', 'sans-serif'],
+				'logo': ['Georgia', 'serif'], // Added logo font family
 			},
 			colors: {
 				ivory: {
@@ -29,10 +30,10 @@ export default {
 					light: '#FAFAF5',
 					dark: '#E5E5E0',
 				},
-				gold: {
-					DEFAULT: '#D4AF37',
-					light: '#E1C661',
-					dark: '#BF9B30',
+				logo: { // Replaced gold with logo
+					DEFAULT: '#91583C', // Dark brown color from the logo
+					light: '#B37D62',   // Lighter version
+					dark: '#6E3F27',    // Darker version
 				},
 				deepblue: {
 					DEFAULT: '#0C2340',

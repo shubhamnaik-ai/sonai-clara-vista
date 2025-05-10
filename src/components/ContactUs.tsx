@@ -10,14 +10,14 @@ const ContactUs = () => {
     <section id="contact" className="section-padding bg-ivory">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="flex items-center justify-center space-x-2 text-gold">
+          <div className="flex items-center justify-center space-x-2 text-logo">
             {React.createElement(Mail, { size: 24 })}
             <span className="text-sm uppercase tracking-wider">Get In Touch</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-deepblue mt-4">
             Contact Us
           </h2>
-          <div className="divider mx-auto"></div>
+          <div className="divider mx-auto bg-logo"></div>
           <p className="text-charcoal-light text-lg">
             Have questions about Sonai Clara? Our team is here to help you find your dream home.
           </p>
@@ -36,7 +36,7 @@ const ContactUs = () => {
                   <Input 
                     id="name" 
                     placeholder="Your name" 
-                    className="border-gray-300 focus:border-gold focus:ring-gold" 
+                    className="border-gray-300 focus:border-logo focus:ring-logo" 
                     required
                   />
                 </div>
@@ -49,7 +49,7 @@ const ContactUs = () => {
                     id="phone" 
                     type="tel" 
                     placeholder="Your phone number" 
-                    className="border-gray-300 focus:border-gold focus:ring-gold" 
+                    className="border-gray-300 focus:border-logo focus:ring-logo" 
                     required
                   />
                 </div>
@@ -63,7 +63,7 @@ const ContactUs = () => {
                   id="email" 
                   type="email" 
                   placeholder="Your email" 
-                  className="border-gray-300 focus:border-gold focus:ring-gold" 
+                  className="border-gray-300 focus:border-logo focus:ring-logo" 
                   required
                 />
               </div>
@@ -74,7 +74,7 @@ const ContactUs = () => {
                 </label>
                 <select 
                   id="interest"
-                  className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold"
+                  className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-logo focus:ring-1 focus:ring-logo"
                 >
                   <option value="">Select your interest</option>
                   <option value="2bhk">2 BHK Apartment</option>
@@ -92,11 +92,11 @@ const ContactUs = () => {
                 <Textarea 
                   id="message" 
                   placeholder="Write your message here" 
-                  className="min-h-[120px] border-gray-300 focus:border-gold focus:ring-gold" 
+                  className="min-h-[120px] border-gray-300 focus:border-logo focus:ring-logo" 
                 />
               </div>
               
-              <Button type="submit" className="w-full bg-gold hover:bg-gold-dark text-white py-6">
+              <Button type="submit" className="w-full bg-logo hover:bg-logo-dark text-white py-6">
                 Send Message
               </Button>
             </form>
@@ -108,8 +108,8 @@ const ContactUs = () => {
               
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="text-gold" />
+                  <div className="w-12 h-12 rounded-full bg-logo/10 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="text-logo" />
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-deepblue">Site Address</h4>
@@ -121,8 +121,8 @@ const ContactUs = () => {
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="text-gold" />
+                  <div className="w-12 h-12 rounded-full bg-logo/10 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="text-logo" />
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-deepblue">Office Address</h4>
@@ -131,10 +131,10 @@ const ContactUs = () => {
                       Pimpri-Chinchwad, Maharashtra 412101
                     </p>
                     <a 
-                      href="https://maps.google.com/?q=18.650203,73.739368" 
+                      href="https://maps.google.com/?q=18.650473,73.739411" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-gold hover:underline mt-2"
+                      className="inline-flex items-center gap-1 text-logo hover:underline mt-2"
                     >
                       <span>Get Directions</span>
                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -146,8 +146,8 @@ const ContactUs = () => {
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                    <Phone className="text-gold" />
+                  <div className="w-12 h-12 rounded-full bg-logo/10 flex items-center justify-center flex-shrink-0">
+                    <Phone className="text-logo" />
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-deepblue">Phone</h4>
@@ -159,8 +159,8 @@ const ContactUs = () => {
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="text-gold" />
+                  <div className="w-12 h-12 rounded-full bg-logo/10 flex items-center justify-center flex-shrink-0">
+                    <Mail className="text-logo" />
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-deepblue">Email</h4>
@@ -190,7 +190,7 @@ const ContactUs = () => {
                 </div>
               </div>
               
-              <Button className="w-full bg-gold hover:bg-gold-dark text-white">
+              <Button className="w-full bg-logo hover:bg-logo-dark text-white">
                 Schedule a Visit
               </Button>
             </div>

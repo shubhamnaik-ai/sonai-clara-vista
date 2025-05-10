@@ -10,38 +10,42 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   const [progress, setProgress] = useState(0);
   
   useEffect(() => {
-    // Start with initial progress
-    setProgress(10);
+    // Create a smoother, continuous progress animation
+    let startTime: number;
+    let animationId: number;
     
-    // Simulate resource loading with more gradual progression
-    const timer1 = setTimeout(() => setProgress(25), 500);
-    const timer2 = setTimeout(() => setProgress(40), 1000);
-    const timer3 = setTimeout(() => setProgress(55), 1500);
-    const timer4 = setTimeout(() => setProgress(70), 2000);
-    const timer5 = setTimeout(() => setProgress(85), 2500);
-    const timer6 = setTimeout(() => setProgress(95), 3000);
+    const animateProgress = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      
+      // Calculate progress over 3.5 seconds (3500ms)
+      const elapsed = timestamp - startTime;
+      const duration = 3500; 
+      
+      // Use easeOutQuad for smoother end of animation
+      const easeOutQuad = (t: number) => t * (2 - t);
+      
+      if (elapsed < duration) {
+        const rawProgress = Math.min((elapsed / duration), 0.99);
+        const smoothProgress = Math.floor(easeOutQuad(rawProgress) * 100);
+        setProgress(smoothProgress);
+        animationId = requestAnimationFrame(animateProgress);
+      } else {
+        // Final step to 100%
+        setProgress(100);
+        setTimeout(onLoadingComplete, 500); // Small delay before transition
+      }
+    };
     
-    // Final loading complete
-    const timer7 = setTimeout(() => {
-      setProgress(100);
-      setTimeout(onLoadingComplete, 500); // Small delay before transition
-    }, 3500);
+    animationId = requestAnimationFrame(animateProgress);
     
     return () => {
-      // Clear all timers on unmount
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-      clearTimeout(timer4);
-      clearTimeout(timer5);
-      clearTimeout(timer6);
-      clearTimeout(timer7);
+      if (animationId) cancelAnimationFrame(animationId);
     };
   }, [onLoadingComplete]);
   
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white transition-opacity duration-500">
-      <div className="relative w-48 h-48 mb-4">
+      <div className="relative w-56 h-56 mb-4"> {/* Increased from w-48 h-48 */}
         {/* Logo with transparent overlay */}
         <img 
           src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png" 

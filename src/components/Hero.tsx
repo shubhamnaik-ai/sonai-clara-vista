@@ -35,25 +35,28 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h5 
-            className="text-gold text-base md:text-xl font-medium uppercase tracking-wider md:tracking-[0.2em] mb-4 drop-shadow-lg"
+            className="text-logo text-base md:text-xl font-medium uppercase tracking-wider md:tracking-[0.2em] mb-4 drop-shadow-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
+            style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Premium Living Experience
           </motion.h5>
           <motion.h1 
-            className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6 font-playfair drop-shadow-lg"
+            className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6 font-logo drop-shadow-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
+            style={{ fontFamily: "Georgia, serif" }}
           >
             Sonai Clara 
             <motion.span 
-              className="block mt-1 md:mt-2 text-xl md:text-3xl lg:text-5xl text-gold/90 drop-shadow-lg"
+              className="block mt-1 md:mt-2 text-xl md:text-3xl lg:text-5xl text-logo/90 drop-shadow-lg"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.6 }}
+              style={{ fontFamily: "'Playfair Display', serif" }}
             >
               Premium Residences
             </motion.span>
@@ -76,7 +79,7 @@ const Hero = () => {
             <Dialog>
               <DialogTrigger asChild>
                 <Button 
-                  className="bg-gold hover:bg-gold-dark text-white text-base w-full sm:w-auto px-8 py-6 rounded-none hover:scale-105 transition-transform"
+                  className="bg-logo hover:bg-logo-dark text-white text-base w-full sm:w-auto px-8 py-6 rounded-none hover:scale-105 transition-transform"
                 >
                   Book Your Visit
                 </Button>

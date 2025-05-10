@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -84,11 +83,11 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
   return (
     <DialogContent className="sm:max-w-[425px]">
       <DialogHeader className="text-center">
-        <div className="flex justify-center mb-2">
+        <div className="flex justify-center mb-3">
           <img 
             src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png" 
             alt="Sonai Clara Logo" 
-            className="h-12"
+            className="h-16"
           />
         </div>
         <DialogTitle className="text-2xl text-deepblue">Contact Us</DialogTitle>
@@ -203,7 +202,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
           <DialogFooter className="pt-4">
             <Button 
               type="submit" 
-              className="bg-gold hover:bg-gold-dark text-white w-full sm:w-auto"
+              className="bg-logo hover:bg-logo-dark text-white w-full sm:w-auto"
               disabled={isSubmitting}
             >
               {isSubmitting ? (

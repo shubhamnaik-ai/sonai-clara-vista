@@ -48,7 +48,14 @@ const BookVisitForm = () => {
 
   return (
     <DialogContent className="sm:max-w-[425px]">
-      <DialogHeader>
+      <DialogHeader className="text-center">
+        <div className="flex justify-center mb-3">
+          <img 
+            src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png" 
+            alt="Sonai Clara Logo" 
+            className="h-16" // Increased from not specified
+          />
+        </div>
         <DialogTitle className="text-2xl text-deepblue">Book Your Visit</DialogTitle>
         <DialogDescription>
           Schedule a visit to explore our premium residences firsthand.
@@ -157,7 +164,7 @@ const BookVisitForm = () => {
           />
           
           <DialogFooter className="pt-4">
-            <Button type="submit" className="bg-gold hover:bg-gold-dark text-white">
+            <Button type="submit" className="bg-logo hover:bg-logo-dark text-white">
               Book Now
             </Button>
           </DialogFooter>
