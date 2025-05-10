@@ -30,7 +30,7 @@ export default {
 					light: '#FAFAF5',
 					dark: '#E5E5E0',
 				},
-				logo: { // Replaced gold with logo
+				logo: { // Already defined correctly
 					DEFAULT: '#91583C', // Dark brown color from the logo
 					light: '#B37D62',   // Lighter version
 					dark: '#6E3F27',    // Darker version
