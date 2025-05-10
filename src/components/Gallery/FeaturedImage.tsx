@@ -2,7 +2,6 @@
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 interface FeaturedImageProps {
   currentImage: {
@@ -21,39 +20,20 @@ const itemVariants = {
 const FeaturedImage = ({ currentImage, goToPrevious, goToNext }: FeaturedImageProps) => {
   return (
     <div className="relative max-w-4xl mx-auto mb-8">
-      <Dialog>
-        <DialogTrigger asChild>
-          <motion.div
-            className="relative aspect-w-16 aspect-h-9 overflow-hidden rounded-lg cursor-pointer"
-            variants={itemVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-          >
-            <img 
-              src={currentImage.src}
-              alt={currentImage.alt}
-              className="object-cover w-full h-full"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <div className="text-white text-center">
-                <p className="text-lg font-medium">Click to expand</p>
-              </div>
-            </div>
-          </motion.div>
-        </DialogTrigger>
-        <DialogContent className="max-w-5xl bg-black bg-opacity-90 border-none">
-          <div className="relative">
-            <img
-              src={currentImage.src}
-              alt={currentImage.alt}
-              className="w-full max-h-[80vh] object-contain"
-            />
-          </div>
-        </DialogContent>
-      </Dialog>
+      <motion.div
+        className="relative aspect-w-16 aspect-h-9 overflow-hidden rounded-lg"
+        variants={itemVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        transition={{ duration: 0.3 }}
+      >
+        <img 
+          src={currentImage.src}
+          alt={currentImage.alt}
+          className="object-cover w-full h-full"
+        />
+      </motion.div>
 
       {/* Navigation buttons */}
       <button 
