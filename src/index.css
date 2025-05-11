@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap');
 /* Import Nasalization font */
 @font-face {
@@ -77,7 +78,7 @@
 
 /* Add Nasalization font class */
 .font-nasalization {
-  font-family: 'Nasalization', sans-serif;
+  font-family: 'Nasalization', sans-serif !important;
 }
 
 .section-padding {
