@@ -96,9 +96,11 @@ const ContactUs = () => {
                 />
               </div>
               
-              <Button type="submit" className="w-full bg-logo hover:bg-logo-dark text-white py-6">
-                Send Message
-              </Button>
+              <div className="pt-4">
+                <Button type="submit" className="w-full bg-logo hover:bg-logo-dark text-white py-6">
+                  Send Message
+                </Button>
+              </div>
             </form>
           </div>
           

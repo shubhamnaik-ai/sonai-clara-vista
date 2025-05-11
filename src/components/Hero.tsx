@@ -47,7 +47,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
           >
-            Luxurious 2 & 3 BHK homes in Ravet with 5-star amenities, panoramic views, and impeccable craftsmanship
+            Experience luxury in our premium 2 & 3 BHK apartments. A harmonious blend of contemporary design and tranquil living, perfectly positioned in the heart of Ravet.
           </motion.p>
           
           <motion.div 

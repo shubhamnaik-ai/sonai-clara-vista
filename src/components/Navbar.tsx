@@ -35,17 +35,17 @@ const Navbar = () => {
       scrolled ? "py-1 shadow-md" : "py-2"
     } ${isHomePage ? "bg-white" : "bg-white"}`}>
       <div className="container-custom mx-auto flex items-center justify-between px-4">
-        {/* Logo - Smaller size */}
-        <Link to="/" className="relative z-10">
+        {/* Logo - Always on the left */}
+        <Link to="/" className="relative z-10 flex-shrink-0">
           <img
             src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png"
             alt="Sonai Realty"
-            className="h-10 w-auto" // Reduced from h-14 to h-10
+            className="h-10 w-auto"
           />
         </Link>
         
         {/* Desktop Navigation - Smaller text and spacing */}
-        <nav className="hidden lg:flex items-center space-x-6"> {/* Reduced from space-x-8 */}
+        <nav className="hidden lg:flex items-center space-x-6">
           <NavLink to="/" isActive={location.pathname === "/"}>
             Home
           </NavLink>
@@ -63,7 +63,7 @@ const Navbar = () => {
           onClick={toggleMenu}
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />} {/* Smaller icons */}
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
         
         {/* Mobile Navigation */}
@@ -74,9 +74,9 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-white pt-20 z-0 lg:hidden overflow-auto" /* Reduced from pt-24 */
+              className="fixed inset-0 bg-white pt-20 z-0 lg:hidden overflow-auto"
             >
-              <div className="container-custom mx-auto px-4 flex flex-col space-y-4 pb-8"> {/* Reduced space-y-6 */}
+              <div className="container-custom mx-auto px-4 flex flex-col space-y-4 pb-8">
                 <MobileNavLink to="/" isActive={location.pathname === "/"}>
                   Home
                 </MobileNavLink>

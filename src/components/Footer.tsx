@@ -21,7 +21,7 @@ const Footer = () => {
                 <img 
                   src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png"
                   alt="Sonai Realty Logo"
-                  className="h-20"
+                  className="h-28" // Increased from h-20 to h-28
                 />
               </div>
               <p className="text-deepblue/70 mb-6">
