@@ -108,7 +108,7 @@ const Gallery = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="overflow-hidden rounded-md aspect-video cursor-pointer"
+                    className="overflow-hidden rounded-md cursor-pointer h-[220px] sm:h-[240px] md:h-[260px]"
                     onClick={() => handleImageClick(index)}
                   >
                     <img
@@ -130,14 +130,16 @@ const Gallery = () => {
 
         {/* Image Expanded Dialog */}
         <Dialog open={dialogOpen} onOpenChange={handleDialogOpenChange}>
-          <DialogContent className="max-w-4xl p-0 bg-black border-none" onInteractOutside={(e) => e.preventDefault()}>
+          <DialogContent className="max-w-4xl p-0 bg-black border-none max-h-[90vh] overflow-hidden" onInteractOutside={(e) => e.preventDefault()}>
             <div className="relative flex items-center justify-center w-full h-full">
               {selectedImageIndex !== null && (
-                <img
-                  src={galleryImages[selectedImageIndex].src}
-                  alt={galleryImages[selectedImageIndex].alt}
-                  className="max-h-[80vh] w-auto object-contain"
-                />
+                <div className="w-full h-full max-h-[80vh] flex items-center justify-center">
+                  <img
+                    src={galleryImages[selectedImageIndex].src}
+                    alt={galleryImages[selectedImageIndex].alt}
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
               )}
               
               <Button 

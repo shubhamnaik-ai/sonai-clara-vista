@@ -152,7 +152,7 @@ const Contact = () => {
                 <div className="pt-4">
                   <MotionButton
                     type="submit"
-                    className="bg-gold hover:bg-gold-dark text-white w-full py-3"
+                    className="bg-[#1b727b] hover:bg-[#155a61] text-white w-full py-3"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >

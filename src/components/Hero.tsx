@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen w-full flex items-center justify-start overflow-hidden"
     >
       {/* Background Image with Parallax effect */}
       <div 
@@ -25,7 +25,7 @@ const Hero = () => {
       {/* Content */}
       <div className="container-custom relative z-10 text-left pt-16 md:pt-20">
         <motion.div 
-          className="max-w-4xl px-4"
+          className="max-w-4xl px-4 flex flex-col items-start"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -42,7 +42,7 @@ const Hero = () => {
           </motion.div>
           
           <motion.p
-            className="text-white text-lg md:text-xl max-w-2xl mb-8"
+            className="text-white text-lg md:text-xl max-w-2xl mb-8 text-left"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
