@@ -29,7 +29,7 @@ const WhatsAppButton = () => {
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                   <img 
-                    src="/lovable-uploads/dde88751-5b9a-4387-b4be-c2056cd16a9e.png" 
+                    src="/lovable-uploads/bc091176-a48e-42de-9ef3-72929b909d4d.png" 
                     alt="WhatsApp" 
                     className="w-5 h-5"
                   />
@@ -51,7 +51,7 @@ const WhatsAppButton = () => {
               className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors"
             >
               <img 
-                src="/lovable-uploads/dde88751-5b9a-4387-b4be-c2056cd16a9e.png" 
+                src="/lovable-uploads/bc091176-a48e-42de-9ef3-72929b909d4d.png" 
                 alt="WhatsApp" 
                 className="w-5 h-5"
               />
@@ -72,7 +72,7 @@ const WhatsAppButton = () => {
           <X size={24} />
         ) : (
           <img 
-            src="/lovable-uploads/dde88751-5b9a-4387-b4be-c2056cd16a9e.png" 
+            src="/lovable-uploads/bc091176-a48e-42de-9ef3-72929b909d4d.png" 
             alt="WhatsApp" 
             className="w-7 h-7"
           />
