@@ -6,7 +6,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-deepblue text-white">
+    <footer className="bg-white text-deepblue">
       <div className="container mx-auto px-4 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info with Logo */}
@@ -17,20 +17,20 @@ const Footer = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="bg-white p-3 rounded-md inline-block mb-6">
+              <div className="bg-white p-4 rounded-md inline-block mb-6 shadow-sm">
                 <img 
                   src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png"
                   alt="Sonai Realty Logo"
-                  className="h-16"
+                  className="h-20"
                 />
               </div>
-              <p className="text-white/70 mb-6">
+              <p className="text-deepblue/70 mb-6">
                 Creating exceptional living spaces with uncompromising quality and attention to detail. Experience luxury redefined at Sonai Clara.
               </p>
               <div className="flex space-x-4">
                 <motion.a 
                   href="#" 
-                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors"
+                  className="w-10 h-10 rounded-full bg-deepblue/10 flex items-center justify-center hover:bg-gold transition-colors"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
@@ -40,7 +40,7 @@ const Footer = () => {
                 </motion.a>
                 <motion.a 
                   href="#" 
-                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors"
+                  className="w-10 h-10 rounded-full bg-deepblue/10 flex items-center justify-center hover:bg-gold transition-colors"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
@@ -52,7 +52,7 @@ const Footer = () => {
                 </motion.a>
                 <motion.a 
                   href="#" 
-                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors"
+                  className="w-10 h-10 rounded-full bg-deepblue/10 flex items-center justify-center hover:bg-gold transition-colors"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
@@ -62,7 +62,7 @@ const Footer = () => {
                 </motion.a>
                 <motion.a 
                   href="#" 
-                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors"
+                  className="w-10 h-10 rounded-full bg-deepblue/10 flex items-center justify-center hover:bg-gold transition-colors"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
@@ -83,12 +83,12 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h4 className="text-lg font-semibold mb-6 uppercase tracking-wider">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-6 uppercase tracking-wider text-deepblue">Quick Links</h4>
             <ul className="space-y-3">
               <li>
                 <motion.a 
                   href="#home" 
-                  className="text-white/70 hover:text-gold transition-colors"
+                  className="text-deepblue/70 hover:text-gold transition-colors"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
@@ -98,7 +98,7 @@ const Footer = () => {
               <li>
                 <motion.a 
                   href="#about" 
-                  className="text-white/70 hover:text-gold transition-colors"
+                  className="text-deepblue/70 hover:text-gold transition-colors"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
@@ -108,7 +108,7 @@ const Footer = () => {
               <li>
                 <motion.a 
                   href="#sonai-clara" 
-                  className="text-white/70 hover:text-gold transition-colors"
+                  className="text-deepblue/70 hover:text-gold transition-colors"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
@@ -118,7 +118,7 @@ const Footer = () => {
               <li>
                 <motion.a 
                   href="#amenities" 
-                  className="text-white/70 hover:text-gold transition-colors"
+                  className="text-deepblue/70 hover:text-gold transition-colors"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
@@ -128,7 +128,7 @@ const Footer = () => {
               <li>
                 <motion.a 
                   href="#floor-plans" 
-                  className="text-white/70 hover:text-gold transition-colors"
+                  className="text-deepblue/70 hover:text-gold transition-colors"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
@@ -138,7 +138,7 @@ const Footer = () => {
               <li>
                 <motion.a 
                   href="#gallery" 
-                  className="text-white/70 hover:text-gold transition-colors"
+                  className="text-deepblue/70 hover:text-gold transition-colors"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
@@ -148,7 +148,7 @@ const Footer = () => {
               <li>
                 <motion.a 
                   href="#contact" 
-                  className="text-white/70 hover:text-gold transition-colors"
+                  className="text-deepblue/70 hover:text-gold transition-colors"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
@@ -165,14 +165,14 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <h4 className="text-lg font-semibold mb-6 uppercase tracking-wider">Contact Info</h4>
+            <h4 className="text-lg font-semibold mb-6 uppercase tracking-wider text-deepblue">Contact Info</h4>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold mt-1">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                <span className="text-white/70">
+                <span className="text-deepblue/70">
                   Sonai Clara, Ravet, Pune,<br />
                   Maharashtra 412101, India
                 </span>
@@ -181,21 +181,21 @@ const Footer = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
-                <span className="text-white/70">+91 9730057272</span>
+                <span className="text-deepblue/70">+91 9730057272</span>
               </li>
               <li className="flex items-center space-x-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
-                <span className="text-white/70">info@sonairealty.com</span>
+                <span className="text-deepblue/70">info@sonairealty.com</span>
               </li>
               <li className="flex items-center space-x-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
-                <span className="text-white/70">Mon-Fri: 10:00 AM - 7:00 PM</span>
+                <span className="text-deepblue/70">Mon-Fri: 10:00 AM - 7:00 PM</span>
               </li>
             </ul>
           </motion.div>
@@ -207,15 +207,15 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <h4 className="text-lg font-semibold mb-6 uppercase tracking-wider">Newsletter</h4>
-            <p className="text-white/70 mb-4">
+            <h4 className="text-lg font-semibold mb-6 uppercase tracking-wider text-deepblue">Newsletter</h4>
+            <p className="text-deepblue/70 mb-4">
               Subscribe to our newsletter for the latest updates and exclusive offers.
             </p>
             <form className="flex">
               <input 
                 type="email" 
                 placeholder="Your email" 
-                className="flex-1 bg-white/10 border-0 text-white placeholder:text-white/50 focus:ring-gold px-4 py-2"
+                className="flex-1 bg-deepblue/10 border-0 text-deepblue placeholder:text-deepblue/50 focus:ring-gold px-4 py-2"
               />
               <motion.button 
                 type="submit" 
@@ -232,8 +232,8 @@ const Footer = () => {
           </motion.div>
         </div>
         
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-center items-center">
-          <p className="text-white/50 text-sm">
+        <div className="border-t border-deepblue/10 mt-12 pt-8 flex flex-col md:flex-row justify-center items-center">
+          <p className="text-deepblue/50 text-sm">
             &copy; {currentYear} Sonai Realty. All rights reserved.
           </p>
         </div>

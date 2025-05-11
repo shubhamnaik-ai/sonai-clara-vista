@@ -70,7 +70,8 @@ const Index = () => {
       const imagesToPreload = [
         "/lovable-uploads/704fe54f-500c-4e0d-8092-fbaf95de6743.png",  // Hero bg
         "/lovable-uploads/d742cfde-c5d6-4275-b50b-4e848cef3033.png",   // Floor plan
-        "/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png"    // Logo
+        "/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png",    // Logo
+        "/lovable-uploads/ea9317ca-85df-4253-8e37-5cd3882addfd.png"    // New Sonai Clara logo
       ];
       
       imagesToPreload.forEach(src => {
@@ -170,7 +171,7 @@ const Index = () => {
         {showBackToTop && (
           <motion.a 
             href="#home" 
-            className="fixed right-6 bottom-6 w-12 h-12 rounded-full bg-logo hover:bg-logo-dark text-white flex items-center justify-center shadow-lg z-30"
+            className="fixed right-6 bottom-6 w-14 h-14 rounded-full bg-logo hover:bg-logo-dark text-white flex items-center justify-center shadow-lg z-30"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}

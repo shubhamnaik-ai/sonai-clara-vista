@@ -34,7 +34,7 @@ const WhatsAppButton = () => {
               </div>
               <button 
                 onClick={toggleChat}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-400 hover:text-gray-600 ml-auto"
               >
                 <X size={18} />
               </button>

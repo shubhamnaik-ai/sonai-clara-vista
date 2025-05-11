@@ -37,7 +37,7 @@ const Hero = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
           >
             <img 
-              src="/lovable-uploads/d1f99b69-7734-4117-b3ff-b57eb47c9b98.png"
+              src="/lovable-uploads/ea9317ca-85df-4253-8e37-5cd3882addfd.png"
               alt="Sonai Clara"
               className="max-w-xs md:max-w-sm"
             />
