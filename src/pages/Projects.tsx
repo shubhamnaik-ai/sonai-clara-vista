@@ -261,9 +261,12 @@ const Projects = () => {
                 )}
                 
                 <div className="mt-10 flex justify-center">
-                  <Button className="bg-logo hover:bg-logo-dark text-white px-8 py-6">
-                    Request Brochure
-                  </Button>
+                  {/* Only show Request Brochure button for current projects */}
+                  {selectedProject.status !== "Completed" && (
+                    <Button className="bg-logo hover:bg-logo-dark text-white px-8 py-6">
+                      Request Brochure
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>

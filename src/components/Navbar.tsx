@@ -36,7 +36,7 @@ const Navbar = () => {
     } ${isHomePage ? "bg-white" : "bg-white"}`}>
       <div className="container-custom mx-auto flex items-center justify-between px-4">
         {/* Logo - Always on the left */}
-        <Link to="/" className="relative z-10 flex-shrink-0">
+        <Link to="/" className="relative z-10 flex-shrink-0 logo-container">
           <img
             src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png"
             alt="Sonai Realty"
@@ -45,7 +45,7 @@ const Navbar = () => {
         </Link>
         
         {/* Desktop Navigation - Always on the right */}
-        <nav className="hidden lg:flex items-center space-x-6 justify-end">
+        <nav className="hidden lg:flex items-center space-x-6 justify-end nav-container">
           <NavLink to="/" isActive={location.pathname === "/"}>
             Home
           </NavLink>
