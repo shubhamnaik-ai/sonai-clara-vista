@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,9 +55,6 @@ const Navbar = () => {
           <NavLink to="/contact" isActive={location.pathname === "/contact"}>
             Contact
           </NavLink>
-          <Button className="bg-gold hover:bg-gold-dark text-white ml-2 px-4 py-1 text-sm"> {/* Smaller button */}
-            <a href="tel:+1234567890">Call Us</a>
-          </Button>
         </nav>
         
         {/* Mobile Menu Button */}
@@ -90,9 +86,6 @@ const Navbar = () => {
                 <MobileNavLink to="/contact" isActive={location.pathname === "/contact"}>
                   Contact
                 </MobileNavLink>
-                <Button className="bg-gold hover:bg-gold-dark text-white w-full py-4 mt-4">
-                  <a href="tel:+1234567890">Call Us</a>
-                </Button>
               </div>
             </motion.div>
           )}

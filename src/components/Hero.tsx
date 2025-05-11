@@ -30,14 +30,18 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.h1 
-            className="text-3xl md:text-5xl lg:text-7xl font-bold text-ivory mb-4 md:mb-6 font-playfair drop-shadow-lg"
+          <motion.div
+            className="mb-6 md:mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Sonai Clara 
-          </motion.h1>
+            <img 
+              src="/lovable-uploads/078493b5-e192-4e70-b941-5c13a6c3c295.png"
+              alt="Sonai Clara"
+              className="max-w-xs md:max-w-sm"
+            />
+          </motion.div>
           
           <motion.p
             className="text-white text-lg md:text-xl max-w-2xl mb-8"

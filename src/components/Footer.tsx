@@ -17,11 +17,13 @@ const Footer = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <img 
-                src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png"
-                alt="Sonai Realty Logo"
-                className="h-12 mb-6"
-              />
+              <div className="bg-white p-3 rounded-md inline-block mb-6">
+                <img 
+                  src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png"
+                  alt="Sonai Realty Logo"
+                  className="h-16"
+                />
+              </div>
               <p className="text-white/70 mb-6">
                 Creating exceptional living spaces with uncompromising quality and attention to detail. Experience luxury redefined at Sonai Clara.
               </p>

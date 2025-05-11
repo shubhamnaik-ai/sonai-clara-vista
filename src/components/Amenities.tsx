@@ -86,13 +86,13 @@ const Amenities = () => {
     {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-          <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
-          <path d="M18 14h-8" />
-          <path d="M15 18h-5" />
-          <path d="M10 6h8v4h-8V6Z" />
+          <path d="M4 20V10c0-4.4 3.6-8 8-8s8 3.6 8 8v10" />
+          <polyline points="16 18 16 20 8 20 8 18" />
+          <polyline points="12 18 12 12" />
+          <rect x="8" y="12" width="8" height="2" />
         </svg>
       ),
-      title: "Amphitheatre with Stage & Stepped Seating",
+      title: "Gym",
     },
     {
       icon: (
@@ -142,17 +142,6 @@ const Amenities = () => {
     {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-          <path d="M4 20V10c0-4.4 3.6-8 8-8s8 3.6 8 8v10" />
-          <polyline points="16 18 16 20 8 20 8 18" />
-          <polyline points="12 18 12 12" />
-          <rect x="8" y="12" width="8" height="2" />
-        </svg>
-      ),
-      title: "Gym",
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
           <rect width="18" height="12" x="3" y="8" rx="1" />
           <path d="M3 8v8a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8" />
           <path d="M7 8v7" />
@@ -165,7 +154,16 @@ const Amenities = () => {
         </svg>
       ),
       title: "Buffet Counter",
-    }
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
+          <path d="M18 8a6 6 0 0 0-6-6 6 6 0 0 0-6 6c0 7 6 13 6 13s6-6 6-13z" />
+          <circle cx="12" cy="8" r="2" />
+        </svg>
+      ),
+      title: "Amphitheatre with Stage & Stepped Seating",
+    },
   ];
 
   // Animation variants for elements
