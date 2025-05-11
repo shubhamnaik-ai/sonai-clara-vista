@@ -22,7 +22,8 @@ export default {
 			fontFamily: {
 				'playfair': ['"Playfair Display"', 'serif'],
 				'raleway': ['Raleway', 'sans-serif'],
-				'logo': ['Georgia', 'serif'], // Added logo font family
+				'logo': ['Georgia', 'serif'],
+				'nasalization': ['Nasalization', 'sans-serif'], // Add Nasalization font
 			},
 			colors: {
 				ivory: {
@@ -30,10 +31,10 @@ export default {
 					light: '#FAFAF5',
 					dark: '#E5E5E0',
 				},
-				logo: { // Updated to teal color
-					DEFAULT: '#1b727b', // Changed from brown to teal
-					light: '#2b94a0',   // Lighter version of teal
-					dark: '#155a61',    // Darker version of teal
+				logo: {
+					DEFAULT: '#1b727b',
+					light: '#2b94a0',
+					dark: '#155a61',
 				},
 				deepblue: {
 					DEFAULT: '#0C2340',
