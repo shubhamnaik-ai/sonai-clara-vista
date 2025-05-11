@@ -1,3 +1,4 @@
+
 #root {
   max-width: 100%;
   margin: 0 auto;
@@ -119,4 +120,37 @@ html, body, #root {
   overflow-x: hidden;
   width: 100%;
   max-width: 100%;
+}
+
+/* Animation for expanding line */
+@keyframes expandLine {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+.animate-expandLine {
+  animation: expandLine 1.5s ease-out forwards;
+}
+
+/* Header layout fixes */
+header .container-custom {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* This ensures the logo stays left */
+header a:first-child {
+  margin-right: auto;
+}
+
+/* This ensures the navigation stays right */
+header nav {
+  margin-left: auto;
 }

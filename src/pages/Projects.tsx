@@ -99,6 +99,24 @@ const projectsData = {
   ]
 };
 
+// Create a reusable section title component with animation
+const SectionTitle = ({ title }) => (
+  <div className="mb-8 text-center">
+    <div className="flex flex-col items-center">
+      <div className="inline-flex items-center text-[#1b727b]">
+        <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.5,2C21.5,2,22,4.17,22,6V18C22,20.5,20.16,22,18,22H6C4.17,22,2,20.5,2,18V6C2,4.17,3.5,2,6,2H18.5Z M9.5,11.5C8.67,11.5,8,12.17,8,13S8.67,14.5,9.5,14.5H9.51C10.34,14.5,11.01,13.83,11.01,13S10.34,11.5,9.5,11.5Z M14.5,11.5C13.67,11.5,13,12.17,13,13S13.67,14.5,14.5,14.5H14.51C15.34,14.5,16.01,13.83,16.01,13S15.34,11.5,14.5,11.5Z" />
+        </svg>
+        <span className="uppercase text-sm font-medium tracking-wider">PREMIUM LIFESTYLE</span>
+      </div>
+      <h2 className="text-3xl font-playfair font-bold text-deepblue mt-2">{title}</h2>
+      <div className="relative h-1 w-20 bg-[#1b727b] mt-4">
+        <div className="absolute inset-0 bg-[#1b727b] animate-expandLine"></div>
+      </div>
+    </div>
+  </div>
+);
+
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   
@@ -174,7 +192,7 @@ const Projects = () => {
                 
                 {selectedProject.specifications && (
                   <div className="mt-10">
-                    <h2 className="text-2xl font-playfair font-bold text-deepblue mb-6">SPECIFICATIONS</h2>
+                    <SectionTitle title="SPECIFICATIONS" />
                     
                     <div className="grid md:grid-cols-2 gap-8">
                       {/* STRUCTURAL */}
@@ -261,7 +279,7 @@ const Projects = () => {
                 )}
                 
                 <div className="mt-10 flex justify-center">
-                  <Button className="bg-logo hover:bg-logo-dark text-white px-8 py-6">
+                  <Button className="bg-[#1b727b] hover:bg-[#155a61] text-white px-8 py-6">
                     Request Brochure
                   </Button>
                 </div>
@@ -296,10 +314,7 @@ const Projects = () => {
         {/* Current Projects */}
         <section className="section-padding bg-white">
           <div className="container-custom">
-            <div className="mb-12">
-              <h2 className="text-3xl font-playfair font-bold text-deepblue mb-2">Current Projects</h2>
-              <div className="divider"></div>
-            </div>
+            <SectionTitle title="Current Projects" />
             
             <div className="grid grid-cols-1 lg:grid-cols-1 gap-8">
               {projectsData.current.map(project => (
@@ -337,7 +352,7 @@ const Projects = () => {
                       <div className="flex space-x-4">
                         <Button 
                           onClick={() => handleViewDetails(project)} 
-                          className="bg-logo hover:bg-logo-dark text-white px-6 py-2"
+                          className="bg-[#1b727b] hover:bg-[#155a61] text-white px-6 py-2"
                         >
                           View Details
                         </Button>
@@ -353,10 +368,7 @@ const Projects = () => {
         {/* Past Projects */}
         <section className="section-padding bg-white">
           <div className="container-custom">
-            <div className="mb-12">
-              <h2 className="text-3xl font-playfair font-bold text-deepblue mb-2">Past Projects</h2>
-              <div className="divider"></div>
-            </div>
+            <SectionTitle title="Past Projects" />
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {projectsData.past.map(project => (
@@ -392,7 +404,7 @@ const Projects = () => {
                       
                       <Button 
                         onClick={() => handleViewDetails(project)} 
-                        className="bg-logo hover:bg-logo-dark text-white px-6 py-2"
+                        className="bg-[#1b727b] hover:bg-[#155a61] text-white px-6 py-2"
                       >
                         View Details
                       </Button>

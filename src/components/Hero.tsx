@@ -22,7 +22,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-deepblue/50 backdrop-blur-[2px]"></div>
       </div>
       
-      {/* Content */}
+      {/* Content - Left aligned */}
       <div className="container-custom relative z-10 text-left pt-16 md:pt-20">
         <motion.div 
           className="max-w-4xl px-4 flex flex-col items-start"
@@ -36,9 +36,18 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <h1 className="font-nasalization text-white text-5xl md:text-7xl tracking-wider mb-2">
-              SONAI CLARA
+            <div className="inline-flex items-center text-white">
+              <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.5,2C21.5,2,22,4.17,22,6V18C22,20.5,20.16,22,18,22H6C4.17,22,2,20.5,2,18V6C2,4.17,3.5,2,6,2H18.5Z M9.5,11.5C8.67,11.5,8,12.17,8,13S8.67,14.5,9.5,14.5H9.51C10.34,14.5,11.01,13.83,11.01,13S10.34,11.5,9.5,11.5Z M14.5,11.5C13.67,11.5,13,12.17,13,13S13.67,14.5,14.5,14.5H14.51C15.34,14.5,16.01,13.83,16.01,13S15.34,11.5,14.5,11.5Z" />
+              </svg>
+              <span className="uppercase text-sm font-medium tracking-wider">PREMIUM LIFESTYLE</span>
+            </div>
+            <h1 className="font-playfair text-white text-5xl md:text-7xl tracking-wider mb-2 mt-2">
+              Exclusive Amenities
             </h1>
+            <div className="relative h-1 w-20 bg-white mt-2">
+              <div className="absolute inset-0 bg-white animate-expandLine"></div>
+            </div>
           </motion.div>
           
           <motion.p
@@ -69,7 +78,7 @@ const Hero = () => {
       
       {/* Scroll indicator with animation */}
       <motion.div 
-        className="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-6 md:bottom-10 left-10"
         animate={{ y: [0, 10, 0] }}
         transition={{ 
           repeat: Infinity, 
