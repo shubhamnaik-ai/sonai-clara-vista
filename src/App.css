@@ -1,4 +1,3 @@
-
 #root {
   max-width: 100%;
   margin: 0 auto;
@@ -76,15 +75,48 @@
 }
 
 /* Responsive fixes */
-img {
+.responsive-container {
   max-width: 100%;
-  height: auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
-/* Fix for mobile overflow issues */
-body, html {
+/* Ensure logo stays on the left */
+.logo-container {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Ensure navigation stays on the right */
+.nav-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Fix for gallery images to maintain proper aspect ratio */
+.gallery-image-container {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+
+/* Vertical gallery image fix */
+.vertical-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* For the gallery popup background */
+.gallery-popup {
+  background-color: #fff !important;
+}
+
+/* Fix for mobile overflow issues - added specificity */
+html, body, #root {
   overflow-x: hidden;
   width: 100%;
   max-width: 100%;
 }
-

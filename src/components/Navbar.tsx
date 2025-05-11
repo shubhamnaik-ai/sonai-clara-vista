@@ -35,8 +35,8 @@ const Navbar = () => {
       scrolled ? "py-1 shadow-md" : "py-2"
     } ${isHomePage ? "bg-white" : "bg-white"}`}>
       <div className="container-custom mx-auto flex items-center justify-between px-4">
-        {/* Logo - Always on the left with minimum width */}
-        <Link to="/" className="relative z-10 flex-shrink-0 min-w-[120px]">
+        {/* Logo - Always on the left */}
+        <Link to="/" className="relative z-10 flex-shrink-0">
           <img
             src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png"
             alt="Sonai Realty"
@@ -44,8 +44,8 @@ const Navbar = () => {
           />
         </Link>
         
-        {/* Desktop Navigation - Centered or right aligned */}
-        <nav className="hidden lg:flex items-center space-x-6 ml-auto">
+        {/* Desktop Navigation - Always on the right */}
+        <nav className="hidden lg:flex items-center space-x-6 justify-end">
           <NavLink to="/" isActive={location.pathname === "/"}>
             Home
           </NavLink>
@@ -57,9 +57,9 @@ const Navbar = () => {
           </NavLink>
         </nav>
         
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button - On the right */}
         <button 
-          className="lg:hidden relative z-10 focus:outline-none ml-auto"
+          className="lg:hidden relative z-10 focus:outline-none"
           onClick={toggleMenu}
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >

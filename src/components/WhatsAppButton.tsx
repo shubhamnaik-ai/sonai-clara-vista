@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { MessageCircle, X, Headphones } from 'lucide-react';
+import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const WhatsAppButton = () => {
@@ -28,7 +28,11 @@ const WhatsAppButton = () => {
             <div className="flex justify-between items-center mb-3">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                  <Headphones size={16} color="white" />
+                  <img 
+                    src="/lovable-uploads/bc091176-a48e-42de-9ef3-72929b909d4d.png" 
+                    alt="WhatsApp" 
+                    className="w-5 h-5"
+                  />
                 </div>
                 <h3 className="font-medium text-gray-800">Chat With Us</h3>
               </div>
@@ -46,7 +50,11 @@ const WhatsAppButton = () => {
               onClick={handleWhatsAppClick}
               className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors"
             >
-              <Headphones size={24} />
+              <img 
+                src="/lovable-uploads/bc091176-a48e-42de-9ef3-72929b909d4d.png" 
+                alt="WhatsApp" 
+                className="w-5 h-5"
+              />
               Start Chat
             </button>
           </motion.div>
@@ -63,7 +71,11 @@ const WhatsAppButton = () => {
         {isOpen ? (
           <X size={24} />
         ) : (
-          <Headphones size={24} color="white" />
+          <img 
+            src="/lovable-uploads/bc091176-a48e-42de-9ef3-72929b909d4d.png" 
+            alt="WhatsApp" 
+            className="w-7 h-7"
+          />
         )}
       </motion.button>
     </div>

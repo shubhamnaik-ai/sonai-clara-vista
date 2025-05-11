@@ -108,7 +108,7 @@ const Gallery = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="overflow-hidden rounded-md cursor-pointer h-[220px] sm:h-[240px] md:h-[260px]"
+                    className="overflow-hidden rounded-md cursor-pointer aspect-[3/4]" // Fixed aspect ratio for vertical images
                     onClick={() => handleImageClick(index)}
                   >
                     <img
@@ -128,16 +128,17 @@ const Gallery = () => {
           </Carousel>
         </div>
 
-        {/* Image Expanded Dialog */}
+        {/* Image Expanded Dialog - Updated with white background */}
         <Dialog open={dialogOpen} onOpenChange={handleDialogOpenChange}>
-          <DialogContent className="max-w-4xl p-0 bg-black border-none max-h-[90vh] overflow-hidden" onInteractOutside={(e) => e.preventDefault()}>
-            <div className="relative flex items-center justify-center w-full h-full">
+          <DialogContent className="max-w-4xl p-0 bg-white border-none max-h-[90vh] overflow-hidden" onInteractOutside={(e) => e.preventDefault()}>
+            <div className="relative flex items-center justify-center w-full h-full bg-white py-4">
               {selectedImageIndex !== null && (
                 <div className="w-full h-full max-h-[80vh] flex items-center justify-center">
                   <img
                     src={galleryImages[selectedImageIndex].src}
                     alt={galleryImages[selectedImageIndex].alt}
                     className="max-w-full max-h-full object-contain"
+                    style={{ maxHeight: "calc(90vh - 32px)" }}
                   />
                 </div>
               )}
@@ -145,7 +146,7 @@ const Gallery = () => {
               <Button 
                 variant="outline" 
                 size="icon" 
-                className="absolute left-4 bg-black/50 border-none hover:bg-black/70 rounded-full"
+                className="absolute left-4 bg-gray-200/50 border-none hover:bg-gray-200/70 rounded-full"
                 onClick={handlePrevImage}
               >
                 <ArrowLeft className="h-6 w-6" />
@@ -155,7 +156,7 @@ const Gallery = () => {
               <Button 
                 variant="outline" 
                 size="icon" 
-                className="absolute right-4 bg-black/50 border-none hover:bg-black/70 rounded-full"
+                className="absolute right-4 bg-gray-200/50 border-none hover:bg-gray-200/70 rounded-full"
                 onClick={handleNextImage}
               >
                 <ArrowRight className="h-6 w-6" />
