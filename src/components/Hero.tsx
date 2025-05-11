@@ -31,15 +31,15 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.div
-            className="mb-6 md:mb-8"
+            className="flex flex-col items-start mb-6 md:mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
             <img 
-              src="/lovable-uploads/ea9317ca-85df-4253-8e37-5cd3882addfd.png"
+              src="/lovable-uploads/d1f99b69-7734-4117-b3ff-b57eb47c9b98.png"
               alt="Sonai Clara"
-              className="max-w-xs md:max-w-sm"
+              className="max-w-md md:max-w-lg w-full"
             />
           </motion.div>
           

@@ -34,9 +34,9 @@ const WhatsAppButton = () => {
               </div>
               <button 
                 onClick={toggleChat}
-                className="text-gray-400 hover:text-gray-600 ml-auto"
+                className="text-gray-400 hover:text-gray-600"
               >
-                <X size={18} />
+                <X size={24} />
               </button>
             </div>
             <p className="text-sm text-gray-600 mb-3">
@@ -46,7 +46,7 @@ const WhatsAppButton = () => {
               onClick={handleWhatsAppClick}
               className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors"
             >
-              <MessageCircle size={18} />
+              <MessageCircle size={24} />
               Start Chat
             </button>
           </motion.div>
