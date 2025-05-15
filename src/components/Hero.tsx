@@ -59,9 +59,9 @@ const Hero = () => {
             <Button 
               variant="outline" 
               className="bg-[#1b727b] border-white text-white hover:bg-[#155a61] text-base w-auto px-8 py-6 rounded-none hover:scale-105 transition-transform"
-              onClick={() => navigate('/projects')}
+              onClick={() => navigate('/projects/sonai-clara')}
             >
-              Explore Project
+              View Details
             </Button>
           </motion.div>
         </motion.div>
