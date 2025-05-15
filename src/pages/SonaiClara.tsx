@@ -1,12 +1,16 @@
 
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import EnquiryForm from "@/components/EnquiryForm";
 
 const SonaiClara = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-white">
       <div className="bg-deepblue">
@@ -46,11 +50,7 @@ const SonaiClara = () => {
               
               <div className="mb-8">
                 <h2 className="text-2xl font-playfair font-bold text-deepblue mb-3">About the Project</h2>
-                <p className="text-lg mb-4">Premium 2 & 3 BHK residences with panoramic views, designed for modern luxury living. Located in the thriving neighborhood of Ravet, Sonai Clara offers an exceptional lifestyle with carefully crafted spaces and world-class amenities.</p>
-                
-                <div className="mt-4">
-                  <p className="font-medium">Estimated Completion: Dec 2025</p>
-                </div>
+                <p className="text-lg mb-4">Palatial 2 & 3 BHK residences with panoramic views, designed for modern luxury living. Located in the thriving neighborhood of Ravet, Sonai Clara offers an exceptional lifestyle with carefully crafted spaces and world-class amenities.</p>
                 
                 <div className="flex flex-wrap gap-2 mt-4">
                   <span className="bg-ivory px-3 py-1 text-sm rounded-full">5-Star Amenities</span>
@@ -129,7 +129,7 @@ const SonaiClara = () => {
                       <li>Concealed fire resistant copper wiring with circuit breaker</li>
                       <li>Branded Modular switches</li>
                       <li>Provision for AC point in Living & Bedroom</li>
-                      <li>Provision for TV in master bedrooms & living room</li>
+                      <li>Provision for TV point in master bedrooms & living room</li>
                       <li>Electric point for inverter</li>
                     </ul>
                   </div>
@@ -161,9 +161,14 @@ const SonaiClara = () => {
               </div>
               
               <div className="mt-10 flex justify-center">
-                <Button className="bg-logo hover:bg-logo-dark text-white px-8 py-6">
-                  Request Brochure
-                </Button>
+                <Dialog open={open} onOpenChange={setOpen}>
+                  <DialogTrigger asChild>
+                    <Button className="bg-logo hover:bg-logo-dark text-white px-8 py-6">
+                      Request Brochure
+                    </Button>
+                  </DialogTrigger>
+                  <EnquiryForm planType="Sonai Clara" downloadBrochure={true} />
+                </Dialog>
               </div>
             </div>
           </div>

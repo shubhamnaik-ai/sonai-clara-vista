@@ -47,7 +47,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
           >
-            Experience luxury in our premium 2 & 3 BHK apartments. A harmonious blend of contemporary design and tranquil living, perfectly positioned in the heart of Ravet.
+            Experience luxury in our palatial 2 & 3 BHK apartments. A harmonious blend of contemporary design and tranquil living, perfectly positioned in the heart of Ravet.
           </motion.p>
           
           <motion.div 
