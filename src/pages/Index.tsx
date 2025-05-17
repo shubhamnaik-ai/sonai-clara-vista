@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ProjectHighlights from "@/components/ProjectHighlights";
 import Amenities from "@/components/Amenities";
 import FloorPlans from "@/components/FloorPlans";
 import Gallery from "@/components/Gallery";
@@ -111,16 +110,6 @@ const Index = () => {
         }`}>
           <Hero />
         </div>
-        
-        <motion.div 
-          className="bg-white relative py-16"
-          initial={{ opacity: 0, x: 100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <ProjectHighlights />
-        </motion.div>
         
         <motion.div
           initial={{ opacity: 0, x: -100 }}

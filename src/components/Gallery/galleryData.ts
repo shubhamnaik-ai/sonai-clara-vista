@@ -18,6 +18,18 @@ export const galleryImages = [
     alt: "Building night view"
   },
   {
+    src: "/lovable-uploads/efa544db-6727-4929-809e-84caceee50a0.png",
+    alt: "Lobby area"
+  },
+  {
+    src: "/lovable-uploads/3c9dad91-8a61-4ad2-87e4-1050732c7491.png",
+    alt: "2 BHK floor plan"
+  },
+  {
+    src: "/lovable-uploads/8af68d74-6935-490f-84b7-ab193b325962.png",
+    alt: "3 BHK floor plan"
+  },
+  {
     src: "/lovable-uploads/e5b8ac9e-0bf6-4cf6-be66-1e4bb923b8e9.png",
     alt: "Kitchen"
   },
