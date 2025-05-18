@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import EnquiryForm from "@/components/EnquiryForm";
-import { Flame, Basketball, Droplet, Accessibility, ParkingCircle, ChevronsUp, Building, FileCode, Cable, Factory, CloudRain, Zap, Shield, Toilet, Sofa } from "lucide-react";
+import { Flame, Activity, Droplet, Accessibility, ParkingCircle, ChevronsUp, Building, FileCode, Cable, Factory, CloudRain, Zap, Shield, Toilet, Sofa } from "lucide-react";
 
 const SonaiClara = () => {
   const [open, setOpen] = useState(false);
@@ -20,7 +20,7 @@ const SonaiClara = () => {
     { icon: <ChevronsUp className="h-6 w-6" />, name: "Designer Lift" },
     { icon: <Building className="h-6 w-6" />, name: "Society Office" },
     { icon: <FileCode className="h-6 w-6" />, name: "Drivers Room" },
-    { icon: <Basketball className="h-6 w-6" />, name: "Basketball Court" },
+    { icon: <Activity className="h-6 w-6" />, name: "Basketball Court" },
     { icon: <Flame className="h-6 w-6" />, name: "Firefighting System" },
     { icon: <Factory className="h-6 w-6" />, name: "OWC Plant" },
     { icon: <Cable className="h-6 w-6" />, name: "EV Charging Points as per Norms" },
