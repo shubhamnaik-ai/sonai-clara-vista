@@ -7,14 +7,14 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import EnquiryForm from "@/components/EnquiryForm";
-import { Flame, Activity, Droplet, Accessibility, ParkingCircle, ChevronsUp, Building, Cable, CloudRain, Zap, Shield, Toilet, Sofa } from "lucide-react";
+import { Flame, Droplet, Accessibility, ParkingCircle, Building, Cable, CloudRain, Zap, Shield, Toilet, Sofa } from "lucide-react";
 import FloorPlanSection from "@/components/FloorPlanSection";
 
 const SonaiClara = () => {
   const [open, setOpen] = useState(false);
   const [fullImageView, setFullImageView] = useState(false);
 
-  // List of amenities with icons - updating Grand Entrance Lobby and Designer Lift icons
+  // List of amenities with icons - updating OWC Plant and STP icons
   const amenitiesList = [
     { icon: <ParkingCircle className="h-6 w-6" />, name: "Ample covered Parking for 2 Wheelers" },
     { 
@@ -71,9 +71,31 @@ const SonaiClara = () => {
       name: "Basketball Court" 
     },
     { icon: <Flame className="h-6 w-6" />, name: "Firefighting System" },
-    { icon: <Activity className="h-6 w-6" />, name: "OWC Plant" },
+    { 
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+          <path d="M17 18a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2" />
+          <path d="M19 12c0 4.97-3.58 9-8 9s-8-4.03-8-9" />
+          <path d="M12 3C8 3 5.5 5.5 5.5 9.5c0 1.33.49 2.64 1.22 3.77.73 1.13 1.7 2.16 2.78 2.95 1 .47 2.15.22 2.8-.6.65.82 1.8 1.07 2.8.6 1.08-.79 2.05-1.82 2.78-2.95.73-1.13 1.22-2.44 1.22-3.77C19 5.5 16.5 3 12 3z" />
+          <path d="M12 3v12" />
+          <path d="M9 13l3 3 3-3" />
+        </svg>
+      ), 
+      name: "OWC Plant" 
+    },
     { icon: <Cable className="h-6 w-6" />, name: "EV Charging Points as per Norms" },
-    { icon: <Activity className="h-6 w-6" />, name: "STP" },
+    { 
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+          <path d="M3 6h18" />
+          <path d="M14 16H3" />
+          <path d="M10 6v16" />
+          <rect x="14" y="10" width="8" height="12" rx="2" />
+          <circle cx="18" cy="14" r="2" />
+        </svg>
+      ), 
+      name: "STP" 
+    },
     { icon: <CloudRain className="h-6 w-6" />, name: "Rainwater Harvesting" },
     { icon: <Zap className="h-6 w-6" />, name: "DG Backup for Common areas" },
     { icon: <Shield className="h-6 w-6" />, name: "CCTV Surveillance" },
