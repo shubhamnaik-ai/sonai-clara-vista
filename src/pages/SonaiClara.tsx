@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import EnquiryForm from "@/components/EnquiryForm";
-import { Flame, Activity, Droplet, Accessibility, ParkingCircle, ChevronsUp, Building, FileCode, Cable, Factory, CloudRain, Zap, Shield, Toilet, Sofa } from "lucide-react";
+import { Flame, Activity, Leaf, ParkingCircle, ChevronsUp, Building, FileCode, Cable, Factory, CloudRain, Zap, Shield, Toilet, Sofa } from "lucide-react";
 
 const SonaiClara = () => {
   const [open, setOpen] = useState(false);
@@ -22,7 +22,7 @@ const SonaiClara = () => {
     { icon: <FileCode className="h-6 w-6" />, name: "Drivers Room" },
     { icon: <Activity className="h-6 w-6" />, name: "Basketball Court" },
     { icon: <Flame className="h-6 w-6" />, name: "Firefighting System" },
-    { icon: <Factory className="h-6 w-6" />, name: "OWC Plant" },
+    { icon: <Leaf className="h-6 w-6" />, name: "OWC Plant" },
     { icon: <Cable className="h-6 w-6" />, name: "EV Charging Points as per Norms" },
     { icon: <Factory className="h-6 w-6" />, name: "STP" },
     { icon: <CloudRain className="h-6 w-6" />, name: "Rainwater Harvesting" },
@@ -107,23 +107,25 @@ const SonaiClara = () => {
                 </div>
               </div>
               
-              {/* Amenities Section */}
+              {/* Amenities Section - Updated to match the image styling */}
               <div className="my-12">
-                <h2 className="text-2xl font-playfair font-bold text-deepblue mb-6">AMENITIES</h2>
+                <h2 className="text-3xl font-playfair font-semibold text-deepblue mb-10 text-center">AMENITIES</h2>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                   {amenitiesList.map((amenity, index) => (
                     <motion.div 
                       key={index}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="flex items-center gap-3 p-4 border rounded-lg hover:bg-ivory/30 transition-colors"
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                      className="flex flex-col items-center text-center"
                     >
-                      <div className="bg-logo/10 p-2 rounded-full text-logo">
-                        {amenity.icon}
+                      <div className="w-20 h-20 bg-[#8a9d94] bg-opacity-60 rounded-full flex items-center justify-center mb-3">
+                        <div className="text-deepblue">
+                          {amenity.icon}
+                        </div>
                       </div>
-                      <span>{amenity.name}</span>
+                      <span className="text-charcoal text-sm font-medium">{amenity.name}</span>
                     </motion.div>
                   ))}
                 </div>
