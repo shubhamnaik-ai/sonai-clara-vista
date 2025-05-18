@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,24 +6,49 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import EnquiryForm from "@/components/EnquiryForm";
-import { Flame, Activity, Droplet, Accessibility, ParkingCircle, ChevronsUp, Building, FileCode, Cable, Factory, CloudRain, Zap, Shield, Toilet, Sofa } from "lucide-react";
+import { Flame, Activity, Droplet, Accessibility, ParkingCircle, ChevronsUp, Building, Cable, CloudRain, Zap, Shield, Toilet, Sofa } from "lucide-react";
 
 const SonaiClara = () => {
   const [open, setOpen] = useState(false);
   const [fullImageView, setFullImageView] = useState(false);
 
-  // List of amenities with icons
+  // List of amenities with icons - updating Basketball Court and Drivers Room icons
   const amenitiesList = [
     { icon: <ParkingCircle className="h-6 w-6" />, name: "Ample covered Parking for 2 Wheelers" },
     { icon: <ChevronsUp className="h-6 w-6" />, name: "Grand Entrance Lobby" },
     { icon: <ChevronsUp className="h-6 w-6" />, name: "Designer Lift" },
     { icon: <Building className="h-6 w-6" />, name: "Society Office" },
-    { icon: <FileCode className="h-6 w-6" />, name: "Drivers Room" },
-    { icon: <Activity className="h-6 w-6" />, name: "Basketball Court" },
+    { 
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M12 12v4" />
+          <circle cx="12" cy="20" r="2" />
+          <circle cx="18" cy="16" r="3" />
+          <path d="M15 16h6" />
+          <path d="M18 13v6" />
+        </svg>
+      ), 
+      name: "Drivers Room" 
+    },
+    { 
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+          <rect x="2" y="4" width="20" height="16" rx="1" />
+          <line x1="12" y1="4" x2="12" y2="20" />
+          <circle cx="12" cy="12" r="2" />
+          <path d="M2 12h4" />
+          <path d="M18 12h4" />
+          <path d="M4 4c4 3 6 5 6 8s-2 5-6 8" />
+          <path d="M20 4c-4 3-6 5-6 8s2 5 6 8" />
+        </svg>
+      ), 
+      name: "Basketball Court" 
+    },
     { icon: <Flame className="h-6 w-6" />, name: "Firefighting System" },
-    { icon: <Factory className="h-6 w-6" />, name: "OWC Plant" },
+    { icon: <Activity className="h-6 w-6" />, name: "OWC Plant" },
     { icon: <Cable className="h-6 w-6" />, name: "EV Charging Points as per Norms" },
-    { icon: <Factory className="h-6 w-6" />, name: "STP" },
+    { icon: <Activity className="h-6 w-6" />, name: "STP" },
     { icon: <CloudRain className="h-6 w-6" />, name: "Rainwater Harvesting" },
     { icon: <Zap className="h-6 w-6" />, name: "DG Backup for Common areas" },
     { icon: <Shield className="h-6 w-6" />, name: "CCTV Surveillance" },
@@ -109,7 +133,7 @@ const SonaiClara = () => {
               
               {/* Amenities Section */}
               <div className="my-12">
-                <h2 className="text-2xl font-playfair font-bold text-deepblue mb-6">AMENITIES</h2>
+                <h2 className="text-2xl font-playfair font-bold text-deepblue mb-6 text-center">AMENITIES</h2>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                   {amenitiesList.map((amenity, index) => (
@@ -120,10 +144,10 @@ const SonaiClara = () => {
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                       className="flex items-center gap-3 p-4 border rounded-lg hover:bg-ivory/30 transition-colors"
                     >
-                      <div className="bg-logo/10 p-2 rounded-full text-logo">
+                      <div className="bg-gray-100 p-3 rounded-full text-gray-700">
                         {amenity.icon}
                       </div>
-                      <span>{amenity.name}</span>
+                      <span className="text-sm md:text-base">{amenity.name}</span>
                     </motion.div>
                   ))}
                 </div>
