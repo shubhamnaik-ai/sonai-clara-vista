@@ -13,7 +13,7 @@ const projectsData = {
       name: "Nilharsh Dwarka",
       location: "Ravet",
       status: "Completed",
-      completion: "Jan 2023",
+      completion: "",
       description: "",
       image: "/lovable-uploads/4b8402de-76ee-45d4-b909-ba8ea2eaa17b.png",
       features: []
@@ -23,7 +23,7 @@ const projectsData = {
       name: "Essentia",
       location: "Ravet",
       status: "Completed",
-      completion: "Jul 2022",
+      completion: "",
       description: "",
       image: "/lovable-uploads/c77fc28f-decf-4b7d-bb86-a20f26c79cba.png",
       features: []

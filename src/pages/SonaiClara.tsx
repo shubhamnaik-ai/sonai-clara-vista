@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import EnquiryForm from "@/components/EnquiryForm";
-import { EvCharging, FireExtinguisher, BasketballCourt, Cctv, WaterIcon, Wheelchair, ParkingMeter, Seat } from "lucide-react";
+import { Flame, Basketball, Droplet, Accessibility, ParkingCircle, ChevronsUp, Building, FileCode, Cable, Factory, CloudRain, Zap, Shield, Toilet, Sofa } from "lucide-react";
 
 const SonaiClara = () => {
   const [open, setOpen] = useState(false);
@@ -15,21 +15,21 @@ const SonaiClara = () => {
 
   // List of amenities with icons
   const amenitiesList = [
-    { icon: <ParkingMeter className="h-6 w-6" />, name: "Ample covered Parking for 2 Wheelers" },
-    { icon: <motion.div className="flex items-center justify-center h-6 w-6">L</motion.div>, name: "Grand Entrance Lobby" },
-    { icon: <motion.div className="flex items-center justify-center h-6 w-6">L</motion.div>, name: "Designer Lift" },
-    { icon: <motion.div className="flex items-center justify-center h-6 w-6">O</motion.div>, name: "Society Office" },
-    { icon: <motion.div className="flex items-center justify-center h-6 w-6">D</motion.div>, name: "Drivers Room" },
-    { icon: <BasketballCourt className="h-6 w-6" />, name: "Basketball Court" },
-    { icon: <FireExtinguisher className="h-6 w-6" />, name: "Firefighting System" },
-    { icon: <motion.div className="flex items-center justify-center h-6 w-6">O</motion.div>, name: "OWC Plant" },
-    { icon: <EvCharging className="h-6 w-6" />, name: "EV Charging Points as per Norms" },
-    { icon: <motion.div className="flex items-center justify-center h-6 w-6">S</motion.div>, name: "STP" },
-    { icon: <WaterIcon className="h-6 w-6" />, name: "Rainwater Harvesting" },
-    { icon: <motion.div className="flex items-center justify-center h-6 w-6">D</motion.div>, name: "DG Backup for Common areas" },
-    { icon: <Cctv className="h-6 w-6" />, name: "CCTV Surveillance" },
-    { icon: <Wheelchair className="h-6 w-6" />, name: "Common Toilet" },
-    { icon: <Seat className="h-6 w-6" />, name: "Seating Area" }
+    { icon: <ParkingCircle className="h-6 w-6" />, name: "Ample covered Parking for 2 Wheelers" },
+    { icon: <ChevronsUp className="h-6 w-6" />, name: "Grand Entrance Lobby" },
+    { icon: <ChevronsUp className="h-6 w-6" />, name: "Designer Lift" },
+    { icon: <Building className="h-6 w-6" />, name: "Society Office" },
+    { icon: <FileCode className="h-6 w-6" />, name: "Drivers Room" },
+    { icon: <Basketball className="h-6 w-6" />, name: "Basketball Court" },
+    { icon: <Flame className="h-6 w-6" />, name: "Firefighting System" },
+    { icon: <Factory className="h-6 w-6" />, name: "OWC Plant" },
+    { icon: <Cable className="h-6 w-6" />, name: "EV Charging Points as per Norms" },
+    { icon: <Factory className="h-6 w-6" />, name: "STP" },
+    { icon: <CloudRain className="h-6 w-6" />, name: "Rainwater Harvesting" },
+    { icon: <Zap className="h-6 w-6" />, name: "DG Backup for Common areas" },
+    { icon: <Shield className="h-6 w-6" />, name: "CCTV Surveillance" },
+    { icon: <Toilet className="h-6 w-6" />, name: "Common Toilet" },
+    { icon: <Sofa className="h-6 w-6" />, name: "Seating Area" }
   ];
 
   return (
