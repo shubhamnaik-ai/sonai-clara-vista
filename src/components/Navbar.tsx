@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Home, FileText, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
@@ -45,14 +45,14 @@ const Navbar = () => {
         </Link>
         
         {/* Desktop Navigation - Always on the right */}
-        <nav className="hidden lg:flex items-center space-x-6 justify-end nav-container">
-          <NavLink to="/" isActive={location.pathname === "/"}>
+        <nav className="hidden lg:flex items-center space-x-8 justify-end nav-container">
+          <NavLink to="/" isActive={location.pathname === "/"} icon={<Home size={18} />}>
             Home
           </NavLink>
-          <NavLink to="/projects" isActive={location.pathname === "/projects"}>
+          <NavLink to="/projects" isActive={location.pathname === "/projects"} icon={<FileText size={18} />}>
             Projects
           </NavLink>
-          <NavLink to="/contact" isActive={location.pathname === "/contact"}>
+          <NavLink to="/contact" isActive={location.pathname === "/contact"} icon={<Mail size={18} />}>
             Contact
           </NavLink>
         </nav>
@@ -77,13 +77,13 @@ const Navbar = () => {
               className="fixed inset-0 bg-white pt-20 z-0 lg:hidden overflow-auto"
             >
               <div className="container-custom mx-auto px-4 flex flex-col space-y-4 pb-8">
-                <MobileNavLink to="/" isActive={location.pathname === "/"}>
+                <MobileNavLink to="/" isActive={location.pathname === "/"} icon={<Home size={20} />}>
                   Home
                 </MobileNavLink>
-                <MobileNavLink to="/projects" isActive={location.pathname === "/projects"}>
+                <MobileNavLink to="/projects" isActive={location.pathname === "/projects"} icon={<FileText size={20} />}>
                   Projects
                 </MobileNavLink>
-                <MobileNavLink to="/contact" isActive={location.pathname === "/contact"}>
+                <MobileNavLink to="/contact" isActive={location.pathname === "/contact"} icon={<Mail size={20} />}>
                   Contact
                 </MobileNavLink>
               </div>
@@ -95,24 +95,26 @@ const Navbar = () => {
   );
 };
 
-const NavLink = ({ children, to, isActive }) => (
+const NavLink = ({ children, to, isActive, icon }) => (
   <Link 
     to={to} 
-    className={`font-medium transition-colors hover:text-gold ${
-      isActive ? "text-gold" : "text-charcoal"
+    className={`font-nasalization text-sm tracking-wider flex items-center gap-2 transition-colors hover:text-logo ${
+      isActive ? "text-logo" : "text-charcoal"
     }`}
   >
+    {icon}
     {children}
   </Link>
 );
 
-const MobileNavLink = ({ children, to, isActive }) => (
+const MobileNavLink = ({ children, to, isActive, icon }) => (
   <Link 
     to={to} 
-    className={`text-xl font-medium py-4 border-b border-gray-100 transition-colors ${
-      isActive ? "text-gold" : "text-charcoal"
+    className={`font-nasalization text-xl flex items-center gap-3 py-4 border-b border-gray-100 transition-colors ${
+      isActive ? "text-logo" : "text-charcoal"
     }`}
   >
+    {icon}
     {children}
   </Link>
 );
