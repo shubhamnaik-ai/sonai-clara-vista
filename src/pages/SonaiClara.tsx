@@ -14,11 +14,34 @@ const SonaiClara = () => {
   const [open, setOpen] = useState(false);
   const [fullImageView, setFullImageView] = useState(false);
 
-  // List of amenities with icons - updating Basketball Court and Drivers Room icons
+  // List of amenities with icons - updating Grand Entrance Lobby and Designer Lift icons
   const amenitiesList = [
     { icon: <ParkingCircle className="h-6 w-6" />, name: "Ample covered Parking for 2 Wheelers" },
-    { icon: <ChevronsUp className="h-6 w-6" />, name: "Grand Entrance Lobby" },
-    { icon: <ChevronsUp className="h-6 w-6" />, name: "Designer Lift" },
+    { 
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+          <rect x="2" y="5" width="20" height="14" rx="2" />
+          <path d="M6 9h12" />
+          <path d="M15 5V3" />
+          <path d="M9 5V3" />
+          <path d="M5 19L7 14" />
+          <path d="M19 19L17 14" />
+          <path d="M6 14s2-1 6-1 6 1 6 1" />
+        </svg>
+      ), 
+      name: "Grand Entrance Lobby" 
+    },
+    { 
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+          <rect x="4" y="2" width="16" height="20" rx="2" />
+          <line x1="12" y1="6" x2="12" y2="18" />
+          <path d="M8 10l4-4 4 4" />
+          <path d="M8 14l4 4 4-4" />
+        </svg>
+      ), 
+      name: "Designer Lift" 
+    },
     { icon: <Building className="h-6 w-6" />, name: "Society Office" },
     { 
       icon: (
