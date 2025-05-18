@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,6 +8,7 @@ import { Link } from "react-router-dom";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import EnquiryForm from "@/components/EnquiryForm";
 import { Flame, Activity, Droplet, Accessibility, ParkingCircle, ChevronsUp, Building, Cable, CloudRain, Zap, Shield, Toilet, Sofa } from "lucide-react";
+import FloorPlanSection from "@/components/FloorPlanSection";
 
 const SonaiClara = () => {
   const [open, setOpen] = useState(false);
@@ -54,6 +56,25 @@ const SonaiClara = () => {
     { icon: <Shield className="h-6 w-6" />, name: "CCTV Surveillance" },
     { icon: <Toilet className="h-6 w-6" />, name: "Common Toilet" },
     { icon: <Sofa className="h-6 w-6" />, name: "Seating Area" }
+  ];
+
+  // Floor plans data
+  const floorPlans = [
+    {
+      title: "First Floor Plan",
+      image: "/lovable-uploads/1bedcf57-a617-4f82-8ab8-d78b081d2545.png",
+      description: "Layout design for the first floor with spacious living areas."
+    },
+    {
+      title: "Typical Floor Plan",
+      image: "/lovable-uploads/b9cab60f-0385-4a60-a2cf-95aeba532f30.png",
+      description: "Standard layout for typical floors in the building."
+    },
+    {
+      title: "Refuge Floor Plan",
+      image: "/lovable-uploads/3df24977-f8c6-4ff3-8327-036d73591a5b.png",
+      description: "Layout for the 6th, 11th & 16th refuge floors with safety features."
+    }
   ];
 
   return (
@@ -252,6 +273,9 @@ const SonaiClara = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Floor Plans Section - Added below specifications */}
+              <FloorPlanSection plans={floorPlans} />
               
               <div className="mt-10 flex justify-center">
                 <Dialog open={open} onOpenChange={setOpen}>
