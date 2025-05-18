@@ -92,10 +92,6 @@ const Projects = () => {
                   </div>
                 )}
                 
-                <div className="mt-4">
-                  <p className="font-medium">Estimated Completion: {selectedProject.completion}</p>
-                </div>
-                
                 {selectedProject.features && selectedProject.features.length > 0 && (
                   <div className="flex flex-wrap gap-2 mt-4">
                     {selectedProject.features.map((feature, idx) => (
@@ -158,10 +154,6 @@ const Projects = () => {
                         </span>
                       </div>
                       <p className="text-charcoal mb-4">{project.location}</p>
-                      
-                      <div className="mb-4">
-                        <p className="font-medium">Completed: {project.completion}</p>
-                      </div>
                     </div>
                   </div>
                 </div>

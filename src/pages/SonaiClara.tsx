@@ -5,11 +5,32 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import EnquiryForm from "@/components/EnquiryForm";
+import { EvCharging, FireExtinguisher, BasketballCourt, Cctv, WaterIcon, Wheelchair, ParkingMeter, Seat } from "lucide-react";
 
 const SonaiClara = () => {
   const [open, setOpen] = useState(false);
+  const [fullImageView, setFullImageView] = useState(false);
+
+  // List of amenities with icons
+  const amenitiesList = [
+    { icon: <ParkingMeter className="h-6 w-6" />, name: "Ample covered Parking for 2 Wheelers" },
+    { icon: <motion.div className="flex items-center justify-center h-6 w-6">L</motion.div>, name: "Grand Entrance Lobby" },
+    { icon: <motion.div className="flex items-center justify-center h-6 w-6">L</motion.div>, name: "Designer Lift" },
+    { icon: <motion.div className="flex items-center justify-center h-6 w-6">O</motion.div>, name: "Society Office" },
+    { icon: <motion.div className="flex items-center justify-center h-6 w-6">D</motion.div>, name: "Drivers Room" },
+    { icon: <BasketballCourt className="h-6 w-6" />, name: "Basketball Court" },
+    { icon: <FireExtinguisher className="h-6 w-6" />, name: "Firefighting System" },
+    { icon: <motion.div className="flex items-center justify-center h-6 w-6">O</motion.div>, name: "OWC Plant" },
+    { icon: <EvCharging className="h-6 w-6" />, name: "EV Charging Points as per Norms" },
+    { icon: <motion.div className="flex items-center justify-center h-6 w-6">S</motion.div>, name: "STP" },
+    { icon: <WaterIcon className="h-6 w-6" />, name: "Rainwater Harvesting" },
+    { icon: <motion.div className="flex items-center justify-center h-6 w-6">D</motion.div>, name: "DG Backup for Common areas" },
+    { icon: <Cctv className="h-6 w-6" />, name: "CCTV Surveillance" },
+    { icon: <Wheelchair className="h-6 w-6" />, name: "Common Toilet" },
+    { icon: <Seat className="h-6 w-6" />, name: "Seating Area" }
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -29,13 +50,39 @@ const SonaiClara = () => {
           </Button>
           
           <div className="bg-white shadow-lg">
-            <div className="aspect-video w-full">
+            {/* Full image view with click to expand */}
+            <div 
+              className="aspect-video w-full cursor-pointer relative overflow-hidden" 
+              onClick={() => setFullImageView(true)}
+            >
               <img 
                 src="/lovable-uploads/704fe54f-500c-4e0d-8092-fbaf95de6743.png" 
                 alt="Sonai Clara" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
               />
+              <div className="absolute bottom-4 right-4 bg-black/70 text-white px-3 py-1 rounded-md text-sm">
+                Click to expand
+              </div>
             </div>
+            
+            {/* Full image view dialog */}
+            <Dialog open={fullImageView} onOpenChange={setFullImageView}>
+              <DialogContent className="max-w-7xl p-0 bg-transparent border-none" onInteractOutside={(e) => e.preventDefault()}>
+                <div className="relative flex items-center justify-center">
+                  <img 
+                    src="/lovable-uploads/704fe54f-500c-4e0d-8092-fbaf95de6743.png" 
+                    alt="Sonai Clara" 
+                    className="max-w-full max-h-[90vh] object-contain" 
+                  />
+                  <Button 
+                    className="absolute top-2 right-2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 h-8 w-8"
+                    onClick={() => setFullImageView(false)}
+                  >
+                    ✕
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
             
             <div className="p-8">
               <div className="mb-6">
@@ -57,6 +104,28 @@ const SonaiClara = () => {
                   <span className="bg-ivory px-3 py-1 text-sm rounded-full">22 Storeys</span>
                   <span className="bg-ivory px-3 py-1 text-sm rounded-full">Spacious Layouts</span>
                   <span className="bg-ivory px-3 py-1 text-sm rounded-full">Modern Architecture</span>
+                </div>
+              </div>
+              
+              {/* Amenities Section */}
+              <div className="my-12">
+                <h2 className="text-2xl font-playfair font-bold text-deepblue mb-6">AMENITIES</h2>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                  {amenitiesList.map((amenity, index) => (
+                    <motion.div 
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="flex items-center gap-3 p-4 border rounded-lg hover:bg-ivory/30 transition-colors"
+                    >
+                      <div className="bg-logo/10 p-2 rounded-full text-logo">
+                        {amenity.icon}
+                      </div>
+                      <span>{amenity.name}</span>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
               
