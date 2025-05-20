@@ -12,7 +12,6 @@ import FloorPlanSection from "@/components/FloorPlanSection";
 
 const SonaiClara = () => {
   const [open, setOpen] = useState(false);
-  const [fullImageView, setFullImageView] = useState(false);
 
   // List of amenities with icons - updating OWC Plant and STP icons
   const amenitiesList = [
@@ -74,11 +73,9 @@ const SonaiClara = () => {
     { 
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-          <path d="M17 18a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2" />
-          <path d="M19 12c0 4.97-3.58 9-8 9s-8-4.03-8-9" />
-          <path d="M12 3C8 3 5.5 5.5 5.5 9.5c0 1.33.49 2.64 1.22 3.77.73 1.13 1.7 2.16 2.78 2.95 1 .47 2.15.22 2.8-.6.65.82 1.8 1.07 2.8.6 1.08-.79 2.05-1.82 2.78-2.95.73-1.13 1.22-2.44 1.22-3.77C19 5.5 16.5 3 12 3z" />
-          <path d="M12 3v12" />
-          <path d="M9 13l3 3 3-3" />
+          <path d="M7 21h10a2 2 0 0 0 2-2V11a5 5 0 0 0-10 0v1h8" />
+          <path d="M12 12v9" />
+          <path d="M8 17.5c-1.5 0-3-1.5-3-3.5S8 10 8 10c0-5 2-5 4-5" />
         </svg>
       ), 
       name: "OWC Plant" 
@@ -87,11 +84,11 @@ const SonaiClara = () => {
     { 
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-          <path d="M3 6h18" />
-          <path d="M14 16H3" />
-          <path d="M10 6v16" />
-          <rect x="14" y="10" width="8" height="12" rx="2" />
-          <circle cx="18" cy="14" r="2" />
+          <circle cx="12" cy="12" r="10" />
+          <path d="M8 12h8" />
+          <path d="M12 16V8" />
+          <path d="M8.5 8.5L12 12l3.5-3.5" />
+          <path d="M8.5 15.5L12 12l3.5 3.5" />
         </svg>
       ), 
       name: "STP" 
@@ -140,39 +137,14 @@ const SonaiClara = () => {
           </Button>
           
           <div className="bg-white shadow-lg">
-            {/* Full image view with click to expand */}
-            <div 
-              className="aspect-video w-full cursor-pointer relative overflow-hidden" 
-              onClick={() => setFullImageView(true)}
-            >
+            {/* Full image view without click to expand - Using the uploaded image directly */}
+            <div className="aspect-video w-full overflow-hidden">
               <img 
-                src="/lovable-uploads/704fe54f-500c-4e0d-8092-fbaf95de6743.png" 
+                src="/lovable-uploads/f9ee5238-91e8-4422-9d24-34920e156883.png" 
                 alt="Sonai Clara" 
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-4 right-4 bg-black/70 text-white px-3 py-1 rounded-md text-sm">
-                Click to expand
-              </div>
             </div>
-            
-            {/* Full image view dialog */}
-            <Dialog open={fullImageView} onOpenChange={setFullImageView}>
-              <DialogContent className="max-w-7xl p-0 bg-transparent border-none" onInteractOutside={(e) => e.preventDefault()}>
-                <div className="relative flex items-center justify-center">
-                  <img 
-                    src="/lovable-uploads/704fe54f-500c-4e0d-8092-fbaf95de6743.png" 
-                    alt="Sonai Clara" 
-                    className="max-w-full max-h-[90vh] object-contain" 
-                  />
-                  <Button 
-                    className="absolute top-2 right-2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 h-8 w-8"
-                    onClick={() => setFullImageView(false)}
-                  >
-                    ✕
-                  </Button>
-                </div>
-              </DialogContent>
-            </Dialog>
             
             <div className="p-8">
               <div className="mb-6">
@@ -319,7 +291,7 @@ const SonaiClara = () => {
                 </div>
               </div>
 
-              {/* Floor Plans Section - Added below specifications */}
+              {/* Floor Plans Section */}
               <FloorPlanSection plans={floorPlans} />
               
               <div className="mt-10 flex justify-center">
