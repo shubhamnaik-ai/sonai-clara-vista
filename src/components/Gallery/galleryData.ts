@@ -48,13 +48,5 @@ export const galleryImages = [
   {
     src: "/lovable-uploads/d0eb65d3-4ad9-443b-a025-748104252de4.png",
     alt: "Bedroom"
-  },
-  {
-    src: "/lovable-uploads/61eae615-2114-4167-96a2-a55e5ec61406.png",
-    alt: "3D Floor Plan View 1"
-  },
-  {
-    src: "/lovable-uploads/5b3694cc-38d7-4f60-ba86-6bccd67b73bc.png",
-    alt: "3D Floor Plan View 2"
   }
 ];
