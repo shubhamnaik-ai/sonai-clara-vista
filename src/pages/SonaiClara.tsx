@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -137,12 +136,12 @@ const SonaiClara = () => {
           </Button>
           
           <div className="bg-white shadow-lg">
-            {/* Full image view without cropping - Using contain instead of cover */}
-            <div className="w-full bg-gray-100 flex justify-center">
+            {/* Full image view with increased size - Using contain for proper proportions */}
+            <div className="w-full bg-gray-100 flex justify-center py-6">
               <img 
                 src="/lovable-uploads/f9ee5238-91e8-4422-9d24-34920e156883.png" 
                 alt="Sonai Clara" 
-                className="w-auto max-h-[500px] object-contain py-4"
+                className="w-auto max-h-[650px] object-contain"
               />
             </div>
             
