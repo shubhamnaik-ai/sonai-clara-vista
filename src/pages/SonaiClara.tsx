@@ -137,12 +137,12 @@ const SonaiClara = () => {
           </Button>
           
           <div className="bg-white shadow-lg">
-            {/* Full image view without click to expand - Using the uploaded image directly */}
-            <div className="aspect-video w-full overflow-hidden">
+            {/* Full image view without cropping - Using contain instead of cover */}
+            <div className="w-full bg-gray-100 flex justify-center">
               <img 
                 src="/lovable-uploads/f9ee5238-91e8-4422-9d24-34920e156883.png" 
                 alt="Sonai Clara" 
-                className="w-full h-full object-cover"
+                className="w-auto max-h-[500px] object-contain py-4"
               />
             </div>
             
