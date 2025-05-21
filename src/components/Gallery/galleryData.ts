@@ -18,10 +18,6 @@ export const galleryImages = [
     alt: "Building night view"
   },
   {
-    src: "/lovable-uploads/e5b8ac9e-0bf6-4cf6-be66-1e4bb923b8e9.png",
-    alt: "Kitchen"
-  },
-  {
     src: "/lovable-uploads/c983a06d-b61b-483f-97ec-43f143d6168a.png",
     alt: "Living room"
   },
