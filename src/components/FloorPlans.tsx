@@ -1,5 +1,3 @@
-
-
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -27,7 +25,7 @@ const FloorPlans = () => {
     },
     {
       url: "/lovable-uploads/0e743d7c-cc6f-416f-8b5e-9c82f859168e.png",
-      title: "2 BHK Layout Type C",
+      title: "2 BHK Layout",
       area: "810 sq.ft."
     }
   ];
@@ -45,7 +43,7 @@ const FloorPlans = () => {
     },
     {
       url: "/lovable-uploads/ee2f2441-9f6a-4bbe-bfe3-767ec72ba495.png",
-      title: "3 BHK Layout Type C",
+      title: "3 BHK Layout",
       area: "1064 sq.ft."
     }
   ];
@@ -371,4 +369,3 @@ const FloorPlans = () => {
 };
 
 export default FloorPlans;
-
