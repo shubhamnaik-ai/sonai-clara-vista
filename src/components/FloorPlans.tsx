@@ -1,4 +1,5 @@
 
+
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -23,6 +24,11 @@ const FloorPlans = () => {
       url: "/lovable-uploads/f8f43373-089a-4bba-ada5-e31fd2a08bdf.png",
       title: "2 BHK Layout Type B",
       area: "810 sq.ft."
+    },
+    {
+      url: "/lovable-uploads/0e743d7c-cc6f-416f-8b5e-9c82f859168e.png",
+      title: "2 BHK Layout Type C",
+      area: "810 sq.ft."
     }
   ];
   
@@ -35,6 +41,11 @@ const FloorPlans = () => {
     {
       url: "/lovable-uploads/326c64b4-ace0-4ba2-bec0-9e6ab6073305.png",
       title: "3 BHK Layout Type B",
+      area: "1064 sq.ft."
+    },
+    {
+      url: "/lovable-uploads/ee2f2441-9f6a-4bbe-bfe3-767ec72ba495.png",
+      title: "3 BHK Layout Type C",
       area: "1064 sq.ft."
     }
   ];
@@ -53,6 +64,13 @@ const FloorPlans = () => {
     } else {
       setCurrentLayout3BHK((prev) => (prev - 1 + layouts3BHK.length) % layouts3BHK.length);
     }
+  };
+  
+  const isNewLayout = (layouts, currentIndex) => {
+    // Check if current layout is one of the new 3D images
+    const currentUrl = layouts[currentIndex].url;
+    return currentUrl.includes('0e743d7c-cc6f-416f-8b5e-9c82f859168e') || 
+           currentUrl.includes('ee2f2441-9f6a-4bbe-bfe3-767ec72ba495');
   };
   
   return (
@@ -106,7 +124,7 @@ const FloorPlans = () => {
           <TabsContent value="2bhk" className="mt-0">
             <div className="bg-ivory p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                {/* Floor Plan Image - Blurred with View Image Button and Navigation */}
+                {/* Floor Plan Image - Conditionally blurred */}
                 <div className="flex flex-col items-center justify-center">
                   <div className="border-8 border-white shadow-lg relative w-full max-w-md mb-4">
                     <div className="aspect-w-4 aspect-h-3 w-full">
@@ -115,8 +133,10 @@ const FloorPlans = () => {
                           key={currentLayout2BHK}
                           src={layouts2BHK[currentLayout2BHK].url} 
                           alt={layouts2BHK[currentLayout2BHK].title} 
-                          className="w-full h-full object-cover blur-[3px] transition-all"
-                          style={{ filter: 'blur(3px)' }}
+                          className={`w-full h-full object-cover transition-all ${
+                            isNewLayout(layouts2BHK, currentLayout2BHK) ? '' : 'blur-[3px]'
+                          }`}
+                          style={isNewLayout(layouts2BHK, currentLayout2BHK) ? {} : { filter: 'blur(3px)' }}
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
@@ -124,16 +144,18 @@ const FloorPlans = () => {
                         />
                       </AnimatePresence>
                     </div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button className="bg-logo hover:bg-logo-dark text-white rounded-none px-8 py-2 font-medium">
-                            View Image
-                          </Button>
-                        </DialogTrigger>
-                        <EnquiryForm planType={layouts2BHK[currentLayout2BHK].title} />
-                      </Dialog>
-                    </div>
+                    {!isNewLayout(layouts2BHK, currentLayout2BHK) && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button className="bg-logo hover:bg-logo-dark text-white rounded-none px-8 py-2 font-medium">
+                              View Image
+                            </Button>
+                          </DialogTrigger>
+                          <EnquiryForm planType={layouts2BHK[currentLayout2BHK].title} />
+                        </Dialog>
+                      </div>
+                    )}
                   </div>
                   
                   {/* Navigation Controls */}
@@ -224,7 +246,7 @@ const FloorPlans = () => {
           <TabsContent value="3bhk" className="mt-0">
             <div className="bg-ivory p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                {/* Floor Plan Image - Blurred with View Image Button and Navigation */}
+                {/* Floor Plan Image - Conditionally blurred */}
                 <div className="flex flex-col items-center justify-center">
                   <div className="border-8 border-white shadow-lg relative w-full max-w-md mb-4">
                     <div className="aspect-w-4 aspect-h-3 w-full">
@@ -233,8 +255,10 @@ const FloorPlans = () => {
                           key={currentLayout3BHK}
                           src={layouts3BHK[currentLayout3BHK].url} 
                           alt={layouts3BHK[currentLayout3BHK].title} 
-                          className="w-full h-full object-cover blur-[3px] transition-all"
-                          style={{ filter: 'blur(3px)' }}
+                          className={`w-full h-full object-cover transition-all ${
+                            isNewLayout(layouts3BHK, currentLayout3BHK) ? '' : 'blur-[3px]'
+                          }`}
+                          style={isNewLayout(layouts3BHK, currentLayout3BHK) ? {} : { filter: 'blur(3px)' }}
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
@@ -242,16 +266,18 @@ const FloorPlans = () => {
                         />
                       </AnimatePresence>
                     </div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button className="bg-logo hover:bg-logo-dark text-white rounded-none px-8 py-2 font-medium">
-                            View Image
-                          </Button>
-                        </DialogTrigger>
-                        <EnquiryForm planType={layouts3BHK[currentLayout3BHK].title} />
-                      </Dialog>
-                    </div>
+                    {!isNewLayout(layouts3BHK, currentLayout3BHK) && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button className="bg-logo hover:bg-logo-dark text-white rounded-none px-8 py-2 font-medium">
+                              View Image
+                            </Button>
+                          </DialogTrigger>
+                          <EnquiryForm planType={layouts3BHK[currentLayout3BHK].title} />
+                        </Dialog>
+                      </div>
+                    )}
                   </div>
                   
                   {/* Navigation Controls */}
@@ -345,3 +371,4 @@ const FloorPlans = () => {
 };
 
 export default FloorPlans;
+
