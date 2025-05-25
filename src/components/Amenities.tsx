@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Gem } from "lucide-react";
 import { motion } from "framer-motion";
@@ -32,7 +33,7 @@ const Amenities = () => {
     {
       icon: (
         <img 
-          src="/lovable-uploads/dea53f87-978b-42de-aa88-d06dbbc89b7f.png" 
+          src="/lovable-uploads/20cbdfc2-ffba-4ee5-83f4-5ebfab6c22e2.png" 
           alt="Designer Garden" 
           className="h-7 w-7"
         />
@@ -52,7 +53,7 @@ const Amenities = () => {
     {
       icon: (
         <img 
-          src="/lovable-uploads/be545902-6d10-4fba-b48f-3f13e19ba3bb.png" 
+          src="/lovable-uploads/289cb1bc-7722-4e0a-aa83-a7c10625cb81.png" 
           alt="Grand Entrance Gate" 
           className="h-7 w-7"
         />
@@ -102,7 +103,7 @@ const Amenities = () => {
     {
       icon: (
         <img 
-          src="/lovable-uploads/a4df2477-e7a4-443e-9faf-e4d7036921c0.png" 
+          src="/lovable-uploads/571f7dfa-1552-4342-a8d9-283b178f0ae8.png" 
           alt="Oxygen Park" 
           className="h-7 w-7"
         />
@@ -132,7 +133,7 @@ const Amenities = () => {
     {
       icon: (
         <img 
-          src="/lovable-uploads/9d7888c7-d3fb-4a3c-a132-3dffd5a342c2.png" 
+          src="/lovable-uploads/6a964951-d9d3-4d59-b672-0ca3f1210b80.png" 
           alt="Amphitheatre" 
           className="h-7 w-7"
         />
