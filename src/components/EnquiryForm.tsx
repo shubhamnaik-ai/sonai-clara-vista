@@ -12,6 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: "First name must be at least 2 characters." }),
@@ -51,8 +52,31 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
     try {
       console.log("Form submitted:", { ...values, planType, downloadBrochure, bookSiteVisit });
       
-      // Simulate API call with a timeout
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Determine form type based on props
+      let formType = "enquiry";
+      if (downloadBrochure) {
+        formType = "brochure";
+      } else if (bookSiteVisit) {
+        formType = "site-visit";
+      }
+
+      // Send email via Supabase Edge Function
+      const { data, error } = await supabase.functions.invoke('send-form-email', {
+        body: {
+          formType,
+          planType,
+          ...values,
+          preferredDate: values.preferredDate ? format(values.preferredDate, "PPP") : undefined
+        }
+      });
+
+      if (error) {
+        console.error('Error sending email:', error);
+        toast.error("Something went wrong!", {
+          description: "Please try again later or contact us directly."
+        });
+        return;
+      }
       
       if (downloadBrochure) {
         toast.success("Brochure sent successfully! Please check your email.", {
@@ -67,8 +91,9 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
           description: `We'll send you the detailed floor plan for ${planType} shortly.`
         });
       }
-      
-      // In a real-world scenario, you would implement the actual API call here
+
+      // Reset form
+      form.reset();
       
     } catch (error) {
       console.error("Error submitting form:", error);

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -13,6 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: "First name must be at least 2 characters." }),
@@ -38,12 +38,41 @@ const BookVisitForm = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log("Booking visit with:", values);
     
-    // Here you would integrate with your backend to send emails and store data
-    
-    toast({
-      title: "Visit Booked!",
-      description: `We've scheduled your visit for ${format(values.preferredDate, "PPP")}. You'll receive a confirmation email shortly.`,
-    });
+    try {
+      // Send email via Supabase Edge Function
+      const { data, error } = await supabase.functions.invoke('send-form-email', {
+        body: {
+          formType: 'site-visit',
+          ...values,
+          preferredDate: format(values.preferredDate, "PPP")
+        }
+      });
+
+      if (error) {
+        console.error('Error sending email:', error);
+        toast({
+          title: "Error",
+          description: "Failed to book your visit. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      toast({
+        title: "Visit Booked!",
+        description: `We've scheduled your visit for ${format(values.preferredDate, "PPP")}. You'll receive a confirmation email shortly.`,
+      });
+
+      // Reset form
+      form.reset();
+    } catch (error) {
+      console.error('Error:', error);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -53,7 +82,7 @@ const BookVisitForm = () => {
           <img 
             src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png" 
             alt="Sonai Clara Logo" 
-            className="h-16" // Increased from not specified
+            className="h-16" 
           />
         </div>
         <DialogTitle className="text-2xl text-deepblue">Book Your Visit</DialogTitle>

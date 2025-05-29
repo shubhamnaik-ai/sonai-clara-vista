@@ -1,11 +1,78 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactUs = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    interest: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Send email via Supabase Edge Function
+      const { data, error } = await supabase.functions.invoke('send-form-email', {
+        body: {
+          formType: 'contact',
+          ...formData
+        }
+      });
+
+      if (error) {
+        console.error('Error sending email:', error);
+        toast({
+          title: "Error",
+          description: "Failed to send your message. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        phone: "",
+        email: "",
+        interest: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error('Error:', error);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="section-padding bg-ivory">
       <div className="container-custom">
@@ -27,32 +94,53 @@ const ContactUs = () => {
           <div className="bg-white p-8 shadow-lg">
             <h3 className="text-2xl font-playfair font-bold text-deepblue mb-6">Send us a Message</h3>
             
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-charcoal">
-                    Full Name*
+                  <label htmlFor="firstName" className="text-sm font-medium text-charcoal">
+                    First Name*
                   </label>
                   <Input 
-                    id="name" 
-                    placeholder="Your name" 
+                    id="firstName"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    placeholder="Your first name" 
                     className="border-gray-300 focus:border-logo focus:ring-logo" 
                     required
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <label htmlFor="phone" className="text-sm font-medium text-charcoal">
-                    Phone Number*
+                  <label htmlFor="lastName" className="text-sm font-medium text-charcoal">
+                    Last Name*
                   </label>
                   <Input 
-                    id="phone" 
-                    type="tel" 
-                    placeholder="Your phone number" 
+                    id="lastName"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    placeholder="Your last name" 
                     className="border-gray-300 focus:border-logo focus:ring-logo" 
                     required
                   />
                 </div>
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="phone" className="text-sm font-medium text-charcoal">
+                  Phone Number*
+                </label>
+                <Input 
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Your phone number" 
+                  className="border-gray-300 focus:border-logo focus:ring-logo" 
+                  required
+                />
               </div>
               
               <div className="space-y-2">
@@ -60,8 +148,11 @@ const ContactUs = () => {
                   Email Address*
                 </label>
                 <Input 
-                  id="email" 
-                  type="email" 
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Your email" 
                   className="border-gray-300 focus:border-logo focus:ring-logo" 
                   required
@@ -74,6 +165,9 @@ const ContactUs = () => {
                 </label>
                 <select 
                   id="interest"
+                  name="interest"
+                  value={formData.interest}
+                  onChange={handleChange}
                   className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-logo focus:ring-1 focus:ring-logo"
                 >
                   <option value="">Select your interest</option>
@@ -90,15 +184,22 @@ const ContactUs = () => {
                   Your Message
                 </label>
                 <Textarea 
-                  id="message" 
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Write your message here" 
                   className="min-h-[120px] border-gray-300 focus:border-logo focus:ring-logo" 
                 />
               </div>
               
               <div className="pt-4">
-                <Button type="submit" className="w-full bg-[#1b727b] hover:bg-[#155a61] text-white py-6">
-                  Send Message
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full bg-[#1b727b] hover:bg-[#155a61] text-white py-6"
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </div>
             </form>
