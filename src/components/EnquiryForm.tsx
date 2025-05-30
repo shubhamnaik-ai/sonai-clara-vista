@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -6,19 +7,15 @@ import { Button } from "@/components/ui/button";
 import { DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { CalendarIcon } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
-import { format } from "date-fns";
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: "First name must be at least 2 characters." }),
   lastName: z.string().min(2, { message: "Last name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   phone: z.string().min(10, { message: "Phone number must be at least 10 characters." }),
-  preferredDate: z.date().optional(),
+  message: z.string().optional(),
 });
 
 interface EnquiryFormProps {
@@ -41,7 +38,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
       lastName: "",
       email: "",
       phone: "",
-      preferredDate: bookSiteVisit ? new Date() : undefined,
+      message: "",
     },
   });
 
@@ -60,7 +57,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
         });
       } else if (bookSiteVisit) {
         toast.success("Site visit booked successfully!", {
-          description: `Your visit for ${planType} is scheduled for ${format(values.preferredDate!, "PPP")}. We'll be in touch shortly to confirm.`
+          description: `Your visit for ${planType} is scheduled. We'll be in touch shortly to confirm.`
         });
       } else {
         toast.success("Thank you for your interest!", {
@@ -132,7 +129,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Email Address</FormLabel>
                 <FormControl>
                   <Input placeholder="Email address" type="email" {...field} />
                 </FormControl>
@@ -155,49 +152,23 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
             )}
           />
           
-          {bookSiteVisit && (
-            <FormField
-              control={form.control}
-              name="preferredDate"
-              render={({ field }) => (
-                <FormItem className="flex flex-col">
-                  <FormLabel>Preferred Visit Date</FormLabel>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <FormControl>
-                        <Button
-                          variant="outline"
-                          className={cn(
-                            "pl-3 text-left font-normal",
-                            !field.value && "text-muted-foreground"
-                          )}
-                        >
-                          {field.value ? (
-                            format(field.value, "PPP")
-                          ) : (
-                            <span>Pick a date</span>
-                          )}
-                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                        </Button>
-                      </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={field.value}
-                        onSelect={field.onChange}
-                        disabled={(date) =>
-                          date < new Date(new Date().setHours(0, 0, 0, 0))
-                        }
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          )}
+          <FormField
+            control={form.control}
+            name="message"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Your Message</FormLabel>
+                <FormControl>
+                  <Textarea 
+                    placeholder="Write your message here (optional)" 
+                    className="min-h-[80px]" 
+                    {...field} 
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           
           <DialogFooter className="pt-4">
             <Button 

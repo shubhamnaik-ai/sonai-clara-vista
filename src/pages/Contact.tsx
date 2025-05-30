@@ -16,7 +16,8 @@ const Contact = () => {
   const { toast } = useToast();
   const mapRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
     message: "",
@@ -29,11 +30,22 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate required fields
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.message) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields including your message.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     toast({
       title: "Message Sent!",
       description: "We'll get back to you soon.",
     });
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
   };
 
   // Initialize map
@@ -91,23 +103,41 @@ const Contact = () => {
               <h3 className="text-2xl font-playfair font-semibold text-deepblue mb-6">Send us a Message</h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-1">
-                    Your Name
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full"
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="firstName" className="block text-sm font-medium text-charcoal mb-1">
+                      First Name*
+                    </label>
+                    <Input
+                      id="firstName"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      placeholder="First name"
+                      required
+                      className="w-full"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="lastName" className="block text-sm font-medium text-charcoal mb-1">
+                      Last Name*
+                    </label>
+                    <Input
+                      id="lastName"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      placeholder="Last name"
+                      required
+                      className="w-full"
+                    />
+                  </div>
                 </div>
                 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-charcoal mb-1">
-                    Email Address
+                    Email Address*
                   </label>
                   <Input
                     id="email"
@@ -115,6 +145,7 @@ const Contact = () => {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
+                    placeholder="Email address"
                     required
                     className="w-full"
                   />
@@ -122,13 +153,14 @@ const Contact = () => {
                 
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-charcoal mb-1">
-                    Phone Number
+                    Phone Number*
                   </label>
                   <Input
                     id="phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
+                    placeholder="Phone number"
                     required
                     className="w-full"
                   />
@@ -136,7 +168,7 @@ const Contact = () => {
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-charcoal mb-1">
-                    Your Message
+                    Your Message*
                   </label>
                   <Textarea
                     id="message"
@@ -144,6 +176,7 @@ const Contact = () => {
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
+                    placeholder="Write your message here"
                     required
                     className="w-full"
                   />

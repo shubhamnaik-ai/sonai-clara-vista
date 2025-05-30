@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -30,25 +29,24 @@ const ContactUs = () => {
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-charcoal">
-                    Full Name*
+                  <label htmlFor="firstName" className="text-sm font-medium text-charcoal">
+                    First Name*
                   </label>
                   <Input 
-                    id="name" 
-                    placeholder="Your name" 
+                    id="firstName" 
+                    placeholder="First name" 
                     className="border-gray-300 focus:border-logo focus:ring-logo" 
                     required
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <label htmlFor="phone" className="text-sm font-medium text-charcoal">
-                    Phone Number*
+                  <label htmlFor="lastName" className="text-sm font-medium text-charcoal">
+                    Last Name*
                   </label>
                   <Input 
-                    id="phone" 
-                    type="tel" 
-                    placeholder="Your phone number" 
+                    id="lastName" 
+                    placeholder="Last name" 
                     className="border-gray-300 focus:border-logo focus:ring-logo" 
                     required
                   />
@@ -62,27 +60,23 @@ const ContactUs = () => {
                 <Input 
                   id="email" 
                   type="email" 
-                  placeholder="Your email" 
+                  placeholder="Email address" 
                   className="border-gray-300 focus:border-logo focus:ring-logo" 
                   required
                 />
               </div>
               
               <div className="space-y-2">
-                <label htmlFor="interest" className="text-sm font-medium text-charcoal">
-                  Interested In
+                <label htmlFor="phone" className="text-sm font-medium text-charcoal">
+                  Phone Number*
                 </label>
-                <select 
-                  id="interest"
-                  className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-logo focus:ring-1 focus:ring-logo"
-                >
-                  <option value="">Select your interest</option>
-                  <option value="2bhk">2 BHK Apartment</option>
-                  <option value="3bhk">3 BHK Apartment</option>
-                  <option value="site-visit">Site Visit</option>
-                  <option value="pricing">Pricing Information</option>
-                  <option value="other">Other</option>
-                </select>
+                <Input 
+                  id="phone" 
+                  type="tel" 
+                  placeholder="Phone number" 
+                  className="border-gray-300 focus:border-logo focus:ring-logo" 
+                  required
+                />
               </div>
               
               <div className="space-y-2">
@@ -91,7 +85,7 @@ const ContactUs = () => {
                 </label>
                 <Textarea 
                   id="message" 
-                  placeholder="Write your message here" 
+                  placeholder="Write your message here (optional)" 
                   className="min-h-[120px] border-gray-300 focus:border-logo focus:ring-logo" 
                 />
               </div>

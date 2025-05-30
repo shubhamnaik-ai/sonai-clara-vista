@@ -7,19 +7,15 @@ import { Button } from "@/components/ui/button";
 import { DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { CalendarIcon } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
-import { format } from "date-fns";
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: "First name must be at least 2 characters." }),
   lastName: z.string().min(2, { message: "Last name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   phone: z.string().min(10, { message: "Phone number must be at least 10 characters." }),
-  preferredDate: z.date(),
+  message: z.string().optional(),
 });
 
 const BookVisitForm = () => {
@@ -31,7 +27,7 @@ const BookVisitForm = () => {
       lastName: "",
       email: "",
       phone: "",
-      preferredDate: new Date(),
+      message: "",
     },
   });
 
@@ -42,7 +38,7 @@ const BookVisitForm = () => {
     
     toast({
       title: "Visit Booked!",
-      description: `We've scheduled your visit for ${format(values.preferredDate, "PPP")}. You'll receive a confirmation email shortly.`,
+      description: "We've received your visit request. You'll receive a confirmation email shortly.",
     });
   };
 
@@ -53,7 +49,7 @@ const BookVisitForm = () => {
           <img 
             src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png" 
             alt="Sonai Clara Logo" 
-            className="h-16" // Increased from not specified
+            className="h-16"
           />
         </div>
         <DialogTitle className="text-2xl text-deepblue">Book Your Visit</DialogTitle>
@@ -88,7 +84,7 @@ const BookVisitForm = () => {
                     <Input placeholder="Last name" {...field} />
                   </FormControl>
                   <FormMessage />
-                </FormItem>
+              </FormItem>
               )}
             />
           </div>
@@ -98,9 +94,9 @@ const BookVisitForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Email Address</FormLabel>
                 <FormControl>
-                  <Input placeholder="Email address" {...field} />
+                  <Input placeholder="Email address" type="email" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -123,41 +119,17 @@ const BookVisitForm = () => {
           
           <FormField
             control={form.control}
-            name="preferredDate"
+            name="message"
             render={({ field }) => (
-              <FormItem className="flex flex-col">
-                <FormLabel>Preferred Date</FormLabel>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant="outline"
-                        className={cn(
-                          "pl-3 text-left font-normal",
-                          !field.value && "text-muted-foreground"
-                        )}
-                      >
-                        {field.value ? (
-                          format(field.value, "PPP")
-                        ) : (
-                          <span>Pick a date</span>
-                        )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={field.value}
-                      onSelect={field.onChange}
-                      disabled={(date) =>
-                        date < new Date(new Date().setHours(0, 0, 0, 0))
-                      }
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
+              <FormItem>
+                <FormLabel>Your Message</FormLabel>
+                <FormControl>
+                  <Textarea 
+                    placeholder="Write your message here (optional)" 
+                    className="min-h-[80px]" 
+                    {...field} 
+                  />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}

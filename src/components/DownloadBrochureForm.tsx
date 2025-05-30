@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
@@ -14,6 +15,7 @@ const formSchema = z.object({
   lastName: z.string().min(2, { message: "Last name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   phone: z.string().min(10, { message: "Phone number must be at least 10 characters." }),
+  message: z.string().optional(),
 });
 
 const DownloadBrochureForm = () => {
@@ -25,6 +27,7 @@ const DownloadBrochureForm = () => {
       lastName: "",
       email: "",
       phone: "",
+      message: "",
     },
   });
 
@@ -46,7 +49,7 @@ const DownloadBrochureForm = () => {
           <img 
             src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png" 
             alt="Sonai Clara Logo" 
-            className="h-16" // Increased from not specified
+            className="h-16"
           />
         </div>
         <DialogTitle className="text-2xl text-deepblue">Download Brochure</DialogTitle>
@@ -91,9 +94,9 @@ const DownloadBrochureForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Email Address</FormLabel>
                 <FormControl>
-                  <Input placeholder="Email address" {...field} />
+                  <Input placeholder="Email address" type="email" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -108,6 +111,24 @@ const DownloadBrochureForm = () => {
                 <FormLabel>Phone Number</FormLabel>
                 <FormControl>
                   <Input placeholder="Phone number" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="message"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Your Message</FormLabel>
+                <FormControl>
+                  <Textarea 
+                    placeholder="Write your message here (optional)" 
+                    className="min-h-[80px]" 
+                    {...field} 
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
