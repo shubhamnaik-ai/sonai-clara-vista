@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 // Wrapped Button component for motion
 const MotionButton = motion(Button);
@@ -17,59 +16,24 @@ const Contact = () => {
   const { toast } = useToast();
   const mapRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
     phone: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      // Send email via Supabase Edge Function
-      const { data, error } = await supabase.functions.invoke('send-form-email', {
-        body: {
-          formType: 'contact',
-          ...formData
-        }
-      });
-
-      if (error) {
-        console.error('Error sending email:', error);
-        toast({
-          title: "Error",
-          description: "Failed to send your message. Please try again.",
-          variant: "destructive",
-        });
-        return;
-      }
-
-      toast({
-        title: "Message Sent!",
-        description: "We'll get back to you soon.",
-      });
-
-      // Reset form
-      setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
-    } catch (error) {
-      console.error('Error:', error);
-      toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    toast({
+      title: "Message Sent!",
+      description: "We'll get back to you soon.",
+    });
+    setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
   // Initialize map
@@ -128,27 +92,13 @@ const Contact = () => {
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-charcoal mb-1">
-                    First Name
+                  <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-1">
+                    Your Name
                   </label>
                   <Input
-                    id="firstName"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    required
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-charcoal mb-1">
-                    Last Name
-                  </label>
-                  <Input
-                    id="lastName"
-                    name="lastName"
-                    value={formData.lastName}
+                    id="name"
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
                     required
                     className="w-full"
@@ -202,12 +152,11 @@ const Contact = () => {
                 <div className="pt-4">
                   <MotionButton
                     type="submit"
-                    disabled={isSubmitting}
                     className="bg-[#1b727b] hover:bg-[#155a61] text-white w-full py-3"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    Send Message
                   </MotionButton>
                 </div>
               </form>

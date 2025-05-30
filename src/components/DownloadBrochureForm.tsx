@@ -1,3 +1,4 @@
+
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -7,7 +8,6 @@ import { DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFoot
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: "First name must be at least 2 characters." }),
@@ -31,40 +31,12 @@ const DownloadBrochureForm = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log("Downloading brochure for:", values);
     
-    try {
-      // Send email via Supabase Edge Function
-      const { data, error } = await supabase.functions.invoke('send-form-email', {
-        body: {
-          formType: 'brochure',
-          ...values
-        }
-      });
-
-      if (error) {
-        console.error('Error sending email:', error);
-        toast({
-          title: "Error",
-          description: "Failed to send your request. Please try again.",
-          variant: "destructive",
-        });
-        return;
-      }
-
-      toast({
-        title: "Brochure Sent!",
-        description: "Check your email for our detailed brochure.",
-      });
-
-      // Reset form
-      form.reset();
-    } catch (error) {
-      console.error('Error:', error);
-      toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
-        variant: "destructive",
-      });
-    }
+    // Here you would integrate with your backend to send emails with brochure attached
+    
+    toast({
+      title: "Brochure Sent!",
+      description: "Check your email for our detailed brochure.",
+    });
   };
 
   return (
@@ -74,7 +46,7 @@ const DownloadBrochureForm = () => {
           <img 
             src="/lovable-uploads/b069e163-9f57-41f8-82e1-550ae81c592a.png" 
             alt="Sonai Clara Logo" 
-            className="h-16" 
+            className="h-16" // Increased from not specified
           />
         </div>
         <DialogTitle className="text-2xl text-deepblue">Download Brochure</DialogTitle>
