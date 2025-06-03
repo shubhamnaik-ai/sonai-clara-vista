@@ -293,8 +293,8 @@ const SonaiClara = () => {
               {/* Floor Plans Section */}
               <FloorPlanSection plans={floorPlans} />
               
-              {/* Request Brochure Button and MahaRERA Logo Row */}
-              <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-6">
+              {/* Request Brochure Button - Removed MahaRERA logo */}
+              <div className="mt-10 flex justify-center">
                 <Dialog open={open} onOpenChange={setOpen}>
                   <DialogTrigger asChild>
                     <Button className="bg-logo hover:bg-logo-dark text-white px-8 py-6">
@@ -303,16 +303,6 @@ const SonaiClara = () => {
                   </DialogTrigger>
                   <EnquiryForm planType="Sonai Clara" downloadBrochure={true} />
                 </Dialog>
-                
-                {/* MahaRERA Logo and Registration Number */}
-                <div className="flex items-center gap-3">
-                  <img 
-                    src="/lovable-uploads/3a7fa75f-4604-440b-8d83-d1a2a097a296.png" 
-                    alt="MahaRERA Logo" 
-                    className="h-12 w-12"
-                  />
-                  <span className="text-sm font-medium text-gray-700">P52100080205</span>
-                </div>
               </div>
             </div>
           </div>
