@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -294,7 +293,8 @@ const SonaiClara = () => {
               {/* Floor Plans Section */}
               <FloorPlanSection plans={floorPlans} />
               
-              <div className="mt-10 flex justify-center">
+              {/* Request Brochure Button and MahaRERA Logo Row */}
+              <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-6">
                 <Dialog open={open} onOpenChange={setOpen}>
                   <DialogTrigger asChild>
                     <Button className="bg-logo hover:bg-logo-dark text-white px-8 py-6">
@@ -303,10 +303,8 @@ const SonaiClara = () => {
                   </DialogTrigger>
                   <EnquiryForm planType="Sonai Clara" downloadBrochure={true} />
                 </Dialog>
-              </div>
-              
-              {/* MahaRERA Logo and Registration Number */}
-              <div className="mt-8 flex justify-center">
+                
+                {/* MahaRERA Logo and Registration Number */}
                 <div className="flex items-center gap-3">
                   <img 
                     src="/lovable-uploads/3a7fa75f-4604-440b-8d83-d1a2a097a296.png" 
