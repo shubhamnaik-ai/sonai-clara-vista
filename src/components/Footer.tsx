@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -231,7 +230,7 @@ const Footer = () => {
           transition={{ duration: 0.5, delay: 0.8 }}
         >
           <div className="bg-deepblue/5 border border-deepblue/10 rounded-lg px-6 py-3">
-            <p className="text-deepblue font-semibold text-lg">
+            <p className="text-deepblue font-normal text-lg">
               RERA NO: P52100080205
             </p>
           </div>
