@@ -222,14 +222,23 @@ const Footer = () => {
           </motion.div>
         </div>
         
-        <div className="border-t border-deepblue/10 mt-12 pt-8 flex flex-col md:flex-row justify-center items-center gap-4">
+        {/* RERA Number in Center */}
+        <motion.div 
+          className="border-t border-deepblue/10 mt-12 pt-8 flex flex-col items-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
+          <div className="bg-deepblue/5 border border-deepblue/10 rounded-lg px-6 py-3">
+            <p className="text-deepblue font-semibold text-lg">
+              RERA NO: P52100080205
+            </p>
+          </div>
           <p className="text-deepblue/50 text-sm">
             &copy; {currentYear} Sonai Realty. All rights reserved.
           </p>
-          <p className="text-deepblue/50 text-sm">
-            RERA NO: P52100080205
-          </p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
